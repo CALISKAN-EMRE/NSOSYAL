@@ -106,15 +106,21 @@ class RecommendationService:
         interest_weight = 30.0
         interest_impact = interest_raw * interest_weight
 
-        # Factor 2: Topic Affinity (w = 25)
+        # Factor 2: Explicit Topic/Cluster Affinity (w = 25)
+        # Traceable affinity based strictly on explicit user filter / profile selection
         if preferred_topic_id and (
-            post.topic_id == preferred_topic_id or preferred_topic_id in post.topic_id
+            post.topic_id == preferred_topic_id
+            or (post.semantic_cluster_id and post.semantic_cluster_id == preferred_topic_id)
         ):
             affinity_raw = 1.0
-        elif post.topic_id in ["yapay-zeka-egitim", "acik-kaynak-kamu", "sarj-istasyonlari", "semantic-cluster-1", "semantic-cluster-2"]:
-            affinity_raw = 0.85
+            affinity_explanation = f"Aktif filtrelenen konu/küme ('{preferred_topic_id}') ile doğrudan eşleşti."
+        elif preferred_topic_id:
+            affinity_raw = 0.20
+            affinity_explanation = f"Farklı bir konu/küme alanına ait ('{post.topic_title}')."
         else:
-            affinity_raw = 0.5
+            affinity_raw = 0.50
+            affinity_explanation = "Özel bir konu filtresi seçilmediği için standart nötr konu puanı uygulandı."
+
         affinity_weight = 25.0
         affinity_impact = affinity_raw * affinity_weight
 
@@ -165,12 +171,12 @@ class RecommendationService:
             ),
             ScoreFactor(
                 factor_name="topic_affinity",
-                label="Konu Yakınlığı",
+                label="Konu / Küme Yakınlığı",
                 weight=affinity_weight,
                 raw_score=round(affinity_raw, 2),
                 weighted_impact=round(affinity_impact, 1),
                 is_penalty=False,
-                explanation=f"'{post.topic_title}' kategorisi etkileşim katsayısı.",
+                explanation=affinity_explanation,
             ),
             ScoreFactor(
                 factor_name="recency",

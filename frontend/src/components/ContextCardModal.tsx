@@ -49,11 +49,16 @@ export const ContextCardModal: React.FC<ContextCardModalProps> = ({
               <div className="flex items-center gap-2 flex-wrap">
                 <div className="flex items-center gap-2">
                   <span className="rounded-md bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-400 border border-indigo-500/20">
-                    {card?.semantic_cluster_id || "Semantik Bağlam Kartı"}
+                    {card?.is_semantic_cluster ? (card?.semantic_cluster_id || "Semantik Küme") : "Statik Konu Filtresi"}
                   </span>
-                  {card?.cluster_confidence !== undefined && (
+                  {card?.is_semantic_cluster && card?.cluster_membership_score !== undefined && card?.cluster_membership_score !== null && (
                     <span className="rounded-md bg-slate-800 px-2 py-0.5 text-xs font-medium text-slate-300 border border-slate-700">
-                      Küme Üyelik Skoru: %{(card.cluster_confidence * 100).toFixed(0)}
+                      Küme Üyelik Skoru (HDBSCAN): %{(card.cluster_membership_score * 100).toFixed(0)}
+                    </span>
+                  )}
+                  {card?.is_semantic_cluster === false && (
+                    <span className="rounded-md bg-amber-950/40 px-2 py-0.5 text-xs font-medium text-amber-300/80 border border-amber-800/40">
+                      Geriye Dönük Uyumluluk (Filtre Modu)
                     </span>
                   )}
                   {card?.gated_spam_candidates_count !== undefined && card.gated_spam_candidates_count > 0 && (
@@ -177,6 +182,12 @@ export const ContextCardModal: React.FC<ContextCardModalProps> = ({
               {/* Tab 1: Perspectives */}
               {activeTab === "perspectives" && (
                 <div className="space-y-3">
+                  <div className="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800 text-[11px] text-slate-400 flex items-start gap-2">
+                    <Info className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
+                    <span>
+                      <strong>Perspektif Ayrıştırma Notu:</strong> Bu görünüm, külliyatın sentetik perspektif açıklamaları üzerinden gruplanmıştır. Otonom yapay zekâ duruş analizi iddiası taşımamaktadır.
+                    </span>
+                  </div>
                   {card.perspectives.map((p, idx) => (
                     <div
                       key={idx}

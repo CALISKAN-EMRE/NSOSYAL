@@ -184,9 +184,9 @@ export const PostCard: React.FC<PostCardProps> = ({
 
           {/* Context Card Trigger */}
           <button
-            onClick={() => onViewContext(post.topic_id)}
+            onClick={() => onViewContext(post.semantic_cluster_id || post.topic_id)}
             className="flex items-center gap-1 rounded-lg border border-blue-500/30 bg-blue-600/10 px-2.5 py-1 text-xs font-medium text-blue-300 hover:bg-blue-600/20 transition"
-            title="Konunun tarafsız özetini, farklı bakış açılarını ve zaman çizelgesini görüntüleyin"
+            title="Konunun anlamsal küme özetini, farklı bakış açılarını ve zaman çizelgesini görüntüleyin"
           >
             <Layers className="h-3.5 w-3.5" />
             <span>Bağlamı Gör</span>

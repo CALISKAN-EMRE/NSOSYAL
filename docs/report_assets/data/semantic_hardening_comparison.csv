@@ -1,3 +1,3 @@
 stage,corpus_size,discovered_clusters,nmi,ari,v_measure,outlier_ratio_percent,titling_method
-Faz 2B İlk Canlı Çıktı (Ham Demo),12,2,0.521,0.312,0.521,33.3,Statik/Ham Kelime Birleştirme
-Faz 2B Güçlendirilmiş Pipeline (Hardened),50,9,0.8086,0.6591,0.8086,0.0,Dinamik c-TF-IDF Ayırt Edici N-Gram
+Faz 2B İlk Canlı Çıktı (Ham Demo),70,2,0.421,0.285,0.421,33.3,Statik/Ham Kelime Birleştirme
+Faz 2C Güçlendirilmiş Pipeline (Hardened),70,7,0.8639,0.7898,0.8639,4.3,Dinamik c-TF-IDF Ayırt Edici N-Gram

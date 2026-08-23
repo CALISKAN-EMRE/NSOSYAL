@@ -77,6 +77,24 @@ class ContextService:
             )
         return topics
 
+    def assign_clusters_to_posts(self, posts: List[Post]) -> List[Post]:
+        """Assign discovered semantic cluster IDs to posts dynamically without modifying disk files."""
+        clusters = self._get_or_compute_clusters()
+        post_cluster_map: Dict[str, tuple[str, float]] = {}
+        for c in clusters:
+            for pid in c.post_ids:
+                post_cluster_map[pid] = (c.cluster_id, c.confidence_score)
+
+        for p in posts:
+            if p.id in post_cluster_map:
+                cid, conf = post_cluster_map[p.id]
+                p.semantic_cluster_id = cid
+                p.cluster_membership_prob = conf
+            else:
+                p.semantic_cluster_id = None
+                p.cluster_membership_prob = None
+        return posts
+
     def get_context_card(self, topic_id: str) -> Optional[ContextCard]:
         """Generate a complete Context Card using semantic clustering and safety-gated reranked sources."""
         t_total_start = time.perf_counter()
@@ -87,8 +105,10 @@ class ContextService:
         clusters = self._get_or_compute_clusters()
         timings["clustering_ms"] = round((time.perf_counter() - t_clust_start) * 1000.0, 2)
 
-        # Find target cluster matching topic_id or fallback to legacy topic adapter
+        # Match cluster by cluster_id or by member post_id
         target_cluster = next((c for c in clusters if c.cluster_id == topic_id), None)
+        if not target_cluster:
+            target_cluster = next((c for c in clusters if topic_id in c.post_ids), None)
 
         if target_cluster:
             posts = self.adapter.get_posts_by_ids(target_cluster.post_ids)
@@ -96,16 +116,24 @@ class ContextService:
             key_themes = target_cluster.key_themes
             cluster_id = target_cluster.cluster_id
             membership_score = target_cluster.confidence_score
+            is_semantic = True
+            mode_desc = (
+                f"semantic_clustering_and_reranking ({self.model_manager.mode.upper()})"
+                if self.model_manager.mode == "ml"
+                else "demo_deterministic_aggregation (DEMO)"
+            )
         else:
-            # Fallback for static topic_id or direct lookup
+            # Explicit legacy fallback mode (Never disguise as HDBSCAN semantic clustering)
             posts = self.adapter.get_posts(topic_id=topic_id, limit=100)
             topic = self.adapter.get_topic_by_id(topic_id)
             if not posts and not topic:
                 return None
             topic_title = topic.title if topic else (posts[0].topic_title if posts else topic_id)
             key_themes = self._extract_key_themes(posts)
-            cluster_id = f"topic-{topic_id}"
-            membership_score = 0.85
+            cluster_id = f"fallback-{topic_id}"
+            membership_score = None  # Never fake HDBSCAN score on fallback
+            is_semantic = False
+            mode_desc = "legacy_metadata_filter (FALLBACK_DEMO)"
 
         if not posts:
             return None
@@ -130,12 +158,6 @@ class ContextService:
 
         total_participants = len(set(p.author.id for p in posts))
 
-        mode_desc = (
-            f"semantic_clustering_and_reranking ({self.model_manager.mode.upper()})"
-            if self.model_manager.mode == "ml"
-            else "demo_deterministic_aggregation (DEMO)"
-        )
-
         return ContextCard(
             id=f"card-{cluster_id}",
             topic_id=topic_id,
@@ -150,7 +172,8 @@ class ContextService:
             total_participants=total_participants,
             generated_at=datetime.now(timezone.utc).isoformat(),
             method=mode_desc,
-            semantic_cluster_id=cluster_id,
+            is_semantic_cluster=is_semantic,
+            semantic_cluster_id=cluster_id if is_semantic else None,
             cluster_confidence=membership_score,
             cluster_membership_score=membership_score,
             gated_spam_candidates_count=gated_count,
@@ -309,7 +332,7 @@ class ContextService:
             perspectives.append(
                 PerspectiveDetail(
                     perspective_type="supportive",
-                    label="Destekleyen ve Olumlu Görüşler",
+                    label="Destekleyen ve Olumlu Görüşler (Külliyat Açıklama Destekli)",
                     summary="Teknolojik yenilik, verimlilik ve stratejik fırsatları vurgulayan görüşler.",
                     post_count=len(supportive_posts),
                     supporting_post_ids=[p.id for p in supportive_posts],
@@ -321,7 +344,7 @@ class ContextService:
             perspectives.append(
                 PerspectiveDetail(
                     perspective_type="critical",
-                    label="Eleştirel ve Çekinceli Görüşler",
+                    label="Eleştirel ve Çekinceli Görüşler (Külliyat Açıklama Destekli)",
                     summary="Mevzuat belirsizlikleri, altyapı eksiklikleri, etik ve telif risklerine dikkat çeken görüşler.",
                     post_count=len(critical_posts),
                     supporting_post_ids=[p.id for p in critical_posts],
@@ -333,7 +356,7 @@ class ContextService:
             perspectives.append(
                 PerspectiveDetail(
                     perspective_type="neutral_fact",
-                    label="Resmi Bildirimler ve Bilgilendirici Raporlar",
+                    label="Bilgilendirici ve Nötr Gönderiler (Külliyat Açıklama Destekli)",
                     summary="Kamu düzenlemeleri, sektörel veriler ve teknik göstergeler içeren kurumsal paylaşımlar.",
                     post_count=len(neutral_posts),
                     supporting_post_ids=[p.id for p in neutral_posts],

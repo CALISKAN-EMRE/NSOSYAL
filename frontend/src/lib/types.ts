@@ -24,6 +24,8 @@ export interface Post {
   tags: string[];
   metrics: PostMetrics;
   safety_risk_level?: "LOW" | "MEDIUM" | "HIGH";
+  semantic_cluster_id?: string;
+  cluster_membership_prob?: number;
 }
 
 export interface Topic {
@@ -75,6 +77,7 @@ export interface ContextCard {
   total_participants: number;
   generated_at: string;
   method: string;
+  is_semantic_cluster?: boolean;
   semantic_cluster_id?: string;
   cluster_confidence?: number;
   cluster_membership_score?: number;

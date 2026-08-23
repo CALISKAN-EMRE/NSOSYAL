@@ -4,8 +4,10 @@ import logging
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
 import torch
-
-from backend.app.moderation.base import HazardScores, HazardCategory
+try:
+    from app.moderation.base import HazardScores, HazardCategory
+except ImportError:
+    from backend.app.moderation.base import HazardScores, HazardCategory
 
 logger = logging.getLogger("nsosyal_pusula.moderation.guardrail")
 

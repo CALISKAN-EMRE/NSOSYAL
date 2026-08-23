@@ -154,8 +154,8 @@ class SemanticClusterService(BaseClusterService):
             is_spam_cluster = self._is_spam_cluster(cluster_posts, distinctive_terms)
 
             if is_spam_cluster:
-                cluster_label = "Ayrık & Tekrarlı Promosyon/Spam Paylaşımları"
-                is_noise_flag = True
+                cluster_label = "Tekrarlı Promosyon & Şüpheli Bağlantı Paylaşımları"
+                is_noise_flag = False  # Dense semantic cluster containing spam, NOT HDBSCAN outlier
                 cluster_id = f"semantic-spam-{cluster_counter}"
             else:
                 cluster_label = self._format_topic_title(distinctive_terms, cluster_posts[0].text)

@@ -1,6 +1,6 @@
 """Moderation and Safety Package for NSosyal Pusula."""
 
-from backend.app.moderation.base import (
+from .base import (
     ReviewPriority,
     HazardCategory,
     HazardScores,
@@ -12,16 +12,16 @@ from backend.app.moderation.base import (
     ModerationAnalysisRequest,
     ModerationAnalysisResponse,
 )
-from backend.app.moderation.guardrail_classifier import (
+from .guardrail_classifier import (
     BaseGuardrailClassifier,
     ModernBERTGuardrailClassifier,
     DemoGuardrailClassifier,
 )
-from backend.app.moderation.spam_detector import SpamDetector
-from backend.app.moderation.repetition_detector import RepetitionDetector
-from backend.app.moderation.coordination_detector import CoordinationDetector
-from backend.app.moderation.policy import ModerationPolicy
-from backend.app.moderation.fusion_service import ModerationFusionService
+from .spam_detector import SpamDetector
+from .repetition_detector import RepetitionDetector
+from .coordination_detector import CoordinationDetector
+from .policy import ModerationPolicy
+from .fusion_service import ModerationFusionService
 
 __all__ = [
     "ReviewPriority",

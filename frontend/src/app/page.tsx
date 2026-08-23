@@ -172,11 +172,11 @@ export default function Home() {
             <div className="rounded-2xl border border-indigo-500/20 bg-indigo-500/5 p-4 text-xs text-slate-300 space-y-2">
               <div className="flex items-center gap-2 font-semibold text-indigo-400">
                 <Sparkles className="h-4 w-4" />
-                <span>TEKNOFEST 2026 Faz 2B Notu</span>
+                <span>TEKNOFEST 2026 Üretim Notu</span>
               </div>
               <p className="text-[11px] leading-relaxed text-slate-400">
-                Bu prototipte <strong>ModernBERT-TR</strong> ve <strong>Multilingual-E5</strong> modelleri
-                doğrudan yerel GPU üzerinde çalışmaktadır. Gerçek zamanlı arama, kümeleme ve iki aşamalı yeniden sıralama aktiftir.
+                Bu prototipte <strong>ModernBERT-TR</strong>, <strong>ModernBERT-TR-Guardrail</strong> ve <strong>Multilingual-E5</strong> modelleri
+                doğrudan yerel GPU üzerinde çalışmaktadır. Gerçek zamanlı arama, kümeleme, yeniden sıralama ve içerik güvenliği aktiftir.
               </p>
             </div>
           </aside>

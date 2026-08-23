@@ -1,0 +1,25 @@
+{
+  "corpus_size": 70,
+  "ground_truth_topics_count": 7,
+  "hdbscan_parameters": {
+    "min_cluster_size": 4,
+    "min_samples": 2,
+    "pca_components": 16,
+    "metric": "euclidean"
+  },
+  "baseline_phase2b": {
+    "discovered_clusters": 2,
+    "nmi": 0.421,
+    "ari": 0.285,
+    "v_measure": 0.421,
+    "sample_count": 70
+  },
+  "hardened_phase2c": {
+    "discovered_clusters": 7,
+    "nmi": 0.8639,
+    "ari": 0.7898,
+    "v_measure": 0.8639,
+    "noise_ratio": 0.0429,
+    "sample_count": 70
+  }
+}

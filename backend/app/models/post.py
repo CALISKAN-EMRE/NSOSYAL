@@ -36,3 +36,9 @@ class Post(BaseModel):
     safety_risk_level: Optional[str] = Field(
         default="LOW", description="Pre-computed or cached risk level: LOW, MEDIUM, HIGH"
     )
+    semantic_cluster_id: Optional[str] = Field(
+        default=None, description="Discovered HDBSCAN semantic cluster identifier"
+    )
+    cluster_membership_prob: Optional[float] = Field(
+        default=None, description="HDBSCAN cluster membership probability in [0, 1]"
+    )

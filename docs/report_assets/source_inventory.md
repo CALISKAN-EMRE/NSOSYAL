@@ -1,5 +1,5 @@
 # NSosyal Pusula — Kaynakça ve Atıf Envanteri (Source Inventory)
-**TEKNOFEST 2026 Türkçe Doğal Dil İşleme Yarışması — Resmi Model, Veri Seti ve Literatür Envanteri**
+**TEKNOFEST 2026 NSosyal İnovasyon Yarışması — Resmi Model, Veri Seti ve Literatür Envanteri**
 
 ---
 

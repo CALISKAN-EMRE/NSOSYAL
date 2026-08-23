@@ -2,7 +2,10 @@
 
 import re
 from typing import List, Tuple
-from backend.app.moderation.base import SpamEvidence, EvidenceSignal
+try:
+    from app.moderation.base import SpamEvidence, EvidenceSignal
+except ImportError:
+    from backend.app.moderation.base import SpamEvidence, EvidenceSignal
 
 
 class SpamDetector:

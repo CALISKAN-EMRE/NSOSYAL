@@ -10,12 +10,20 @@ from app.models.safety import (
     SafetyRiskVector,
     SafetySignal,
 )
-from backend.app.moderation.base import (
-    ModerationAnalysisRequest,
-    ReviewPriority,
-    HazardCategory,
-)
-from backend.app.moderation.fusion_service import ModerationFusionService
+try:
+    from app.moderation.base import (
+        ModerationAnalysisRequest,
+        ReviewPriority,
+        HazardCategory,
+    )
+    from app.moderation.fusion_service import ModerationFusionService
+except ImportError:
+    from backend.app.moderation.base import (
+        ModerationAnalysisRequest,
+        ReviewPriority,
+        HazardCategory,
+    )
+    from backend.app.moderation.fusion_service import ModerationFusionService
 
 
 class SafetyService:

@@ -4,24 +4,44 @@ import logging
 from typing import List, Optional, Any
 from datetime import datetime, timezone
 
-from backend.app.moderation.base import (
-    ModerationAnalysisRequest,
-    ModerationAnalysisResponse,
-    ModerationRiskVector,
-    ReviewPriority,
-    HazardScores,
-    EvidenceSignal,
-    HazardCategory,
-)
-from backend.app.moderation.guardrail_classifier import (
-    BaseGuardrailClassifier,
-    DemoGuardrailClassifier,
-    ModernBERTGuardrailClassifier,
-)
-from backend.app.moderation.spam_detector import SpamDetector
-from backend.app.moderation.repetition_detector import RepetitionDetector
-from backend.app.moderation.coordination_detector import CoordinationDetector
-from backend.app.moderation.policy import ModerationPolicy
+try:
+    from app.moderation.base import (
+        ModerationAnalysisRequest,
+        ModerationAnalysisResponse,
+        ModerationRiskVector,
+        ReviewPriority,
+        HazardScores,
+        EvidenceSignal,
+        HazardCategory,
+    )
+    from app.moderation.guardrail_classifier import (
+        BaseGuardrailClassifier,
+        DemoGuardrailClassifier,
+        ModernBERTGuardrailClassifier,
+    )
+    from app.moderation.spam_detector import SpamDetector
+    from app.moderation.repetition_detector import RepetitionDetector
+    from app.moderation.coordination_detector import CoordinationDetector
+    from app.moderation.policy import ModerationPolicy
+except ImportError:
+    from backend.app.moderation.base import (
+        ModerationAnalysisRequest,
+        ModerationAnalysisResponse,
+        ModerationRiskVector,
+        ReviewPriority,
+        HazardScores,
+        EvidenceSignal,
+        HazardCategory,
+    )
+    from backend.app.moderation.guardrail_classifier import (
+        BaseGuardrailClassifier,
+        DemoGuardrailClassifier,
+        ModernBERTGuardrailClassifier,
+    )
+    from backend.app.moderation.spam_detector import SpamDetector
+    from backend.app.moderation.repetition_detector import RepetitionDetector
+    from backend.app.moderation.coordination_detector import CoordinationDetector
+    from backend.app.moderation.policy import ModerationPolicy
 
 logger = logging.getLogger("nsosyal_pusula.moderation.fusion")
 

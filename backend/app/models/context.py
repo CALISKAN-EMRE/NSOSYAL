@@ -55,6 +55,9 @@ class ContextCard(BaseModel):
         default="semantic_clustering_and_reranking",
         description="Method used for generation: semantic_clustering_and_reranking or deterministic_aggregation",
     )
+    is_semantic_cluster: bool = Field(
+        default=True, description="True if generated from dynamic HDBSCAN semantic cluster, False if legacy fallback"
+    )
     semantic_cluster_id: Optional[str] = None
     cluster_confidence: Optional[float] = Field(
         default=None, description="Average HDBSCAN cluster membership strength in [0, 1]"

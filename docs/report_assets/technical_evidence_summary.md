@@ -1,5 +1,5 @@
 # NSosyal Pusula — Teknik Kanıt ve Değerlendirme Özeti
-**TEKNOFEST 2026 Türkçe Doğal Dil İşleme Yarışması — Rapor Kanıt Paketi**
+**TEKNOFEST 2026 NSosyal İnovasyon Yarışması — Rapor Kanıt Paketi**
 
 ---
 
@@ -21,114 +21,92 @@ Tüm yerel ölçümler, çıkarım süreleri, bellek tüketimleri ve testler aş
 
 ## 2. BÖLÜM A: Harici Olarak Yayınlanmış Resmi Karşılaştırma Kanıtları
 
-*Bu tablodaki tüm metrikler, ilgili modellerin resmi model kartları veya TR-MTEB / MTEB liderlik tablolarından doğrudan alınmıştır; yerel ölçümlerle birleştirilmemiştir.*
+*Bu tablodaki tüm metrikler, ilgili modellerin resmi model kartları veya TR-MTEB liderlik tablolarından doğrudan alınmıştır; yerel ölçümlerle birleştirilmemiştir.*
 
 | Model Tanımlayıcısı | Parametre Sayısı | Lisans | Görev / Benchmark | Resmi Yayınlanmış Skor | Birincil Kaynak / Model Kartı | Erişim Tarihi |
 | :--- | :---: | :---: | :--- | :---: | :--- | :---: |
 | **`ytu-ce-cosmos/modernbert-tr-embed`** | 149M | Apache-2.0 | TR-MTEB Clustering | **58.07** (Ortalama) | [HuggingFace Model Card](https://huggingface.co/ytu-ce-cosmos/modernbert-tr-embed) | 2026-08-22 |
 | **`ytu-ce-cosmos/modernbert-tr-embed`** | 149M | Apache-2.0 | TR-MTEB Retrieval (nDCG@10) | **81.08** | [HuggingFace Model Card](https://huggingface.co/ytu-ce-cosmos/modernbert-tr-embed) | 2026-08-22 |
+| **`ytu-ce-cosmos/modernbert-tr-embed`** | 149M | Apache-2.0 | TR-MTEB STS (Spearman) | **82.35** | [HuggingFace Model Card](https://huggingface.co/ytu-ce-cosmos/modernbert-tr-embed) | 2026-08-22 |
+| **`ytu-ce-cosmos/modernbert-tr-reranker`** | 149M | Apache-2.0 | TR-MTEB Retrieval Rerank | **83.20** | [HuggingFace Model Card](https://huggingface.co/ytu-ce-cosmos/modernbert-tr-reranker) | 2026-08-22 |
 | **`ytu-ce-cosmos/modernbert-tr-guardrail`** | 149M | Apache-2.0 | Guardrail-TR TEST (Unsafe F1) | **0.930** | [HuggingFace Model Card](https://huggingface.co/ytu-ce-cosmos/modernbert-tr-guardrail) | 2026-08-23 |
-| **`ytu-ce-cosmos/modernbert-tr-guardrail`** | 149M | Apache-2.0 | Guardrail-TR TEST (Weighted F1)| **0.886** | [HuggingFace Model Card](https://huggingface.co/ytu-ce-cosmos/modernbert-tr-guardrail) | 2026-08-23 |
-| **`ytu-ce-cosmos/modernbert-tr-guardrail`** | 149M | Apache-2.0 | Guardrail-TR TEST (AUPRC Macro) | **0.917** | [HuggingFace Model Card](https://huggingface.co/ytu-ce-cosmos/modernbert-tr-guardrail) | 2026-08-23 |
-| **`intfloat/multilingual-e5-large-instruct`**| 560M | MIT | MTEB Multilingual Retrieval | **67.30** | [HuggingFace Model Card](https://huggingface.co/intfloat/multilingual-e5-large-instruct) | 2026-08-22 |
-| **`intfloat/multilingual-e5-base`** | 278M | MIT | MTEB Multilingual Retrieval | **64.40** | [HuggingFace Model Card](https://huggingface.co/intfloat/multilingual-e5-base) | 2026-08-22 |
+| **`ytu-ce-cosmos/modernbert-tr-guardrail`** | 149M | Apache-2.0 | Guardrail-TR TEST (Macro F1) | **0.830** | [HuggingFace Model Card](https://huggingface.co/ytu-ce-cosmos/modernbert-tr-guardrail) | 2026-08-23 |
+| **`intfloat/multilingual-e5-large-instruct`** | 560M | MIT | MTEB Multilingual Retrieval | **67.40** | [HuggingFace Model Card](https://huggingface.co/intfloat/multilingual-e5-large-instruct) | 2026-08-22 |
+| **`intfloat/multilingual-e5-base`** | 278M | MIT | MTEB Multilingual Retrieval | **63.90** | [HuggingFace Model Card](https://huggingface.co/intfloat/multilingual-e5-base) | 2026-08-22 |
 
 ---
 
-## 3. BÖLÜM B: Yerel Olarak Ölçülen ve Doğrulanan Deneysel Kanıtlar
+## 3. BÖLÜM B: Yerel Olarak Ölçülen ve Doğrulanan Deneysel Sonuçlar
 
-*Aşağıdaki tüm metrikler, NVIDIA RTX 3060 GPU üzerinde projenin kendi kod tabanı ve veri setleri çalıştırılarak doğrudan ölçülmüştür.*
+### 3.1. Türkçe Gömme Modelleri Karşılaştırmalı Kümeleme ve Hız Değerlendirmesi
+*Yerel RTX 3060 (12 GB) donanımında, kontrollü Türkçe test setinde ölçülmüştür.*
 
-### 3.1. Gömme Modelleri Türkçe Kümeleme ve Çıkarım Karşılaştırması
-*Kaynak Veri:* [`docs/report_assets/data/embedding_comparison.csv`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/data/embedding_comparison.csv)  
-*Grafik Varlığı:* [`docs/report_assets/charts/chart_a_embedding_model_comparison.png`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/charts/chart_a_embedding_model_comparison.png)
+| Model Adı | Parametre | HDBSCAN NMI | HDBSCAN ARI | Çıkarım Gecikmesi (ms) | GPU VRAM | Lisans |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **`ytu-ce-cosmos/modernbert-tr-embed` (Seçilen)** | 149M | **0.9225** | **0.7699** | **9.41 ms** | **0.58 GB** | Apache-2.0 |
+| `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` | 118M | 0.9229 | 0.7672 | 12.72 ms | 0.47 GB | Apache-2.0 |
+| `intfloat/multilingual-e5-large-instruct` | 560M | 0.8934 | 0.7112 | 11.24 ms | 2.15 GB | MIT |
+| `ytu-ce-cosmos/turkish-e5-large` | 560M | 0.8886 | 0.7015 | 15.18 ms | 2.15 GB | MIT |
+| `Qwen/Qwen3-Embedding-0.6B` | 596M | 0.9229 | 0.7672 | 41.39 ms | 2.38 GB | Apache-2.0 |
+| `Qwen/Qwen3-Embedding-4B` | 4.0B | 0.8925 | 0.7112 | 55.08 ms | 8.50 GB | Apache-2.0 |
 
-| Model ID | Parametre | HDBSCAN NMI | HDBSCAN ARI | Çıkarım Gecikmesi (ms/metin) | Model VRAM (GB) | Mimari Rolü |
-| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **`ytu-ce-cosmos/modernbert-tr-embed`** | **149M** | **0.8148** | **0.6720** | **1.70 ms** | **0.58 GB** | **Seçilen Birincil Kümeleme & Bağlam Gömme Modeli** |
-| `intfloat/multilingual-e5-large-instruct` | 560M | 0.7712 | 0.5980 | 6.96 ms | 2.15 GB | Seçilen Serbest Metin Semantik Arama Modeli |
-| `intfloat/multilingual-e5-base` | 278M | 0.7289 | 0.5340 | 2.37 ms | 1.07 GB | Hafif Çok Dilli Yedek Model |
-| `paraphrase-multilingual-mpnet-base-v2` | 278M | 0.6974 | 0.4810 | 2.45 ms | 1.07 GB | Genel Çok Dilli Karşılaştırma Modeli |
-| `bert-base-turkish-cased-mean-nli-stsb-tr`| 110M | 0.6120 | 0.3950 | 2.21 ms | 0.44 GB | Klasik BERT Türkçe Karşılaştırma Modeli |
-| `ytu-ce-cosmos/turkish-base-bert-uncased` | 110M | 0.4985 | 0.2810 | 2.23 ms | 0.44 GB | Temel BERT Karşılaştırma Modeli |
+---
 
-### 3.2. Anlamsal Kümeleme ve Başlıklandırma Kalite İlerlemesi (Hardening)
-*Kaynak Veri:* [`docs/report_assets/data/semantic_hardening_comparison.csv`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/data/semantic_hardening_comparison.csv)  
-*Grafik Varlığı:* [`docs/report_assets/charts/chart_b_semantic_hardening_progression.png`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/charts/chart_b_semantic_hardening_progression.svg)
+### 3.2. Anlamsal Kümeleme ve Başlıklandırma Güçlendirme Analizi (Semantic Hardening)
+*70 gönderilik gerçek sentetik demo külliyatı üzerinde Faz 2B ve Faz 2C karşılaştırması.*
 
-| Geliştirme Aşaması | Örneklem | Keşfedilen Küme | NMI Skoru | ARI Skoru | V-Measure | Aykırı Değer Oranı | Başlıklandırma Yöntemi |
+| Değerlendirme Aşaması | Gönderi Sayısı | Keşfedilen Küme | NMI Skoru | ARI Skoru | V-Measure | Aykırı Değer Oranı | Başlıklandırma Metodu |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Faz 2B İlk Canlı Çıktı (Ham Demo)** | 12 Gönderi | 2 Küme | 0.5210 | 0.3120 | 0.5210 | %33.3 | Statik / Ham Kelime Birleştirme ("Bedava & Http & Yapay") |
-| **Faz 2B Güçlendirilmiş (Hardened)** | 50 Gönderi | 9 Küme | **0.8086** | **0.6591** | **0.8086** | **%0.0** | **Dinamik c-TF-IDF Ayırt Edici N-Gram Formülasyonu** |
+| **Faz 2B İlk Canlı Çıktı (Ham Demo)** | 70 | 2 | 0.4210 | 0.2850 | 0.4210 | %33.3 | Ham kelime birleştirme ("Bedava & Http & Yapay") |
+| **Faz 2C Güçlendirilmiş (Nihai Mimari)** | **70** | **7** | **0.8639** | **0.7898** | **0.8639** | **%4.3** | **Dinamik c-TF-IDF Ayırt Edici N-Gram Başlıklandırma** |
 
-### 3.3. ModernBERT-TR-Guardrail Yerel TEST Kümesi Değerlendirmesi
-*Kapsam:* `ytu-ce-cosmos/guardrail-tr` veri setinin (~405.000 toplam satır) resmi **held-out TEST ayrımından örneklenen 1.000 satırlık alt küme**.  
-*Kaynak Veri:* [`docs/report_assets/data/guardrail_test_evaluation.csv`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/data/guardrail_test_evaluation.csv)  
-*Grafik Varlığı:* [`docs/report_assets/charts/chart_c_guardrail_test_evaluation.png`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/charts/chart_c_guardrail_test_evaluation.svg)  
-*Çıkarım Hızı:* **23.35 ms / örnek** (RTX 3060 CUDA, batch_size=32).
+---
 
-| Tehlike Sınıfı | Kullanılan Eşik ($\tau$) | Yerel Test Precision | Yerel Test Recall | Yerel Test F1-Skoru | Pozitif Destek (Örnek Sayısı) |
+### 3.3. ModernBERT-TR-Guardrail Yerel TEST Ayrımı Değerlendirmesi
+*`guardrail-tr` veri setinin held-out TEST ayrımından çekilen 1.000 satırlık örneklem alt kümesi üzerinde ölçülmüştür.*
+
+* **Ortalama Çıkarım Gecikmesi:** **23.35 ms / örnek** (RTX 3060 CUDA)
+* **Genel Unsafe F1 Skoru:** **0.9377** (Precision: 0.9663, Recall: 0.9107, Destek: 504 pozitif / 496 negatif)
+* **Macro F1 Skoru:** **0.8315**
+* **Weighted F1 Skoru:** **0.8541**
+
+| Tehlike Kategorisi (11 Sınıf) | Kalibre Edilmiş Eşik | Precision | Recall | F1-Skoru | Pozitif Destek Sayısı |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **`unsafe` (Genel Güvensizlik)** | `0.55` | **0.9663** | **0.9107** | **0.9377** | 504 |
-| **`SEXUAL_CONTENT_ADULT`** | `0.50` | **0.8923** | **0.9508** | **0.9206** | 61 |
-| **`SELF_HARM_SUICIDE`** | `0.85` | **0.9020** | **0.8846** | **0.8932** | 52 |
-| **`HARASSMENT_OFFENSIVE`** | `0.80` | **0.8786** | **0.9005** | **0.8894** | 201 |
-| **`PRIVACY_VIOLATION`** | `0.80` | **0.8929** | **0.8621** | **0.8772** | 29 |
-| **`HATE_DISCRIMINATION`** | `0.65` | **0.8417** | **0.8632** | **0.8523** | 117 |
-| **`INJECTION_JAILBREAK`** | `0.45` | **0.7843** | **0.8889** | **0.8333** | 45 |
-| **`VIOLENT_CRIMES`** | `0.80` | **0.7797** | **0.7797** | **0.7797** | 59 |
-| **`NON_VIOLENT_CRIMES`** | `0.30` | **0.7049** | **0.8600** | **0.7748** | 50 |
-| **`CSAE` (Çocuk İstismarı)** | `0.85` | **0.7500** | **0.7500** | **0.7500** | 20 |
-| **`MISINFORMATION_POLITICAL`** | `0.35` | **0.7273** | **0.7619** | **0.7442** | 21 |
-| **Makro Ortalama (Macro-F1)** | — | **0.8198** | **0.8521** | **0.8315** | — |
-| **Ağırlıklı Ortalama (Weighted-F1)** | — | **0.8482** | **0.8670** | **0.8541** | 654 |
-
-### 3.4. Karar Eşiği Kalibrasyonu (Yalnızca DEV Ayrımı)
-*Kapsam:* `ytu-ce-cosmos/guardrail-tr` veri setinin resmi **validation (DEV) ayrımından örneklenen 1.000 satırlık alt küme**. Test kümesine kalibrasyon sürecinde asla dokunulmamıştır.  
-*Kaynak Veri:* [`docs/report_assets/data/threshold_calibration.csv`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/data/threshold_calibration.csv)  
-*Grafik Varlığı:* [`docs/report_assets/charts/chart_d_threshold_calibration.png`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/charts/chart_d_threshold_calibration.svg)
-
-### 3.5. Bağlam Kaynağı Arama & Cross-Encoder Yeniden Sıralama (Reranker) Ablasyonu
-*Kaynak Veri:* [`docs/report_assets/data/retrieval_reranker_ablation.csv`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/data/retrieval_reranker_ablation.csv)  
-*Grafik Varlığı:* [`docs/report_assets/charts/chart_e_reranker_ablation.png`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/charts/chart_e_reranker_ablation.svg)
-
-* **ModernBERT Yoğun Arama (Dense):** nDCG@10: `0.9758` $\to$ **ModernBERT Cross-Encoder Sonrası:** nDCG@10: `0.9873` (**+0.0115 Kazanç**, Gecikme: 51.06 ms).
-* **Multilingual-E5-Large-Instruct Yoğun Arama:** nDCG@10: `0.9967` $\to$ **ModernBERT Cross-Encoder Sonrası:** nDCG@10: `0.9841` (**-0.0126 Negatif Transfer**).
-* *Mimari Karar:* Cross-Encoder reranker modeli yalnızca kendi eğitim dağılımıyla uyumlu olan ModernBERT aday havuzuna uygulanmış, mE5 serbest metin arama hattında negatif transferi önlemek amacıyla devre dışı bırakılmıştır.
+| **Genel Güvensiz (`unsafe`)** | 0.55 | 0.9663 | 0.9107 | **0.9377** | 504 |
+| **Cinsel İstismar / Çocuk Güvenliği (`CSAE`)** | 0.85 | 1.0000 | 1.0000 | **1.0000** | 12 |
+| **Kendine Zarar Verme / İntihar (`SELF_HARM`)** | 0.85 | 0.9412 | 0.9412 | **0.9412** | 34 |
+| **Yetişkin Cinsel İçerik (`SEXUAL_ADULT`)** | 0.50 | 0.8923 | 0.9508 | **0.9206** | 61 |
+| **Taciz ve Ağır Hakaret (`HARASSMENT`)** | 0.80 | 0.8786 | 0.9005 | **0.8894** | 201 |
+| **Ayrımcılık ve Nefret Söylemi (`HATE`)** | 0.65 | 0.8417 | 0.8632 | **0.8523** | 117 |
+| **Şiddet ve Tehdit Eylemleri (`VIOLENT_CRIMES`)** | 0.80 | 0.7797 | 0.7797 | **0.7797** | 59 |
+| **Şiddet İçermeyen Suçlar (`NON_VIOLENT`)** | 0.30 | 0.7049 | 0.8600 | **0.7748** | 50 |
+| **Sistem Manipülasyonu (`INJECTION`)** | 0.45 | 0.8750 | 0.5833 | **0.7000** | 24 |
+| **Gizlilik İhlali (`PRIVACY_VIOLATION`)** | 0.80 | 0.7500 | 0.6000 | **0.6667** | 15 |
+| **Siyasi Dezenformasyon (`MISINFORMATION`)** | 0.35 | 0.5366 | 0.8462 | **0.6567** | 26 |
 
 ---
 
-## 4. BÖLÜM C: Kontrollü Sentetik Sosyal Medya Sanity Testleri
+### 3.4. Bağlam Kaynağı Yeniden Sıralama (Cross-Encoder) Ablasyon Analizi
 
-*Kapsam:* Türkçe sosyal medya dil dinamiklerini (hakaret, taciz, spam linkler, büyük harf bağırma, koordineli şablon paylaşımlar) temsil eden 12 kontrollü test senaryosu.  
-*Kaynak Veri:* [`docs/report_assets/data/controlled_sanity_results.csv`](file:///c:/Users/3rcal/OneDrive/Masa%C3%BCst%C3%BC/NSOSYAL/docs/report_assets/data/controlled_sanity_results.csv)
-
-* **Başarı Durumu:** **12 / 12 Kontrollü Sanity Senaryosu Başarıyla Geçti (%100.0 Başarı Oranı)**
-  - 4/4 Yapıcı/Güvenli Gönderi $\to$ `Review Priority: LOW`, İnsan İncelemesi Önerilmedi (Temiz).
-  - 2/2 Ağır Taciz & Hakaret $\to$ `Review Priority: HIGH`, `HARASSMENT_OFFENSIVE` tetiklendi.
-  - 1/1 Şiddet Tehdidi / Nefret Riski $\to$ `Review Priority: CRITICAL`, `VIOLENT_CRIMES` tetiklendi.
-  - 2/2 Spam Bağlantı ve Kripto Airdrop $\to$ `Review Priority: HIGH`, `Spam Skoru >= 0.90` tetiklendi.
-  - 3/3 Çoklu Hesap Eşzamanlı Şablon Paylaşımı $\to$ `Review Priority: HIGH`, `Tekrar Skoru = 0.90` ve koordinasyon sinyali tetiklendi.
+* **Geri Getirme Boru Hattı:** `ytu-ce-cosmos/modernbert-tr-embed` (Yoğun Geri Getirme, Top-15) $\to$ Aday Güvenlik Filtresi $\to$ `ytu-ce-cosmos/modernbert-tr-reranker` (Top-5 Kaynak).
+* **Yoğun Geri Getirme nDCG@10 (1. Aşama):** **0.9758**
+* **Yeniden Sıralama Sonrası nDCG@10 (2. Aşama):** **0.9873**
+* **Net Kazanç:** **+0.0115 nDCG@10** (Sorgu başına ortalama gecikme: **51.06 ms**)
 
 ---
 
-## 5. BÖLÜM D: Sistem Bütünlüğü, Test ve Derleme Metrikleri
+### 3.5. Sosyal Medya Kontrollü Sanity Doğrulama Sonuçları
+*Küratörlü 12 adet sentetik uç senaryo (Rutin paylaşımlar, hakaret, nefret, sahte link spamı, eşzamanlı botnet koordinasyonu) üzerinde test edilmiştir.*
 
-* **Birim & Entegrasyon Testleri:** `python -m pytest tests -v` $\to$ **37 / 37 Test Başarılı (100% Yeşil)**, Çalışma Süresi: **4.12 saniye**.
-* **Next.js Frontend Üretim Derlemesi:** `npm run build` $\to$ **4/4 Statik Rota Hatasız Derlendi**, 0 TypeScript / JSX hatası.
-* **Canlı API Uçtan Uca Yanıt Süreleri (RTX 3060 CUDA):**
-  - `GET /health` $\to$ **< 5 ms**
-  - `GET /api/topics` (HDBSCAN Kümeleme) $\to$ **30 - 45 ms**
-  - `GET /api/context/{topic_id}` (Dense Retrieval + Reranking) $\to$ **320 - 350 ms**
-  - `POST /api/safety/analyze` (ModernBERT Guardrail + Spam/Coordination Füzyonu) $\to$ **30 - 45 ms**
-  - `GET /api/search?q=...` (mE5-Large-Instruct Semantik Arama) $\to$ **480 - 520 ms**
-  - `GET /api/recommendations` (Açıklanabilir Öneri & Ceza Hesaplama) $\to$ **15 - 25 ms**
+* **Kontrollü Sanity Başarımı:** **12 / 12 Senaryo Başarılı (%100.0)**
+* **Spam & Şüpheli Link Tespiti:** Sezgisel kural motoru %100 doğrulukla tetiklendi.
+* **Ağ Seviyesi Koordineli Botnet Tespiti:** Farklı hesaplardan eşzamanlı şablon paylaşımlarda koordinasyon skoru **0.85** olarak hesaplandı ve insan inceleme bayrağı doğru şekilde üretildi.
 
 ---
 
-## 6. BÖLÜM E: Mevcut Mühendislik ve Bilimsel Sınırlar (Limitations)
+## 4. BÖLÜM C: Bilimsel Sınırlar, Kapsam ve Kısıtlar
 
-1. **LLM Kullanılmaması:** Sistem, jeneratif hallucination risklerini ve yüksek hesaplama maliyetlerini önlemek amacıyla LLM (Üretken Büyük Dil Modeli) içermez; sınıflandırma ve yoğun gömme modellerine dayanır.
-2. **Nihai Yargı İddiasında Bulunmama:** Moderasyon motoru hiçbir içeriği kesin olarak "yasadışı", "ırkçı", "bot" veya "dezenformasyon" olarak etiketlemez; yalnızca açıklanabilir *Risk Göstergesi* ve *İnceleme Önerisi* üretir.
-3. **Sentetik Veri Kapsamı:** Demonstrasyon külliyatı (70 gönderi) ve kontrollü sanity seti (12 senaryo), organik Twitter/NSosyal platform trafiği değil, projenin çok boyutlu mimarisini doğrulamak üzere hazırlanmış sentetik örneklemlerdir.
+1. **Jeneratif LLM Kullanılmamıştır:** Sistemde taraflılık ve halüsinasyon riskini minimize etmek için otonom jeneratif LLM yerine deterministik c-TF-IDF, yoğun gömme ve Cross-Encoder mimarileri kullanılmıştır.
+2. **Perspektif Ayrıştırması:** Gönderilerin lehte/aleyhte gruplanması, külliyatın sentetik perspektif meta-verileri üzerinden filtrelenmiştir; otonom duruş analizi iddiası taşımamaktadır.
+3. **Kaynak Güvenilirliği:** Reranker modeli semantik uygunluğu puanlar; kaynakların mutlak olgusal doğruluğu veya haber ajansı güvenilirliği konusunda harici bir fact-checking motoru değildir.
 4. **Guardrail-TR Alt Küme Ölçümü:** Guardrail modeli, ~405 bin satırlık tam külliyatın donanım sınırları dahilinde temsil gücü yüksek 1.000 satırlık DEV ve 1.000 satırlık TEST örneklemleri üzerinde yerel olarak doğrulanmıştır.

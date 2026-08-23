@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 from typing import Any, Dict, Optional
 
 from app.config import settings
@@ -89,15 +90,29 @@ class ModelManager:
 
                 # 4. ModernBERT TR Guardrail (Moderation & Safety)
                 logger.info(f"Loading guardrail classifier model: {settings.MODEL_GUARDRAIL}")
-                from backend.app.moderation.guardrail_classifier import ModernBERTGuardrailClassifier
-                from backend.app.moderation.fusion_service import ModerationFusionService
+                try:
+                    from app.moderation.guardrail_classifier import ModernBERTGuardrailClassifier
+                    from app.moderation.fusion_service import ModerationFusionService
+                    from app.moderation.policy import ModerationPolicy
+                except ImportError:
+                    from backend.app.moderation.guardrail_classifier import ModernBERTGuardrailClassifier
+                    from backend.app.moderation.fusion_service import ModerationFusionService
+                    from backend.app.moderation.policy import ModerationPolicy
 
+                calibrated_file = Path(__file__).resolve().parent.parent / "moderation" / "calibrated_thresholds.json"
+                policy = ModerationPolicy(thresholds_path=str(calibrated_file) if calibrated_file.exists() else None)
                 self.guardrail_classifier = ModernBERTGuardrailClassifier(device=self.device)
-                self.moderation_service = ModerationFusionService(classifier=self.guardrail_classifier)
+                self.moderation_service = ModerationFusionService(
+                    classifier=self.guardrail_classifier,
+                    policy=policy,
+                )
 
                 # 5. Composite Services
                 self.cluster_service = SemanticClusterService(
-                    embedding_service=self.clustering_embedder, min_cluster_size=3
+                    embedding_service=self.clustering_embedder,
+                    min_cluster_size=4,
+                    min_samples=2,
+                    pca_components=16,
                 )
                 self.similarity_service = SemanticSimilarityService(
                     embedding_service=self.clustering_embedder
@@ -121,10 +136,22 @@ class ModelManager:
         self.clustering_embedder = DemoEmbeddingService(dimension=384, model_name="demo-wordhash-384")
         self.search_embedder = DemoEmbeddingService(dimension=384, model_name="demo-wordhash-search")
         self.context_reranker = DemoRerankerService()
-        from backend.app.moderation.guardrail_classifier import DemoGuardrailClassifier
-        from backend.app.moderation.fusion_service import ModerationFusionService
+        try:
+            from app.moderation.guardrail_classifier import DemoGuardrailClassifier
+            from app.moderation.fusion_service import ModerationFusionService
+            from app.moderation.policy import ModerationPolicy
+        except ImportError:
+            from backend.app.moderation.guardrail_classifier import DemoGuardrailClassifier
+            from backend.app.moderation.fusion_service import ModerationFusionService
+            from backend.app.moderation.policy import ModerationPolicy
+
+        calibrated_file = Path(__file__).resolve().parent.parent / "moderation" / "calibrated_thresholds.json"
+        policy = ModerationPolicy(thresholds_path=str(calibrated_file) if calibrated_file.exists() else None)
         self.guardrail_classifier = DemoGuardrailClassifier()
-        self.moderation_service = ModerationFusionService(classifier=self.guardrail_classifier)
+        self.moderation_service = ModerationFusionService(
+            classifier=self.guardrail_classifier,
+            policy=policy,
+        )
         self.cluster_service = DemoClusterService()
         self.similarity_service = SemanticSimilarityService(embedding_service=self.clustering_embedder)
         self.is_initialized = True

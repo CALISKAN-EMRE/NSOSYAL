@@ -3,19 +3,34 @@
 import pytest
 from datetime import datetime, timezone
 from app.models.post import Post, Author, PostMetrics
-from backend.app.moderation.base import (
-    HazardCategory,
-    HazardScores,
-    ReviewPriority,
-    ModerationAnalysisRequest,
-)
-from backend.app.moderation.guardrail_classifier import DemoGuardrailClassifier
-from backend.app.moderation.spam_detector import SpamDetector
-from backend.app.moderation.repetition_detector import RepetitionDetector
-from backend.app.moderation.coordination_detector import CoordinationDetector
-from backend.app.moderation.policy import ModerationPolicy, DEFAULT_CALIBRATED_THRESHOLDS
-from backend.app.moderation.fusion_service import ModerationFusionService
-from backend.app.services.safety_service import SafetyService
+try:
+    from app.moderation.base import (
+        HazardCategory,
+        HazardScores,
+        ReviewPriority,
+        ModerationAnalysisRequest,
+    )
+    from app.moderation.guardrail_classifier import DemoGuardrailClassifier
+    from app.moderation.spam_detector import SpamDetector
+    from app.moderation.repetition_detector import RepetitionDetector
+    from app.moderation.coordination_detector import CoordinationDetector
+    from app.moderation.policy import ModerationPolicy, DEFAULT_CALIBRATED_THRESHOLDS
+    from app.moderation.fusion_service import ModerationFusionService
+    from app.services.safety_service import SafetyService
+except ImportError:
+    from backend.app.moderation.base import (
+        HazardCategory,
+        HazardScores,
+        ReviewPriority,
+        ModerationAnalysisRequest,
+    )
+    from backend.app.moderation.guardrail_classifier import DemoGuardrailClassifier
+    from backend.app.moderation.spam_detector import SpamDetector
+    from backend.app.moderation.repetition_detector import RepetitionDetector
+    from backend.app.moderation.coordination_detector import CoordinationDetector
+    from backend.app.moderation.policy import ModerationPolicy, DEFAULT_CALIBRATED_THRESHOLDS
+    from backend.app.moderation.fusion_service import ModerationFusionService
+    from backend.app.services.safety_service import SafetyService
 from app.models.safety import SafetyAnalysisRequest
 
 
@@ -85,7 +100,27 @@ def test_calibrated_threshold_loading(moderation_policy):
     for cat in HazardCategory:
         thresh = moderation_policy.get_threshold(cat.value)
         assert 0.10 <= thresh <= 0.90
-        assert thresh == DEFAULT_CALIBRATED_THRESHOLDS[cat.value]
+
+
+def test_production_calibrated_thresholds_exact_values():
+    """Verify that production policy loads the exact calibrated thresholds from JSON."""
+    from app.ml.model_manager import ModelManager
+    manager = ModelManager()
+    manager.initialize()
+    policy = manager.moderation_service.policy
+
+    # Exact assertions required by audit
+    assert policy.get_threshold("unsafe") == 0.55
+    assert policy.get_threshold("HATE_DISCRIMINATION") == 0.65
+    assert policy.get_threshold("HARASSMENT_OFFENSIVE") == 0.80
+    assert policy.get_threshold("VIOLENT_CRIMES") == 0.80
+    assert policy.get_threshold("CSAE") == 0.85
+    assert policy.get_threshold("SELF_HARM_SUICIDE") == 0.85
+    assert policy.get_threshold("INJECTION_JAILBREAK") == 0.45
+    assert policy.get_threshold("MISINFORMATION_POLITICAL") == 0.35
+    assert policy.get_threshold("NON_VIOLENT_CRIMES") == 0.30
+    assert policy.get_threshold("SEXUAL_CONTENT_ADULT") == 0.50
+    assert policy.get_threshold("PRIVACY_VIOLATION") == 0.80
 
 
 def test_spam_detector_features():
@@ -142,6 +177,33 @@ def test_coordination_detector_evidence(sample_clean_posts):
     assert "u-1" in coord_ev.participating_authors
     assert len(coord_ev.signals) >= 1
     assert coord_ev.signals[0].category == "coordination"
+
+    # Also test with raw dictionary posts
+    dict_posts = [
+        {
+            "id": "dp-1",
+            "text": target_text,
+            "author": {"id": "dict-user-1", "name": "User 1"},
+            "created_at": datetime.now(timezone.utc),
+        },
+        {
+            "id": "dp-2",
+            "text": target_text,
+            "author": {"id": "dict-user-2", "name": "User 2"},
+            "created_at": datetime.now(timezone.utc),
+        }
+    ]
+    coord_dict_ev = detector.analyze(
+        text=target_text,
+        current_post_id="dp-3",
+        current_author_id="dict-user-3",
+        current_created_at=datetime.now(timezone.utc),
+        existing_posts=dict_posts,
+    )
+    assert coord_dict_ev.suspected_coordination_score >= 0.70
+    assert len(coord_dict_ev.participating_authors) == 2
+    assert "dict-user-1" in coord_dict_ev.participating_authors
+    assert "dict-user-2" in coord_dict_ev.participating_authors
 
 
 def test_moderation_fusion_transparency(fusion_service, sample_clean_posts):

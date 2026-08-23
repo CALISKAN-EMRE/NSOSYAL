@@ -1,34 +1,34 @@
 # NSosyal Pusula 🧭
 ### Yapay Zekâ Destekli Bağlam ve Şeffaf Öneri Sistemi
-**TEKNOFEST 2026 Projesi — Faz 2B Üretim Semantik Mimarisi**
+**TEKNOFEST 2026 NSosyal İnovasyon Yarışması — Çalışan Yarışma Prototipi**
 
-[![Prototip Durumu](https://img.shields.io/badge/Prototip-Faz_2B_Semantik_ML-indigo.svg)](docs/semantic_pipeline.md)
+[![Prototip Durumu](https://img.shields.io/badge/Prototip-Çalışan_Üretim_Mimarisi-emerald.svg)](docs/report_assets/technical_evidence_summary.md)
 [![Lisans](https://img.shields.io/badge/Lisans-MIT-green.svg)](LICENSE)
-[![GPU Desteği](https://img.shields.io/badge/Hızlandırma-NVIDIA_CUDA_RTX_3060-emerald.svg)](#donanım-ve-çalışma-ortamı)
-[![Veri Kaynağı](https://img.shields.io/badge/Veri_Kaynağı-Sentetik_Türkçe_Veri-orange.svg)](#veri-ve-entegrasyon-uyarısı)
+[![GPU Desteği](https://img.shields.io/badge/Hızlandırma-NVIDIA_CUDA_RTX_3060-blue.svg)](#donanım-ve-çalışma-ortamı)
+[![Veri Kaynağı](https://img.shields.io/badge/Veri_Kaynağı-Sentetik_Türkçe_Demo-orange.svg)](#veri-ve-entegrasyon-uyarısı)
 
 ---
 
 ## 📌 Proje Genel Bakışı (Project Overview)
 
-**NSosyal Pusula**, modern sosyal medya platformlarında bilgi kirliliği, kutuplaşma, şeffaf olmayan algoritmalar ve bağlamından koparılmış içerik akışlarına karşı geliştirilmiş **yapay zekâ destekli bir sosyal medya zekâ ve şeffaflık katmanıdır**.
+**NSosyal Pusula**, modern sosyal medya platformlarında bilgi kirliliği, kutuplaşma, şeffaf olmayan algoritmalar ve bağlamından koparılmış içerik akışlarına karşı geliştirilmiş **yapay zekâ destekli bir sosyal medya zekâ, şeffaflık ve moderasyon katmanıdır**.
 
-Platform, kullanıcılara salt kronolojik veya gizli öneri motorlarına dayalı bir akış sunmak yerine; paylaşımları anlamsal olarak kümeleyen, çoklu bakış açılarını sentezleyen **Bağlam Kartları (Context Cards)**, önerilerin gerekçelerini matematiksel ve metinsel olarak açıklayan **Şeffaf Öneri Sistemi (Transparent Recommendations)**, talimat güdümlü **Doğal Dil Arama (Natural Language Semantic Search)** ve zararlı/tekrar eden kalıpları insan denetimine uygun sinyallerle puanlayan **İçerik Güvenlik Katmanı (Content Safety & Moderation Signals)** sağlar.
+Platform, kullanıcılara salt kronolojik veya gizli öneri motorlarına dayalı bir akış sunmak yerine; paylaşımları anlamsal olarak kümeleyen, çoklu bakış açılarını sentezleyen **Bağlam Kartları (Context Cards)**, önerilerin gerekçelerini matematiksel ve metinsel olarak açıklayan **Şeffaf Öneri Sistemi (Transparent Recommendations)**, talimat güdümlü **Doğal Dil Arama (Natural Language Semantic Search)** ve 11 tehlike sınıfında kalibre edilmiş **İçerik Güvenlik & Moderasyon Katmanı (Calibrated Safety & Coordination Defense)** sağlar.
 
 ---
 
-## 🚀 Faz 2B Yapay Zekâ ve Semantik ML Yetenekleri
+## 🚀 Üretim Yapay Zekâ ve Semantik ML Yetenekleri
 
-Sistem, Faz 2A deneysel araştırmasında en yüksek doğruluğu ve operasyonel verimliliği kanıtlanan modellerle üretim mimarisine kavuşturulmuştur:
+Sistem, bağımsız bilimsel testlerle doğrulanmış Türkçe NLP modelleri ile donatılmıştır:
 
 | Boru Hattı (Pipeline) | Seçilen Model & Mimarisi | Fonksiyon ve Görevi |
 | :--- | :--- | :--- |
-| **1. Olay & Konu Kümeleme** | **`ytu-ce-cosmos/modernbert-tr-embed`** + HDBSCAN | Metinleri 768d vektörlerle temsil eder, yoğunluk tabanlı kümeleme ile dinamik konuları keşfeder. |
-| **2. İki Aşamalı Bağlam Erişimi (Stage 1)** | **`ytu-ce-cosmos/modernbert-tr-embed`** (Dense) | Konu özetiyle ilişkili potansiyel kaynak dokümanlardan ilk 15 adayı (Top-15) çeker. |
+| **1. Olay & Konu Kümeleme** | **`ytu-ce-cosmos/modernbert-tr-embed`** + HDBSCAN | Metinleri 768d vektörlerle temsil eder, PCA (16d) ve HDBSCAN ile dinamik konuları keşfeder. |
+| **2. İki Aşamalı Bağlam Erişimi (Stage 1)** | **`ytu-ce-cosmos/modernbert-tr-embed`** (Dense) | Konu özetiyle ilişkili aday kaynak dokümanlardan ilk 15 adayı (Top-15) çeker. |
 | **3. İki Aşamalı Yeniden Sıralama (Stage 2)** | **`ytu-ce-cosmos/modernbert-tr-reranker`** (Cross-Encoder) | Top-15 adayı çapraz dikkat ile puanlar, yüksek relevanslı kaynakları sıralar (+0.0115 nDCG artışı). |
 | **4. Doğal Dil Arama** | **`intfloat/multilingual-e5-large-instruct`** | Türkçe arama sorgularını talimat formatında (`Instruct: ...`) kodlayarak anlam eşleşmesi sağlar. |
-| **5. Şeffaf Öneri Anlamsal İlgi Faktörü** | **`ytu-ce-cosmos/modernbert-tr-embed`** | Kullanıcı ilgi profili vektörü ile gönderi vektörü arasındaki kosinüs benzerliğini hesaplar. |
-| **6. Deterministik Yedek (Fallback)** | **Demo Word-Hash / Heuristic Engine** | `SEMANTIC_MODE=demo` modunda veya GPU/ağırlık bulunmadığında kesintisiz çalışma sağlar. |
+| **5. İçerik Güvenliği ve Moderasyon** | **`ytu-ce-cosmos/modernbert-tr-guardrail`** | 11 tehlike sınıfında çok etiketli risk sınıflandırması ve kalibre edilmiş karar eşikleri (%93.77 Unsafe F1). |
+| **6. Çok Katmanlı Risk Füzyonu** | **`ModerationFusionService`** | Guardrail + Sezgisel Spam + Metin İçi/Külliyat Tekrarı + Çoklu Hesap Koordineli Botnet Tespiti. |
 
 ---
 

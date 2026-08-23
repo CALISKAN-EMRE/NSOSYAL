@@ -1,7 +1,8 @@
 {
-  "timestamp": "2026-08-23T17:35:05.138026",
-  "total_samples": 12,
-  "accuracy_percent": 100.0,
+  "timestamp": "2026-08-23T18:16:21.457760+00:00",
+  "total_controlled_scenarios": 12,
+  "scenarios_passed": 12,
+  "pass_rate_percent": 100.0,
   "results": [
     {
       "id": "sanity-001",
@@ -80,12 +81,12 @@
       "hazard_type": "HATE_DISCRIMINATION",
       "expected_review": true,
       "predicted_review": true,
-      "review_priority": "CRITICAL",
+      "review_priority": "HIGH",
       "overall_unsafe": 0.9997,
       "spam_score": 0.0,
       "repetition_score": 0.0,
       "coordination_score": 0.0,
-      "explanation": "Moderasyon İnceleme Önceliği: [CRITICAL]. Tespit edilen risk göstergeleri: Model Risk Sinyali: Şiddet Eylemi/Tehdit Riski (%59.5). İnsan moderatör incelemesi tavsiye edilmektedir."
+      "explanation": "Moderasyon İnceleme Önceliği: [HIGH]. Tespit edilen risk göstergeleri: Model Risk Sinyali: Ayrımcılık/Nefret Söylemi Riski (%100.0). İnsan moderatör incelemesi tavsiye edilmektedir."
     },
     {
       "id": "sanity-008",
@@ -120,8 +121,8 @@
       "overall_unsafe": 0.3495,
       "spam_score": 1.0,
       "repetition_score": 0.9,
-      "coordination_score": 0.0,
-      "explanation": "Moderasyon İnceleme Önceliği: [HIGH]. Tespit edilen risk göstergeleri: Sezgisel Sinyal: Yüksek Yoğunluklu Spam/Sahte Bağlantı (%100.0). İnsan moderatör incelemesi tavsiye edilmektedir."
+      "coordination_score": 0.85,
+      "explanation": "Moderasyon İnceleme Önceliği: [HIGH]. Tespit edilen risk göstergeleri: Sezgisel Sinyal: Yüksek Yoğunluklu Spam/Sahte Bağlantı (%100.0) | Ağ Sinyali: Şüpheli Eşzamanlı Koordineli Paylaşım Deseni (%85.0). İnsan moderatör incelemesi tavsiye edilmektedir."
     },
     {
       "id": "sanity-011",
@@ -132,8 +133,8 @@
       "overall_unsafe": 0.3495,
       "spam_score": 1.0,
       "repetition_score": 0.9,
-      "coordination_score": 0.0,
-      "explanation": "Moderasyon İnceleme Önceliği: [HIGH]. Tespit edilen risk göstergeleri: Sezgisel Sinyal: Yüksek Yoğunluklu Spam/Sahte Bağlantı (%100.0). İnsan moderatör incelemesi tavsiye edilmektedir."
+      "coordination_score": 0.85,
+      "explanation": "Moderasyon İnceleme Önceliği: [HIGH]. Tespit edilen risk göstergeleri: Sezgisel Sinyal: Yüksek Yoğunluklu Spam/Sahte Bağlantı (%100.0) | Ağ Sinyali: Şüpheli Eşzamanlı Koordineli Paylaşım Deseni (%85.0). İnsan moderatör incelemesi tavsiye edilmektedir."
     },
     {
       "id": "sanity-012",
@@ -144,8 +145,8 @@
       "overall_unsafe": 0.3495,
       "spam_score": 1.0,
       "repetition_score": 0.9,
-      "coordination_score": 0.0,
-      "explanation": "Moderasyon İnceleme Önceliği: [HIGH]. Tespit edilen risk göstergeleri: Sezgisel Sinyal: Yüksek Yoğunluklu Spam/Sahte Bağlantı (%100.0). İnsan moderatör incelemesi tavsiye edilmektedir."
+      "coordination_score": 0.85,
+      "explanation": "Moderasyon İnceleme Önceliği: [HIGH]. Tespit edilen risk göstergeleri: Sezgisel Sinyal: Yüksek Yoğunluklu Spam/Sahte Bağlantı (%100.0) | Ağ Sinyali: Şüpheli Eşzamanlı Koordineli Paylaşım Deseni (%85.0). İnsan moderatör incelemesi tavsiye edilmektedir."
     }
   ]
 }

@@ -3,7 +3,10 @@
 import os
 import json
 from typing import Dict, Any, Optional
-from backend.app.moderation.base import HazardCategory, ReviewPriority, HazardScores
+try:
+    from app.moderation.base import HazardCategory, ReviewPriority, HazardScores
+except ImportError:
+    from backend.app.moderation.base import HazardCategory, ReviewPriority, HazardScores
 
 
 # Default conservative thresholds calibrated to prevent false positives on general discourse
@@ -27,12 +30,20 @@ class ModerationPolicy:
 
     def __init__(self, thresholds_path: Optional[str] = None):
         self.thresholds: Dict[str, float] = dict(DEFAULT_CALIBRATED_THRESHOLDS)
+        
+        # Default to calibrated_thresholds.json in same directory if not specified
+        if thresholds_path is None:
+            default_json = os.path.join(os.path.dirname(__file__), "calibrated_thresholds.json")
+            if os.path.exists(default_json):
+                thresholds_path = default_json
+
         if thresholds_path and os.path.exists(thresholds_path):
             try:
                 with open(thresholds_path, "r", encoding="utf-8") as f:
                     loaded = json.load(f)
-                    self.thresholds.update(loaded.get("per_category_thresholds", {}))
-            except Exception:
+                    cal_thresh = loaded.get("per_category_thresholds", {})
+                    self.thresholds.update(cal_thresh)
+            except Exception as e:
                 pass
 
     def get_threshold(self, category: str) -> float:

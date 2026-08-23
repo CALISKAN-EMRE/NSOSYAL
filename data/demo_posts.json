@@ -31,8 +31,8 @@
     "id": "post-002",
     "author": {
       "id": "user-102",
-      "name": "Milli Eğitim Politikaları Rehberi (Sentetik Demo)",
-      "handle": "@demo_meb_politikasi",
+      "name": "Eğitim Politikaları Çalışma Grubu (Sentetik Demo)",
+      "handle": "@demo_egitim_politikasi",
       "badge": "official"
     },
     "text": "K12 okullarımızda güvenli ve etik yapay zekâ kullanımı için hazırlanan 'Öğretmen ve Öğrenci Yapay Zekâ Uygulama Rehberi' tüm il müdürlüklerimize dağıtılmıştır.",
@@ -168,8 +168,8 @@
     "id": "post-007",
     "author": {
       "id": "user-107",
-      "name": "Canan Dağdeviren",
-      "handle": "@canan_veli",
+      "name": "Canan D. (Sentetik Veli Hesabı)",
+      "handle": "@canan_d_veli",
       "badge": "user"
     },
     "text": "Oğlumun lise ödevlerinin tamamını yapay zekaya yaptırdığını fark ettim. Çocuk düşünmeyi bırakıyor, okulların acilen sınavları sınıf içi klasik formata çevirmesi lazım.",
@@ -195,8 +195,8 @@
     "id": "post-008",
     "author": {
       "id": "user-108",
-      "name": "Teknoloji ve Eğitim Derneği",
-      "handle": "@ted_dernek",
+      "name": "Teknoloji ve Eğitim Çalışma Grubu (Sentetik Demo)",
+      "handle": "@demo_tekno_egitim",
       "badge": "expert"
     },
     "text": "Yapay zekâ ders materyali uyarlamada özel gereksinimli bireyler ve disleksi hastası öğrenciler için devrim niteliğinde kolaylıklar sağlıyor.",
@@ -249,8 +249,8 @@
     "id": "post-010",
     "author": {
       "id": "user-110",
-      "name": "TÜBİTAK BİLGEM",
-      "handle": "@tubitak_bilgem",
+      "name": "Açık Kaynak Sistemleri Grubu (Sentetik Demo)",
+      "handle": "@demo_kamu_acikkaynak",
       "badge": "official"
     },
     "text": "Kamuda açık kaynak işletim sistemi ve yazılım çözümleri kullanımına ilişkin 2026 Ulusal Eylem Planı kapsamında Pardus göçü hızlandırılıyor.",
@@ -277,8 +277,8 @@
     "id": "post-011",
     "author": {
       "id": "user-111",
-      "name": "Özgür Yazılım Derneği",
-      "handle": "@oyd_turkiye",
+      "name": "Açık Kaynak Geliştiricileri Topluluğu (Sentetik Demo)",
+      "handle": "@demo_oyd_turkiye",
       "badge": "expert"
     },
     "text": "Tüm kamu kurumlarında PostgreSQL, LibreOffice ve Pardus kullanımı yıllık milyonlarca dolar lisans maliyetini engeller ve siber egemenliğimizi güçlendirir.",
@@ -333,8 +333,8 @@
     "id": "post-013",
     "author": {
       "id": "user-113",
-      "name": "Bakanlık Bilgi İşlem Dairesi",
-      "handle": "@kamubt_haber",
+      "name": "Kamu BT Koordinasyon Grubu (Sentetik Demo)",
+      "handle": "@demo_kamubt",
       "badge": "official"
     },
     "text": "Sağlık Bakanlığı taşra teşkilatında 15.000 bilgisayarın Pardus kurumsal sürümüne geçişi tamamlandı. Yıllık tasarruf 4 milyon doları aştı.",
@@ -443,7 +443,7 @@
     "author": {
       "id": "user-117",
       "name": "Enerji Piyasaları Analiz Bülteni (Sentetik Demo)",
-      "handle": "@epdk_resmi",
+      "handle": "@demo_enerji_analiz",
       "badge": "official"
     },
     "text": "Türkiye genelinde elektrikli araç şarj soketi sayısı 25.000'e ulaştı. Soket başına düşen elektrikli araç sayısında Avrupa ortalamasının üzerindeyiz.",
@@ -525,8 +525,8 @@
     "id": "post-020",
     "author": {
       "id": "user-120",
-      "name": "Elektrikli Araç Kulübü Derneği",
-      "handle": "@evdernek_tr",
+      "name": "Elektrikli Araç Kullanıcıları Topluluğu (Sentetik Demo)",
+      "handle": "@demo_ev_topluluk",
       "badge": "expert"
     },
     "text": "Yoğun bayram tatillerinde otoyol dinlenme tesislerindeki şarj istasyonlarında oluşan 1 saatlik kuyruklar için mobil şarj batarya araçları devreye girmeli.",
@@ -633,8 +633,8 @@
     "id": "post-024",
     "author": {
       "id": "user-124",
-      "name": "Bilişim Hukuku Derneği",
-      "handle": "@bhd_hukuk",
+      "name": "Bilişim Hukuku İnceleme Grubu (Sentetik Demo)",
+      "handle": "@demo_bhd_hukuk",
       "badge": "expert"
     },
     "text": "Seviye 3 ve Seviye 4 otonom sürüş sistemleri için Avrupa Birliği Yapay Zekâ Tüzüğü (EU AI Act) uyumlu zorunlu veri karakutusu düzenlemesi getirilmelidir.",
@@ -688,7 +688,7 @@
     "id": "post-026",
     "author": {
       "id": "user-126",
-      "name": "Sigorta Tahkim Bülteni",
+      "name": "Sigorta ve Mevzuat İnceleme Masası (Sentetik Demo)",
       "handle": "@sigorta_tahkim",
       "badge": "news_outlet"
     },
@@ -826,7 +826,7 @@
     "author": {
       "id": "user-131",
       "name": "Telif Hakları Bilgilendirme Masası (Sentetik Demo)",
-      "handle": "@telifhaklari_gov",
+      "handle": "@demo_fikrihaklar",
       "badge": "official"
     },
     "text": "Büyük dil modellerinin ve görsel üreticilerin eğitim verilerinde kullanılan eserler için 'opt-out' (veri kazıma ret) mekanizması zorunlu hale getiriliyor.",
@@ -854,7 +854,7 @@
     "author": {
       "id": "user-132",
       "name": "Uzay Teknolojileri Çalışma Grubu (Sentetik Demo)",
-      "handle": "@tubitakuzay",
+      "handle": "@demo_uzay_grubu",
       "badge": "official"
     },
     "text": "Yerli ve milli haberleşme uydumuz TÜRKSAT 6A yörünge testlerini başarıyla tamamlayarak tam kapasite operasyonel hizmete alınmıştır.",
@@ -1099,8 +1099,8 @@
     "id": "post-041",
     "author": {
       "id": "user-141",
-      "name": "Linux Kullanıcıları Derneği",
-      "handle": "@lkd_turkiye",
+      "name": "Açık Kaynak İşletim Topluluğu (Sentetik Demo)",
+      "handle": "@demo_acikkaynak_topluluk",
       "badge": "expert"
     },
     "text": "Kamu kurumlarında çalışan geliştiricilerin açık kaynak projelere katkı vermesi hem çalışan motivasyonunu artırıyor hem de yerli ekosistemi güçlendiriyor.",
@@ -1126,7 +1126,7 @@
     "id": "post-042",
     "author": {
       "id": "user-142",
-      "name": "Batarya Teknolojileri Enstitüsü",
+      "name": "Batarya Teknolojileri Çalışma Grubu (Sentetik Demo)",
       "handle": "@batarya_tech",
       "badge": "expert"
     },
@@ -1154,8 +1154,8 @@
     "id": "post-043",
     "author": {
       "id": "user-143",
-      "name": "Tüketici Hakları Derneği",
-      "handle": "@tuketici_haklari",
+      "name": "Tüketici Hakları İnceleme Platformu (Sentetik Demo)",
+      "handle": "@demo_tuketici_haklari",
       "badge": "expert"
     },
     "text": "Otonom araç kazalarında tüketiciye 'yazılım hatası kullanıcı sorumluluğundadır' şeklinde dayatılan sözleşme maddeleri hukuken geçersiz sayılmalıdır.",
@@ -1181,8 +1181,8 @@
     "id": "post-044",
     "author": {
       "id": "user-144",
-      "name": "Dijital Sanatçılar Birliği",
-      "handle": "@disan_birlik",
+      "name": "Dijital Sanatçılar Çalışma Grubu (Sentetik Demo)",
+      "handle": "@demo_disan_birlik",
       "badge": "community"
     },
     "text": "Görsel yapay zekâ şirketlerinin telif ödemeden sanatçıların tarzını taklit eden modeller satması telif yasasının ivedilikle güncellenmesini gerektiriyor.",
@@ -1235,7 +1235,7 @@
     "id": "post-046",
     "author": {
       "id": "user-146",
-      "name": "Öğretmenler Meclisi",
+      "name": "Öğretmenler Çalışma Grubu (Sentetik Demo)",
       "handle": "@ogretmen_meclis",
       "badge": "community"
     },
@@ -1289,8 +1289,8 @@
     "id": "post-048",
     "author": {
       "id": "user-148",
-      "name": "Şarj İstasyonu İşletmecileri Derneği",
-      "handle": "@sarjder_tr",
+      "name": "Şarj Ağı İnceleme Topluluğu (Sentetik Demo)",
+      "handle": "@demo_sarj_topluluk",
       "badge": "expert"
     },
     "text": "EPDK düzenlemeleriyle şarj istasyonu kurulum izinleri hızlandırıldı. 2026 sonuna kadar hedef tüm ilçe merkezlerinde en az iki adet DC hızlı şarj istasyonu kurmak.",
@@ -1344,8 +1344,8 @@
     "id": "post-050",
     "author": {
       "id": "user-150",
-      "name": "Telif Hakları Derneği",
-      "handle": "@telif_dernek",
+      "name": "Telif Hakları Araştırma Masası (Sentetik Demo)",
+      "handle": "@demo_telif_arastirma",
       "badge": "expert"
     },
     "text": "Üretken yapay zekâ modellerini eğiten şirketlerin hangi veri setlerini kullandıklarını şeffafça açıklamaları zorunlu olmalıdır.",
@@ -1371,7 +1371,7 @@
     "id": "post-051",
     "author": {
       "id": "user-151",
-      "name": "Uzay ve Havacılık Portalı",
+      "name": "Uzay ve Havacılık Bülteni (Sentetik Demo)",
       "handle": "@aerospace_tr",
       "badge": "news_outlet"
     },
@@ -1534,8 +1534,8 @@
     "id": "post-057",
     "author": {
       "id": "user-157",
-      "name": "Müzik Meslek Birlikleri Federasyonu",
-      "handle": "@muzik_birlik",
+      "name": "Eser Sahipleri Meslek Grubu (Sentetik Demo)",
+      "handle": "@demo_muzik_meslek",
       "badge": "expert"
     },
     "text": "Yapay zekâ ile ses klonlama ve bestecilerin tarzının izinsiz taklit edilmesi müzik sektöründe telif haklarını baltalıyor. Ses hakkı koruma altına alınmalı.",
@@ -1777,7 +1777,7 @@
     "id": "post-066",
     "author": {
       "id": "user-166",
-      "name": "Milli Teknoloji Hamlesi Bülteni",
+      "name": "Teknoloji Gündemi Çalışma Masası (Sentetik Demo)",
       "handle": "@milli_tech",
       "badge": "news_outlet"
     },
@@ -1805,7 +1805,7 @@
     "id": "post-067",
     "author": {
       "id": "user-167",
-      "name": "Uzay Mühendisleri Topluluğu",
+      "name": "Uzay Mühendisleri Çalışma Grubu (Sentetik Demo)",
       "handle": "@uzay_muh",
       "badge": "expert"
     },
@@ -1887,7 +1887,7 @@
     "author": {
       "id": "user-170",
       "name": "Elektrik Dağıtım Şebekesi Gözlemi (Sentetik Demo)",
-      "handle": "@elder_turkiye",
+      "handle": "@demo_sebeke_gozlem",
       "badge": "official"
     },
     "text": "Elektrikli araç şarj istasyonlarının trafo bağlantı kapasiteleri dijital ikiz simülasyonları ile modellenmekte, aşırı yüklenmeler anlık dengelenmektedir.",

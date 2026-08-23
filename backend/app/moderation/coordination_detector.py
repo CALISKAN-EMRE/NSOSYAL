@@ -3,7 +3,10 @@
 import re
 from datetime import datetime
 from typing import List, Optional, Any, Dict
-from backend.app.moderation.base import CoordinationEvidence, EvidenceSignal
+try:
+    from app.moderation.base import CoordinationEvidence, EvidenceSignal
+except ImportError:
+    from backend.app.moderation.base import CoordinationEvidence, EvidenceSignal
 
 
 class CoordinationDetector:
@@ -30,12 +33,23 @@ class CoordinationDetector:
         time_deltas_minutes: List[float] = []
 
         for p in existing_posts:
-            p_id = getattr(p, "id", None) or (p.get("id") if isinstance(p, dict) else None)
-            p_text = getattr(p, "text", None) or (p.get("text") if isinstance(p, dict) else None)
-            p_author_obj = getattr(p, "author", None) or (p.get("author") if isinstance(p, dict) else None)
-            
-            p_author_id = getattr(p_author_obj, "id", None) if p_author_obj else (p_author_obj.get("id") if isinstance(p_author_obj, dict) else None)
-            p_created_at = getattr(p, "created_at", None) or (p.get("created_at") if isinstance(p, dict) else None)
+            if isinstance(p, dict):
+                p_id = p.get("id")
+                p_text = p.get("text")
+                p_author_obj = p.get("author")
+                p_created_at = p.get("created_at")
+            else:
+                p_id = getattr(p, "id", None)
+                p_text = getattr(p, "text", None)
+                p_author_obj = getattr(p, "author", None)
+                p_created_at = getattr(p, "created_at", None)
+
+            if isinstance(p_author_obj, dict):
+                p_author_id = p_author_obj.get("id")
+            elif p_author_obj is not None:
+                p_author_id = getattr(p_author_obj, "id", None)
+            else:
+                p_author_id = None
 
             if not p_text or (current_post_id and p_id == current_post_id):
                 continue
@@ -54,7 +68,7 @@ class CoordinationDetector:
             is_different_author = (
                 current_author_id is not None
                 and p_author_id is not None
-                and current_author_id != p_author_id
+                and str(current_author_id) != str(p_author_id)
             )
 
             if (is_text_match or (common_urls and len(common_urls) >= 2)) and is_different_author:

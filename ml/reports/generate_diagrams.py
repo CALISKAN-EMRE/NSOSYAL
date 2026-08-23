@@ -230,7 +230,7 @@ def create_system_architecture_svg():
     <g transform="translate(20, 125)">
       <rect width="480" height="60" rx="8" fill="#0F172A" stroke="#059669" stroke-width="1"/>
       <text x="240" y="24" text-anchor="middle" fill="#34D399" font-size="10.5" font-weight="700">Şeffaf Karar Dökümü ("Neden bunu görüyorum?")</text>
-      <text x="240" y="45" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Her önerilen gönderi için doğrulanmış 6 puanlama faktörü ve gerekçe metni</text>
+      <text x="240" y="45" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Her önerilen gönderi için izlenebilir 6 puanlama faktörü ve gerekçe metni</text>
     </g>
   </g>
 
@@ -252,7 +252,7 @@ def create_system_architecture_svg():
       <text x="105" y="24" text-anchor="middle" fill="#FBBF24" font-size="11" font-weight="700">Bağlam Kartı Modülü</text>
       <text x="15" y="46" fill="#CBD5E1" font-size="9.5">• Dinamik Konu Özeti</text>
       <text x="15" y="64" fill="#CBD5E1" font-size="9.5">• Çoklu Perspektif Sekmeleri</text>
-      <text x="15" y="82" fill="#CBD5E1" font-size="9.5">• Doğrulanmış Kaynaklar</text>
+      <text x="15" y="82" fill="#CBD5E1" font-size="9.5">• Yeniden Sıralı Kaynaklar</text>
     </g>
 
     <!-- Transparent Recommendation Component -->
@@ -380,9 +380,9 @@ def create_user_flows_svg():
     <!-- Step A5 -->
     <g transform="translate(910, 45)">
       <rect width="145" height="100" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
-      <text x="72" y="24" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="700">5. Güvenilir Kaynak</text>
-      <text x="72" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Reranker onaylı</text>
-      <text x="72" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">doğrulanmış kaynak</text>
+      <text x="72" y="24" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="700">5. Bağlam Kaynakları</text>
+      <text x="72" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Reranker sıralı</text>
+      <text x="72" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">bağlam kaynakları</text>
       <text x="72" y="82" text-anchor="middle" fill="#CBD5E1" font-size="9.5">&amp; referans bağlantı</text>
     </g>
   </g>
@@ -431,7 +431,7 @@ def create_user_flows_svg():
     <g transform="translate(795, 45)">
       <rect width="255" height="100" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
       <text x="127" y="24" text-anchor="middle" fill="#34D399" font-size="11" font-weight="700">4. Kullanıcı Denetimi</text>
-      <text x="127" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Doğrulanmış gerekçe metni</text>
+      <text x="127" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Açıklanabilir gerekçe metni</text>
       <text x="127" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Geri bildirim butonları:</text>
       <text x="127" y="85" text-anchor="middle" fill="#FBBF24" font-size="9" font-weight="600">[Daha Çok Gör] | [Daha Az Gör]</text>
     </g>

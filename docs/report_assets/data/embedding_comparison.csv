@@ -1,7 +1,7 @@
-model_id,model_name,nmi,ari,latency_ms,vram_gb,parameters_m,license
-ytu-ce-cosmos/modernbert-tr-embed,ModernBERT-TR-Embed (Primary),0.8148,0.672,1.7,0.58,149,Apache-2.0
-intfloat/multilingual-e5-large-instruct,mE5-Large-Instruct (Search),0.7712,0.598,6.96,2.15,560,MIT
-intfloat/multilingual-e5-base,mE5-Base (Fallback),0.7289,0.534,2.37,1.07,278,MIT
-sentence-transformers/paraphrase-multilingual-mpnet-base-v2,Paraphrase-Multilingual-MPNet,0.6974,0.481,2.45,1.07,278,Apache-2.0
-emrecan/bert-base-turkish-cased-mean-nli-stsb-tr,BERT-Base-Turkish-STSb-TR,0.612,0.395,2.21,0.44,110,MIT
-ytu-ce-cosmos/turkish-base-bert-uncased,Turkish-Base-BERT-Uncased,0.4985,0.281,2.23,0.44,110,Apache-2.0
+model_id,model_name,nmi,ari,latency_ms,vram_gb,parameters,license
+sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2,Paraphrase-MiniLM-L12-v2,0.9229,0.7672,12.72,0.47,117.7M,Apache-2.0
+Qwen/Qwen3-Embedding-0.6B,Qwen3-Embedding-0.6B,0.9229,0.7672,41.39,2.38,595.8M,Apache-2.0
+ytu-ce-cosmos/modernbert-tr-embed,ModernBERT-TR-Embed (Primary),0.9225,0.7699,9.41,0.58,148.7M,Apache-2.0
+intfloat/multilingual-e5-large-instruct,mE5-Large-Instruct (Search),0.8934,0.7158,11.24,2.15,559.9M,MIT
+Qwen/Qwen3-Embedding-4B,Qwen3-Embedding-4B,0.8925,0.7112,55.08,8.5,4021.8M,Apache-2.0
+ytu-ce-cosmos/turkish-e5-large,Turkish-E5-Large (YTU COSMOS),0.8886,0.7018,15.18,2.15,559.9M,MIT

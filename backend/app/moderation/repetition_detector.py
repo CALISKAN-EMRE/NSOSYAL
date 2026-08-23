@@ -2,7 +2,10 @@
 
 import re
 from typing import List, Optional, Any
-from backend.app.moderation.base import RepetitionEvidence, EvidenceSignal
+try:
+    from app.moderation.base import RepetitionEvidence, EvidenceSignal
+except ImportError:
+    from backend.app.moderation.base import RepetitionEvidence, EvidenceSignal
 
 
 class RepetitionDetector:
