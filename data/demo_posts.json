@@ -1,0 +1,266 @@
+[
+  {
+    "id": "post-001",
+    "author": {
+      "id": "user-101",
+      "name": "Prof. Dr. Bilge Kaya",
+      "handle": "@bilgek_akademi",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=bilge",
+      "badge": "Eğitim Araştırmacısı"
+    },
+    "text": "Üniversitelerde yapay zekâ destekli kişiselleştirilmiş öğrenme sistemleri pilot olarak başlatıldı. İlk bulgular, öğrencilerin karmaşık konseptleri kavramasında %35'lik bir hızlanma olduğunu gösteriyor. Ancak eleştirel düşünme becerilerini zayıflatmaması için müfredat dengesi şart.",
+    "created_at": "2026-08-23T10:15:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Yapay Zekâ ve Eğitimde Dönüşüm",
+    "source_type": "academic",
+    "perspective": "supportive_cautious",
+    "tags": ["YapayZeka", "Eğitim", "GeleceğinOkulu", "Akademi"],
+    "metrics": {
+      "likes": 428,
+      "reposts": 86,
+      "replies": 34
+    }
+  },
+  {
+    "id": "post-002",
+    "author": {
+      "id": "user-102",
+      "name": "Deniz Arda",
+      "handle": "@denizardaa",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=deniz",
+      "badge": "Öğrenci Temsilcisi"
+    },
+    "text": "Yapay zekâ araçlarının sınav değerlendirmesinde kullanılması etik açıdan büyük riskler taşıyor. Ödevlerimizin bir algoritma tarafından puanlanması şeffaflıktan uzak ve itiraz mekanizması belirsiz. Bu aceleci uygulamayı durdurmalıyız.",
+    "created_at": "2026-08-23T11:00:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Yapay Zekâ ve Eğitimde Dönüşüm",
+    "source_type": "user",
+    "perspective": "critical",
+    "tags": ["YapayZeka", "ÖğrenciHakları", "Eğitim"],
+    "metrics": {
+      "likes": 612,
+      "reposts": 145,
+      "replies": 89
+    }
+  },
+  {
+    "id": "post-003",
+    "author": {
+      "id": "user-103",
+      "name": "TeknoGündem Bülteni",
+      "handle": "@teknogundem_tr",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=teknogundem",
+      "badge": "Haber Bülteni"
+    },
+    "text": "Milli Eğitim ve YÖK koordinasyonunda hazırlanan 'Eğitimde Üretken YZ Etik Rehberi' kamuoyuna duyuruldu. Rehberde veri mahremiyeti, intihal kontrolleri ve öğretmen rehberliğinin zorunlu olduğu maddeler yer alıyor.",
+    "created_at": "2026-08-23T08:30:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Yapay Zekâ ve Eğitimde Dönüşüm",
+    "source_type": "news_outlet",
+    "perspective": "neutral_fact",
+    "tags": ["Haber", "MilliEğitim", "YapayZekaRehberi"],
+    "metrics": {
+      "likes": 980,
+      "reposts": 310,
+      "replies": 52
+    }
+  },
+  {
+    "id": "post-004",
+    "author": {
+      "id": "user-104",
+      "name": "Emre Canpolat",
+      "handle": "@emre_otoelektronik",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=emre",
+      "badge": "Enerji & Otomotiv Yazarı"
+    },
+    "text": "Şehirlerarası otoyollarda yüksek hızlı DC şarj istasyonu kurulumları geçen yıla göre %120 arttı. Artık 200 km aralıklarla ultra hızlı şarj noktasına ulaşmak mümkün. Uzun yol menzil kaygısı büyük oranda çözülüyor.",
+    "created_at": "2026-08-23T09:45:00Z",
+    "topic_id": "elektrikli-arac-altyapisi",
+    "topic_title": "Elektrikli Araçlar ve Şarj Ağı",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": ["ElektrikliAraç", "ŞarjAğı", "Enerji", "Sürdürülebilirlik"],
+    "metrics": {
+      "likes": 340,
+      "reposts": 55,
+      "replies": 21
+    }
+  },
+  {
+    "id": "post-005",
+    "author": {
+      "id": "user-105",
+      "name": "Selin Varol",
+      "handle": "@selin_surucu",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=selin",
+      "badge": "Kullanıcı"
+    },
+    "text": "Otoyollarda istasyon var ama şehir içi sitelerde ve sokaklarda şarj altyapısı hala çok yetersiz. Apartman yönetimleri priz taktırmaya izin vermiyor. Şehir içi çözümler olmadan elektrikli araca geçiş tabana yayılmaz.",
+    "created_at": "2026-08-23T11:20:00Z",
+    "topic_id": "elektrikli-arac-altyapisi",
+    "topic_title": "Elektrikli Araçlar ve Şarj Ağı",
+    "source_type": "user",
+    "perspective": "critical",
+    "tags": ["ElektrikliAraç", "ŞehirYaşamı", "Altyapı"],
+    "metrics": {
+      "likes": 515,
+      "reposts": 72,
+      "replies": 43
+    }
+  },
+  {
+    "id": "post-006",
+    "author": {
+      "id": "user-106",
+      "name": "Enerji Piyasası Gözlemcisi",
+      "handle": "@enerji_gozlem",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=enerji",
+      "badge": "Sektörel Rapor"
+    },
+    "text": "EPDK verilerine göre ülke genelinde soket başına düşen elektrikli araç sayısı Avrupa ortalamasının üzerinde bir verimlilik seviyesinde (1 sokete 7.2 araç). 2026 yılı sonu hedefi 50.000 şarj noktası.",
+    "created_at": "2026-08-23T07:15:00Z",
+    "topic_id": "elektrikli-arac-altyapisi",
+    "topic_title": "Elektrikli Araçlar ve Şarj Ağı",
+    "source_type": "official_source",
+    "perspective": "neutral_fact",
+    "tags": ["EPDK", "EnerjiRaporu", "İstatistik"],
+    "metrics": {
+      "likes": 845,
+      "reposts": 190,
+      "replies": 16
+    }
+  },
+  {
+    "id": "post-007",
+    "author": {
+      "id": "user-107",
+      "name": "Dr. Taylan Özdemir",
+      "handle": "@taylan_astro",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=taylan",
+      "badge": "Astrofizikçi"
+    },
+    "text": "GÖKTÜRK-X yer gözlem ve araştırma uydumuzdan ilk yüksek çözünürlüklü spektral görüntüler başarıyla yer istasyonuna indirildi. Tarımsal rekolte tahmini ve kuraklık haritalamasında çığır açacak kalitede veri elde ediyoruz.",
+    "created_at": "2026-08-23T12:00:00Z",
+    "topic_id": "uzay-misyonu-bilim",
+    "topic_title": "Yer Gözlem Uydusu ve Uzay Misyonu",
+    "source_type": "academic",
+    "perspective": "supportive",
+    "tags": ["Uzay", "Uydu", "Bilim", "Gözlem"],
+    "metrics": {
+      "likes": 1540,
+      "reposts": 480,
+      "replies": 76
+    }
+  },
+  {
+    "id": "post-008",
+    "author": {
+      "id": "user-108",
+      "name": "Açık Kaynak Türkiye İnisiyatifi",
+      "handle": "@acikkaynak_tr",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=opensource",
+      "badge": "Topluluk"
+    },
+    "text": "Kamu kurumlarının açık kaynak kodlu yazılımlara geçiş rehberi güncellendi. Artık kamu ihalelerinde açık kaynak alternatiflerin önceliklendirilmesi yasal teşvik kapsamına alınıyor. Geliştirici ekosistemimiz için tarihi bir fırsat!",
+    "created_at": "2026-08-23T06:45:00Z",
+    "topic_id": "acik-kaynak-yazilim",
+    "topic_title": "Açık Kaynak ve Yerli Yazılım Ekosistemi",
+    "source_type": "community",
+    "perspective": "supportive",
+    "tags": ["AçıkKaynak", "Yazılım", "Linux", "Geliştirici"],
+    "metrics": {
+      "likes": 1210,
+      "reposts": 360,
+      "replies": 65
+    }
+  },
+  {
+    "id": "post-009",
+    "author": {
+      "id": "user-109",
+      "name": "BotNet Test Hesabı 1",
+      "handle": "@firsat_kampanya_99",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=bot99",
+      "badge": "Hesap"
+    },
+    "text": "İNANILMAZ KAZANÇ FIRSATI!!! HEMEN TIKLA VE KAZAN: http://bit.ly/bedava-hediye-2026 http://link-spam.xyz http://promo-fake.site BEDAVA BEDAVA BEDAVA!!!",
+    "created_at": "2026-08-23T13:00:00Z",
+    "topic_id": "acik-kaynak-yazilim",
+    "topic_title": "Açık Kaynak ve Yerli Yazılım Ekosistemi",
+    "source_type": "user",
+    "perspective": "neutral_fact",
+    "tags": ["Kazanç", "Fırsat", "Bedava"],
+    "metrics": {
+      "likes": 2,
+      "reposts": 0,
+      "replies": 0
+    }
+  },
+  {
+    "id": "post-010",
+    "author": {
+      "id": "user-110",
+      "name": "BotNet Test Hesabı 2",
+      "handle": "@firsat_kampanya_88",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=bot88",
+      "badge": "Hesap"
+    },
+    "text": "İNANILMAZ KAZANÇ FIRSATI!!! HEMEN TIKLA VE KAZAN: http://bit.ly/bedava-hediye-2026 http://link-spam.xyz http://promo-fake.site BEDAVA BEDAVA BEDAVA!!!",
+    "created_at": "2026-08-23T13:01:00Z",
+    "topic_id": "acik-kaynak-yazilim",
+    "topic_title": "Açık Kaynak ve Yerli Yazılım Ekosistemi",
+    "source_type": "user",
+    "perspective": "neutral_fact",
+    "tags": ["Kazanç", "Fırsat", "Bedava"],
+    "metrics": {
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0
+    }
+  },
+  {
+    "id": "post-011",
+    "author": {
+      "id": "user-111",
+      "name": "Murat Keskin",
+      "handle": "@mkeskin_dev",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=murat",
+      "badge": "Yazılım Mimarı"
+    },
+    "text": "Açık kaynak kararı harika fakat kamuda sürdürülebilirlik ve bakım bütçesi ayrılmadığı sürece projeler atıl kalıyor. Geliştiricilere maddi destek ve kurumsal sponsorluk modeli şart.",
+    "created_at": "2026-08-23T09:10:00Z",
+    "topic_id": "acik-kaynak-yazilim",
+    "topic_title": "Açık Kaynak ve Yerli Yazılım Ekosistemi",
+    "source_type": "expert",
+    "perspective": "critical",
+    "tags": ["Yazılım", "Sürdürülebilirlik", "AçıkKaynak"],
+    "metrics": {
+      "likes": 470,
+      "reposts": 98,
+      "replies": 29
+    }
+  },
+  {
+    "id": "post-012",
+    "author": {
+      "id": "user-112",
+      "name": "Zeynep Çelik",
+      "handle": "@zeynepcelik_ai",
+      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=zeynep",
+      "badge": "Veri Bilimci"
+    },
+    "text": "Eğitimde yapay zekâ modellerinin Türkçe dil kalitesi ve kültürel bağlam uyumu her geçen gün artıyor. Yerli modeller sayesinde öğrenci yanıtlarının analizinde doğruluk oranı hissedilir derecede yükseldi.",
+    "created_at": "2026-08-23T12:45:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Yapay Zekâ ve Eğitimde Dönüşüm",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": ["YapayZeka", "TürkçeNLP", "EğitimTeknolojileri"],
+    "metrics": {
+      "likes": 730,
+      "reposts": 160,
+      "replies": 41
+    }
+  }
+]

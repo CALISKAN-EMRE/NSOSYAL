@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nsosyal-pusula-backend"
+version = "0.1.0"
+description = "NSosyal Pusula - Yapay Zekâ Destekli Bağlam ve Şeffaf Öneri Sistemi Backend"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "NSosyal Pusula Ekibi" }
+]
+dependencies = [
+    "fastapi>=0.110.0,<1.0.0",
+    "uvicorn[standard]>=0.28.0,<1.0.0",
+    "pydantic>=2.6.0,<3.0.0",
+    "pydantic-settings>=2.2.0,<3.0.0",
+    "python-dateutil>=2.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.1.0,<9.0.0",
+    "httpx>=0.27.0,<1.0.0",
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["../tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
