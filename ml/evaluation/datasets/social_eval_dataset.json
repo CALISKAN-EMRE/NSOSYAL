@@ -1,0 +1,416 @@
+{
+  "metadata": {
+    "title": "NSosyal Pusula Turkish Social Media Semantic Evaluation Suite (Hardened)",
+    "version": "2.1.0",
+    "description": "Hardened project-specific Turkish social-media evaluation suite containing STS pairs (dev/test), 40-item fine-grained clustering corpus, and a 50-document retrieval corpus with hard negatives, lexical overlap traps, same-topic different-event distractors, and negation traps.",
+    "dataset_statistics": {
+      "sts_pairs_dev_count": 12,
+      "sts_pairs_test_count": 20,
+      "clustering_samples_count": 40,
+      "clustering_ground_truth_clusters_count": 6,
+      "retrieval_queries_count": 10,
+      "retrieval_corpus_documents_count": 50,
+      "retrieval_positive_judgments_count": 25,
+      "retrieval_hard_negatives_count": 25
+    },
+    "linguistic_challenges_tested": [
+      "Paraphrases with disparate vocabulary",
+      "Agglutinative morphology and suffix variation",
+      "Informal spelling, Turkish abbreviations, and slang",
+      "Negation vs. affirmation polarity contrast",
+      "Lexical overlap traps (high keyword match, opposite/unrelated semantics)",
+      "Same-topic different-event distractors (highway vs city charging)",
+      "Duplicate and near-duplicate spam detection"
+    ]
+  },
+  "sts_pairs": {
+    "dev": [
+      {
+        "id": "dev_01",
+        "sentence_a": "Elektrikli araçlar için otoyollarda hızlı şarj istasyonları kuruluyor.",
+        "sentence_b": "Otobanlarda elektrikli arabalar için yüksek hızlı şarj üniteleri devreye alınıyor.",
+        "gold_score": 0.95,
+        "challenge_category": "paraphrase_high_vocab_overlap"
+      },
+      {
+        "id": "dev_02",
+        "sentence_a": "Yapay zekâ dersleri tüm liselerde zorunlu müfredata ekleniyor.",
+        "sentence_b": "Milli Eğitim Bakanlığı liselerde yapay zekâ eğitimini zorunlu kılıyor.",
+        "gold_score": 0.92,
+        "challenge_category": "paraphrase_syntax_variation"
+      },
+      {
+        "id": "dev_03",
+        "sentence_a": "Açık kaynak kodlu yazılımlar kamu kurumlarında maliyetleri düşürdü.",
+        "sentence_b": "Kamuda açık kaynaklı teknolojilerin kullanımı bütçe tasarrufu sağladı.",
+        "gold_score": 0.90,
+        "challenge_category": "paraphrase_synonyms"
+      },
+      {
+        "id": "dev_04",
+        "sentence_a": "Türksat 6A uydusu başarıyla yörüngeye fırlatıldı.",
+        "sentence_b": "Yerli haberleşme uydumuz Türksat 6A uzaydaki görev yerine ulaştı.",
+        "gold_score": 0.93,
+        "challenge_category": "paraphrase_event"
+      },
+      {
+        "id": "dev_05",
+        "sentence_a": "Bakanlık açık kaynak yazılım kullanımını kamuda zorunlu tutuyor.",
+        "sentence_b": "Bakanlık kamu kurumlarında açık kaynak yazılım kullanımını tamamen yasakladı.",
+        "gold_score": 0.15,
+        "challenge_category": "negation_trap"
+      },
+      {
+        "id": "dev_06",
+        "sentence_a": "Yapay zekâ destekli otonom savaş jetleri tatbikatta uçtu.",
+        "sentence_b": "İlkokul öğrencileri için yapay zekâ destekli okuma uygulaması geliştirildi.",
+        "gold_score": 0.20,
+        "challenge_category": "lexical_overlap_trap"
+      },
+      {
+        "id": "dev_07",
+        "sentence_a": "Ankara otoyolunda elektrikli araç şarj istasyonu açıldı.",
+        "sentence_b": "Ev tipi 22kW duvar tipi elektrikli şarj cihazı montajı yapıldı.",
+        "gold_score": 0.40,
+        "challenge_category": "same_domain_different_context"
+      },
+      {
+        "id": "dev_08",
+        "sentence_a": "otobandaki dc şarjlar aşırı pahalı aga 15 lira kw",
+        "sentence_b": "Otoyol yüksek güç DC elektrik şarj tarifeleri kWh başına yüksek maliyetli.",
+        "gold_score": 0.88,
+        "challenge_category": "slang_and_informal"
+      },
+      {
+        "id": "dev_09",
+        "sentence_a": "Yapay zekâ telif hakları ve üretilen içeriklerin hukuki statüsü tartışılıyor.",
+        "sentence_b": "Yapay zekâ algoritmalarının ürettiği eserlerin mülkiyet ve telif hukuku inceleniyor.",
+        "gold_score": 0.92,
+        "challenge_category": "domain_specific"
+      },
+      {
+        "id": "dev_10",
+        "sentence_a": "Uzay ajansı yeni gözlem uydusunun fırlatma tarihini açıkladı.",
+        "sentence_b": "Belediye yeni metro hattı sinyalizasyon ihalesini tamamladı.",
+        "gold_score": 0.05,
+        "challenge_category": "unrelated"
+      },
+      {
+        "id": "dev_11",
+        "sentence_a": "AC şarj soketleri apartman otoparklarında yaygınlaşıyor.",
+        "sentence_b": "Site otoparklarında sakinler için AC elektrikli araç şarj üniteleri kuruluyor.",
+        "gold_score": 0.91,
+        "challenge_category": "paraphrase"
+      },
+      {
+        "id": "dev_12",
+        "sentence_a": "Açık kaynak veritabanı PostgreSQL kamu sunucularına taşınıyor.",
+        "sentence_b": "Kamu kurumları ilişkisel veritabanı olarak açık kaynak PostgreSQL'e geçiyor.",
+        "gold_score": 0.94,
+        "challenge_category": "paraphrase_tech"
+      }
+    ],
+    "test": [
+      {
+        "id": "test_01",
+        "sentence_a": "Milli Eğitim Bakanlığı tüm okullarda yapay zekâ asistanlarını derslerde kullanmaya başlıyor.",
+        "sentence_b": "Okullarda öğrencilere rehberlik edecek yapay zekâ tabanlı öğrenme sistemleri müfredata entegre edildi.",
+        "gold_score": 0.92,
+        "challenge_category": "paraphrase_different_vocab"
+      },
+      {
+        "id": "test_02",
+        "sentence_a": "Kamuda açık kaynak yazılım göçü sayesinde lisans maliyetleri yüzde yetmiş azaldı.",
+        "sentence_b": "Devlet kurumlarının özgür ve açık kaynak kodlu programlara geçişi lisans giderlerinde %70 tasarruf sağladı.",
+        "gold_score": 0.94,
+        "challenge_category": "morphology_and_synonyms"
+      },
+      {
+        "id": "test_03",
+        "sentence_a": "otobandaki dc istasyonları ful çekiyo 1 saat sıra bekledik şaka gibi",
+        "sentence_b": "Otoyol hızlı şarj lokasyonlarında yoğunluk nedeniyle araç sahipleri uzun bekleme süreleriyle karşılaşıyor.",
+        "gold_score": 0.86,
+        "challenge_category": "slang_and_abbreviation"
+      },
+      {
+        "id": "test_04",
+        "sentence_a": "Yapay zekâ algoritmalarının eğitim materyalleri üretmesi yasal olarak serbest bırakıldı.",
+        "sentence_b": "Yapay zekâ algoritmalarının eğitim materyalleri üretmesi yasal düzenlemeyle kesin olarak yasaklandı.",
+        "gold_score": 0.12,
+        "challenge_category": "negation_trap"
+      },
+      {
+        "id": "test_05",
+        "sentence_a": "Yapay zekâ algoritmaları ile tarımsal sulama otomasyonu ve kuraklık tahmini yapılıyor.",
+        "sentence_b": "Yapay zekâ algoritmaları ile üniversite giriş sınavı soru hazırlama ve değerlendirme süreci yürütülüyor.",
+        "gold_score": 0.22,
+        "challenge_category": "lexical_overlap_trap"
+      },
+      {
+        "id": "test_06",
+        "sentence_a": "Yerli yer gözlem uydusu İmece 2'nin fırlatılış tarihi 2027 olarak belirlendi.",
+        "sentence_b": "Türkiye'nin yüksek çözünürlüklü yeni yer gözlem uydusu İmece 2, 2027 yılında uzaya fırlatılacak.",
+        "gold_score": 0.96,
+        "challenge_category": "paraphrase"
+      },
+      {
+        "id": "test_07",
+        "sentence_a": "Otoyol üzerinde 300 kW ultra hızlı şarj istasyonları kuruldu.",
+        "sentence_b": "Ev tipi tek fazlı 7.4 kW yavaş şarj ünitesi garaj duvarına monte edildi.",
+        "gold_score": 0.35,
+        "challenge_category": "same_domain_fine_grained_difference"
+      },
+      {
+        "id": "test_08",
+        "sentence_a": "Yapay zekâ model eğitimi için telifli eserlerin izinsiz taranması mahkemelik oldu.",
+        "sentence_b": "Telifli içeriklerin yapay zekâ veri setlerinde izinsiz kullanımı nedeniyle yazar birlikleri dava açtı.",
+        "gold_score": 0.93,
+        "challenge_category": "paraphrase_legal_ai"
+      },
+      {
+        "id": "test_09",
+        "sentence_a": "Site yönetimleri apartman kapalı otoparklarına şarj istasyonu kurulum izinlerini kolaylaştırdı.",
+        "sentence_b": "Apartmanlarda elektrikli araç sahiplerinin şarj istasyonu kurabilmesi için mevzuat sadeleştirildi.",
+        "gold_score": 0.91,
+        "challenge_category": "paraphrase_city_charging"
+      },
+      {
+        "id": "test_10",
+        "sentence_a": "Kamu kurumlarında Linux işletim sistemine geçiş hız kazanıyor.",
+        "sentence_b": "Devlet dairelerinde yerli Linux dağıtımı Pardus kullanım oranı arttı.",
+        "gold_score": 0.89,
+        "challenge_category": "domain_synonym"
+      },
+      {
+        "id": "test_11",
+        "sentence_a": "Türksat 6A uydusunun ilk test sinyalleri yer istasyonundan başarıyla alındı.",
+        "sentence_b": "Milli haberleşme uydusu Türksat 6A ile telemetri ve haberleşme bağlantısı kuruldu.",
+        "gold_score": 0.94,
+        "challenge_category": "paraphrase_space"
+      },
+      {
+        "id": "test_12",
+        "sentence_a": "Otoyollarda elektrikli araç şarj tarifelerine EPDK tarafından tavan fiyat getirildi.",
+        "sentence_b": "EPDK, şehirlerarası yollardaki yüksek hızlı elektrikli şarj istasyonu ücretlerine üst sınır koydu.",
+        "gold_score": 0.95,
+        "challenge_category": "paraphrase_regulation"
+      },
+      {
+        "id": "test_13",
+        "sentence_a": "Yapay zekâ etiği kurulu, biyometrik yüz tanıma sistemlerinin kamusal alanda kullanımını onayladı.",
+        "sentence_b": "Yapay zekâ etiği kurulu, biyometrik yüz tanıma teknolojisinin kamusal alanda kullanılmasını kesinlikle reddetti.",
+        "gold_score": 0.15,
+        "challenge_category": "negation_trap"
+      },
+      {
+        "id": "test_14",
+        "sentence_a": "Açık kaynak kodlu yapay zekâ modelleri Türkçe dil yeteneklerinde kapalı modelleri yakaladı.",
+        "sentence_b": "Açık kaynak mimarili yerli dil modelleri Türkçe NLP testlerinde ticari alternatiflerle yarışıyor.",
+        "gold_score": 0.92,
+        "challenge_category": "paraphrase_ai_opensource"
+      },
+      {
+        "id": "test_15",
+        "sentence_a": "AC şarj soketlerinde gece tarifesi indirimi başladı.",
+        "sentence_b": "Evlerde gece saatlerinde elektrikli araç şarj edenler için indirimli tarife açıklandı.",
+        "gold_score": 0.89,
+        "challenge_category": "paraphrase_energy"
+      },
+      {
+        "id": "test_16",
+        "sentence_a": "Yapay zekâ destekli otonom denizaltı projesi ilk dalış testini tamamladı.",
+        "sentence_b": "Üniversitelerde yapay zekâ mühendisliği bölümü kontenjanları artırıldı.",
+        "gold_score": 0.18,
+        "challenge_category": "lexical_overlap_trap"
+      },
+      {
+        "id": "test_17",
+        "sentence_a": "Yeni nesil mikro uydu fırlatma roketinin statik ateşleme testi başarıyla sonuçlandı.",
+        "sentence_b": "Yerli roket motoru mikro uyduları alçak dünya yörüngesine taşımak için test edildi.",
+        "gold_score": 0.91,
+        "challenge_category": "paraphrase_space"
+      },
+      {
+        "id": "test_18",
+        "sentence_a": "Kamuda veri güvenliği için açık kaynak şifreleme kütüphaneleri zorunlu tutuldu.",
+        "sentence_b": "Devlet kurumlarının kullandığı yazılımlarda açık kaynak kriptografik standartlar şart koşuldu.",
+        "gold_score": 0.93,
+        "challenge_category": "paraphrase_security"
+      },
+      {
+        "id": "test_19",
+        "sentence_a": "Otoyollarda şarj istasyonlarına dinamik güç paylaşımı özelliği eklendi.",
+        "sentence_b": "Otoban şarj noktalarında trafo yükünü dengeleyen akıllı güç dağıtım sistemleri devreye girdi.",
+        "gold_score": 0.94,
+        "challenge_category": "paraphrase_tech"
+      },
+      {
+        "id": "test_20",
+        "sentence_a": "Yapay zekâ ile üretilen ses ve görüntülerin sahtecilik davalarında delil niteliği inceleniyor.",
+        "sentence_b": "Deepfake ve üretken yapay zekâ içeriklerinin adli süreçlerdeki hukuki geçerliliği değerlendiriliyor.",
+        "gold_score": 0.93,
+        "challenge_category": "paraphrase_legal"
+      }
+    ]
+  },
+  "clustering_corpus": [
+    {"id": "cl_01", "text": "Milli Eğitim Bakanlığı liselerde yapay zekâ ve veri bilimi derslerini zorunlu müfredata aldı.", "cluster_label": "yapay_zeka_egitim"},
+    {"id": "cl_02", "text": "Üniversitelerde yapay zekâ asistanları öğrencilere ders çalışma ve ödev rehberliği sunuyor.", "cluster_label": "yapay_zeka_egitim"},
+    {"id": "cl_03", "text": "İlkokul ve ortaokul düzeyinde kodlama ve yapay zekâ farkındalık eğitimleri başlatıldı.", "cluster_label": "yapay_zeka_egitim"},
+    {"id": "cl_04", "text": "Öğretmenler için yapay zekâ araçları kullanımı konulu hizmet içi eğitim seminerleri tamamlandı.", "cluster_label": "yapay_zeka_egitim"},
+    {"id": "cl_05", "text": "Yapay zekâ destekli kişiselleştirilmiş öğrenme platformları okul başarı oranlarını yükseltti.", "cluster_label": "yapay_zeka_egitim"},
+    {"id": "cl_06", "text": "Meslek liselerinde yapay zekâ ve robotik kodlama laboratuvarları açılıyor.", "cluster_label": "yapay_zeka_egitim"},
+    {"id": "cl_07", "text": "Eğitimde yapay zekâ entegrasyonu öğrencilerin problem çözme hızını artırıyor.", "cluster_label": "yapay_zeka_egitim"},
+
+    {"id": "cl_08", "text": "Yapay zekâ tarafından üretilen sanatsal eserlerin telif hakkı kimde olmalı sorusu mahkemeye taşındı.", "cluster_label": "yapay_zeka_etik_hukuk"},
+    {"id": "cl_09", "text": "Üretken yapay zekâ modellerinin izinsiz telifli veri taramasına karşı yasal düzenleme hazırlanıyor.", "cluster_label": "yapay_zeka_etik_hukuk"},
+    {"id": "cl_10", "text": "Yapay zekâ algoritmalarının karar süreçlerindeki şeffaflık ve etik denetim kuralları açıklandı.", "cluster_label": "yapay_zeka_etik_hukuk"},
+    {"id": "cl_11", "text": "Deepfake ve yapay zekâ ile manipüle edilen içeriklerin cezai sorumluluğu yasalaştı.", "cluster_label": "yapay_zeka_etik_hukuk"},
+    {"id": "cl_12", "text": "Biyometrik yüz tanıma ve yapay zekâ gözetim sistemlerinde kişisel verilerin korunması tartışması sürüyor.", "cluster_label": "yapay_zeka_etik_hukuk"},
+    {"id": "cl_13", "text": "Yapay zekâ patent başvurularında yapay zekânın mucit olarak kabul edilemeyeceği karara bağlandı.", "cluster_label": "yapay_zeka_etik_hukuk"},
+
+    {"id": "cl_14", "text": "Ankara-İstanbul otoyolu üzerinde 300 kW kapasiteli 20 yeni ultra hızlı DC şarj istasyonu açıldı.", "cluster_label": "sarj_altyapisi_otoyol"},
+    {"id": "cl_15", "text": "Otoban dinlenme tesislerinde elektrikli araçlar için megawatt düzeyinde hızlı şarj koridorları planlanıyor.", "cluster_label": "sarj_altyapisi_otoyol"},
+    {"id": "cl_16", "text": "Otoyollardaki yüksek hızlı DC şarj noktalarında bayram yoğunluğu için dinamik güç yönetimi devreye alındı.", "cluster_label": "sarj_altyapisi_otoyol"},
+    {"id": "cl_17", "text": "EPDK, şehirlerarası karayollarında elektrikli şarj istasyonlarına tavan fiyat tarifesi getirdi.", "cluster_label": "sarj_altyapisi_otoyol"},
+    {"id": "cl_18", "text": "İzmir-Çeşme otoyolundaki şarj istasyonu sayısı iki katına çıkarılarak bekleme süreleri azaltıldı.", "cluster_label": "sarj_altyapisi_otoyol"},
+    {"id": "cl_19", "text": "Otoyol şarj istasyonlarında güneş enerjisi ve batarya depolama entegrasyonu başladı.", "cluster_label": "sarj_altyapisi_otoyol"},
+    {"id": "cl_20", "text": "Karayollarındaki hızlı şarj soketi sayısı son bir yılda yüzde yüz elli artış gösterdi.", "cluster_label": "sarj_altyapisi_otoyol"},
+
+    {"id": "cl_21", "text": "Apartman ve site kapalı otoparklarına AC şarj ünitesi kurulumunda yönetim kurulu izin şartları kolaylaştırıldı.", "cluster_label": "sarj_altyapisi_sehirici"},
+    {"id": "cl_22", "text": "Ev tipi 22kW duvar tipi AC şarj istasyonları konutlarda gece tarifesiyle maliyeti düşürüyor.", "cluster_label": "sarj_altyapisi_sehirici"},
+    {"id": "cl_23", "text": "Belediye otoparklarında ve sokak lambası direklerinde AC şarj soketleri kullanıma sunuldu.", "cluster_label": "sarj_altyapisi_sehirici"},
+    {"id": "cl_24", "text": "Alışveriş merkezi kapalı otoparklarında elektrikli araçlar için AC şarj alanı zorunluluğu getirildi.", "cluster_label": "sarj_altyapisi_sehirici"},
+    {"id": "cl_25", "text": "Sitelerde elektrik altyapısını zorlamayan akıllı AC şarj yük dengeleyiciler yaygınlaşıyor.", "cluster_label": "sarj_altyapisi_sehirici"},
+    {"id": "cl_26", "text": "Şehir içi kamu otoparklarında elektrikli araçlara ücretsiz AC şarj saatleri tanımlandı.", "cluster_label": "sarj_altyapisi_sehirici"},
+    {"id": "cl_27", "text": "Evlerde monofaze ve trifaze elektrik tesisatına uygun şarj prizlerinin montaj rehberi yayımlandı.", "cluster_label": "sarj_altyapisi_sehirici"},
+
+    {"id": "cl_28", "text": "Türksat 6A yerli haberleşme uydusu başarıyla uzaya fırlatılarak yörünge testlerine başladı.", "cluster_label": "uzay_ve_uydu"},
+    {"id": "cl_29", "text": "İmece yüksek çözünürlüklü yer gözlem uydusu dünya yüzeyinden ilk net fotoğrafları iletti.", "cluster_label": "uzay_ve_uydu"},
+    {"id": "cl_30", "text": "Türkiye Uzay Ajansı yerli mikro uydu fırlatma roketi testlerinin başarıyla tamamlandığını duyurdu.", "cluster_label": "uzay_ve_uydu"},
+    {"id": "cl_31", "text": "Alçak dünya yörüngesinde görev yapacak küp uydu takımyıldızı projesi üniversitelerde geliştiriliyor.", "cluster_label": "uzay_ve_uydu"},
+    {"id": "cl_32", "text": "Milli uzay programı kapsamında ay misyonu için hibrit roket motoru ateşleme denemesi yapıldı.", "cluster_label": "uzay_ve_uydu"},
+    {"id": "cl_33", "text": "Uydu yer kontrol istasyonu Türksat 6A telemetri verilerini kesintisiz almaya devam ediyor.", "cluster_label": "uzay_ve_uydu"},
+
+    {"id": "cl_34", "text": "Kamu kurumlarında açık kaynak kodlu Pardus işletim sistemi kullanımı yüzde elli sınırını aştı.", "cluster_label": "acik_kaynak_kamu"},
+    {"id": "cl_35", "text": "Devlet dairelerinde açık kaynak PostgreSQL veritabanına geçiş sayesinde milyonlarca lira lisans tasarrufu sağlandı.", "cluster_label": "acik_kaynak_kamu"},
+    {"id": "cl_36", "text": "Bakanlıklar arası yazışmalarda açık standartlı ve açık kaynaklı güvenli mesajlaşma altyapısına geçildi.", "cluster_label": "acik_kaynak_kamu"},
+    {"id": "cl_37", "text": "Kamuda açık kaynak yazılım ekosisteminin güçlendirilmesi için ulusal eylem planı yayımlandı.", "cluster_label": "acik_kaynak_kamu"},
+    {"id": "cl_38", "text": "Kamu bilişim personeline açık kaynak teknolojileri ve Linux sistem yönetimi eğitimleri veriliyor.", "cluster_label": "acik_kaynak_kamu"},
+    {"id": "cl_39", "text": "Açık kaynak kodlu ofis yazılımları belediyelerde ve kaymakamlıklarda yaygınlaştırılıyor.", "cluster_label": "acik_kaynak_kamu"},
+    {"id": "cl_40", "text": "Kamuda veri egemenliği ve siber güvenlik için açık kaynak kodlu firewall sistemleri tercih ediliyor.", "cluster_label": "acik_kaynak_kamu"}
+  ],
+  "retrieval_benchmark": {
+    "queries": [
+      {
+        "query_id": "q01",
+        "query": "liselerde yapay zeka dersleri ve müfredat",
+        "relevant_docs": ["doc_01", "doc_02", "doc_03"]
+      },
+      {
+        "query_id": "q02",
+        "query": "yapay zeka telif hakları ve üretilen içeriklerin hukuki durumu",
+        "relevant_docs": ["doc_06", "doc_07", "doc_08"]
+      },
+      {
+        "query_id": "q03",
+        "query": "otoyollarda elektrikli araç ultra hızlı DC şarj istasyonu",
+        "relevant_docs": ["doc_11", "doc_12", "doc_13"]
+      },
+      {
+        "query_id": "q04",
+        "query": "apartman ve sitelerde ev tipi AC şarj istasyonu kurulumu",
+        "relevant_docs": ["doc_16", "doc_17", "doc_18"]
+      },
+      {
+        "query_id": "q05",
+        "query": "Türksat 6A yerli haberleşme uydusu fırlatma ve yörünge",
+        "relevant_docs": ["doc_21", "doc_22", "doc_23"]
+      },
+      {
+        "query_id": "q06",
+        "query": "kamuda açık kaynak yazılım ve Pardus işletim sistemi",
+        "relevant_docs": ["doc_26", "doc_27", "doc_28"]
+      },
+      {
+        "query_id": "q07",
+        "query": "yapay zeka etik kuralları ve biyometrik yüz tanıma denetimi",
+        "relevant_docs": ["doc_09", "doc_10"]
+      },
+      {
+        "query_id": "q08",
+        "query": "karayollarında elektrikli şarj tavan fiyat ve EPDK tarifeleri",
+        "relevant_docs": ["doc_14", "doc_15"]
+      },
+      {
+        "query_id": "q09",
+        "query": "İmece yer gözlem uydusu ve ilk uzay fotoğrafları",
+        "relevant_docs": ["doc_24", "doc_25"]
+      },
+      {
+        "query_id": "q10",
+        "query": "kamuda PostgreSQL açık kaynak veritabanı lisans tasarrufu",
+        "relevant_docs": ["doc_29", "doc_30"]
+      }
+    ],
+    "corpus": [
+      {"doc_id": "doc_01", "text": "Milli Eğitim Bakanlığı tüm liselerde yapay zekâ ve veri analitiği derslerini zorunlu müfredata ekledi.", "category": "positive_q01"},
+      {"doc_id": "doc_02", "text": "Ortaöğretim kurumlarında öğrencilere yapay zekâ araçları ile proje geliştirme eğitimi verilecek.", "category": "positive_q01"},
+      {"doc_id": "doc_03", "text": "Liselerde yapay zekâ laboratuvarları kurularak yeni dönemde interaktif kodlama müfredatı uygulanıyor.", "category": "positive_q01"},
+      {"doc_id": "doc_04", "text": "Yapay zekâ destekli insansız savaş uçağı havalimanında otonom iniş kalkış testini tamamladı.", "category": "hard_negative_lexical_trap_q01"},
+      {"doc_id": "doc_05", "text": "Tarım arazilerinde yapay zekâ kameraları ile yabani ot tespiti ve ilaçlama robotu geliştirildi.", "category": "hard_negative_lexical_trap_q01"},
+
+      {"doc_id": "doc_06", "text": "Yapay zekâ algoritmaları tarafından üretilen görsel ve metinlerin telif hakkı ve fikri mülkiyet sınırları tartışılıyor.", "category": "positive_q02"},
+      {"doc_id": "doc_07", "text": "Yapay zekâ modellerinin eğitiminde telifli eserlerin izinsiz taranmasına karşı mahkeme emsal karar verdi.", "category": "positive_q02"},
+      {"doc_id": "doc_08", "text": "Üretken yapay zekâ içeriklerinin telif ve sahiplik haklarına ilişkin yeni kanun tasarısı meclise sunuldu.", "category": "positive_q02"},
+      {"doc_id": "doc_09", "text": "Kamusal alanlarda yapay zekâ destekli biyometrik yüz tanıma kameralarının etik denetimi ve veri gizliliği kuralları yayımlandı.", "category": "positive_q07"},
+      {"doc_id": "doc_10", "text": "Yapay zekâ etik kurulu, adalet ve emniyet birimlerinde algoritmik ayrımcılığı önlemek için bağlayıcı standartlar getirdi.", "category": "positive_q07"},
+
+      {"doc_id": "doc_11", "text": "Ankara-İstanbul otoyolunda elektrikli araçlar için 300 kW gücünde ultra hızlı DC şarj istasyonları hizmete girdi.", "category": "positive_q03"},
+      {"doc_id": "doc_12", "text": "Şehirlerarası otobanlarda kurulan yüksek hızlı DC şarj koridorları sayesinde bataryalar 20 dakikada doluyor.", "category": "positive_q03"},
+      {"doc_id": "doc_13", "text": "Otoyol dinlenme tesislerinde elektrikli arabalar için 150 kW ve 300 kW DC hızlı şarj üniteleri devreye alındı.", "category": "positive_q03"},
+      {"doc_id": "doc_14", "text": "EPDK, karayolları üzerindeki elektrikli araç şarj istasyonlarında kWh başına uygulanacak tavan fiyat sınırını belirledi.", "category": "positive_q08"},
+      {"doc_id": "doc_15", "text": "Otoyollarda şarj istasyonu işleticilerinin fahiş fiyat uygulamasını engellemek için EPDK denetimleri artırdı.", "category": "positive_q08"},
+
+      {"doc_id": "doc_16", "text": "Apartman ve site kapalı otoparklarında konut sakinlerinin AC şarj istasyonu kurabilmesi için izin süreçleri kolaylaştırıldı.", "category": "positive_q04"},
+      {"doc_id": "doc_17", "text": "Ev tipi 22kW duvar tipi AC şarj cihazları sitelerde trifaze elektrik hattı üzerinden güvenle monte ediliyor.", "category": "positive_q04"},
+      {"doc_id": "doc_18", "text": "Konut otoparklarında elektrikli araç şarjı için ortak elektrik panosuna süzme sayaç takılması mevzuata eklendi.", "category": "positive_q04"},
+      {"doc_id": "doc_19", "text": "Benzin istasyonlarında kurulan yüksek gerilimli trafolar ile ağır vasıtalar için megawatt şarj test ediliyor.", "category": "hard_negative_domain_q04"},
+      {"doc_id": "doc_20", "text": "Elektrikli scooter ve bisikletler için belediyeler park alanlarına kilitli şarj direkleri yerleştiriyor.", "category": "hard_negative_domain_q04"},
+
+      {"doc_id": "doc_21", "text": "Yerli haberleşme uydusu Türksat 6A başarıyla uzaya fırlatıldı ve hedeflenen yörüngeye oturdu.", "category": "positive_q05"},
+      {"doc_id": "doc_22", "text": "Türksat 6A uydusu yörünge testlerini tamamlayarak televizyon ve internet yayıncılığına başladı.", "category": "positive_q05"},
+      {"doc_id": "doc_23", "text": "Milli uydumuz Türksat 6A ile uzaydaki haberleşme kapsama alanımız Hindistan ve Güneydoğu Asya'ya ulaştı.", "category": "positive_q05"},
+      {"doc_id": "doc_24", "text": "İmece yüksek çözünürlüklü yer gözlem uydusu dünya yörüngesinden çektiği ilk net fotoğrafları yer istasyonuna iletti.", "category": "positive_q09"},
+      {"doc_id": "doc_25", "text": "Yerli gözlem uydusu İmece, haritacılık ve afet yönetiminde kullanılmak üzere detaylı uydu görüntüleri sağlıyor.", "category": "positive_q09"},
+
+      {"doc_id": "doc_26", "text": "Kamu kurumlarında milli işletim sistemi Pardus ve açık kaynak kodlu yazılımlara geçiş hızlandı.", "category": "positive_q06"},
+      {"doc_id": "doc_27", "text": "Devlet dairelerinde yabancı işletim sistemleri yerine açık kaynak Linux ve Pardus kullanımı teşvik ediliyor.", "category": "positive_q06"},
+      {"doc_id": "doc_28", "text": "Bakanlıklar kamu bilişim altyapısında açık kaynak kodlu sistemlere göç ederek lisans bağımlılığını sonlandırıyor.", "category": "positive_q06"},
+      {"doc_id": "doc_29", "text": "Kamuda açık kaynak PostgreSQL veritabanına geçiş sayesinde yıllık milyonlarca dolarlık lisans bedeli tasarruf edildi.", "category": "positive_q10"},
+      {"doc_id": "doc_30", "text": "Devlet kurumlarının veritabanı altyapısında açık kaynak kodlu PostgreSQL tercih edilerek bütçeye büyük katkı sağlandı.", "category": "positive_q10"},
+
+      {"doc_id": "doc_31", "text": "Bakanlık tüm kamu kurumlarında açık kaynak yazılım kullanımını kesinlikle yasakladı.", "category": "negation_trap_q06"},
+      {"doc_id": "doc_32", "text": "Liselerde yapay zekâ derslerinin müfredattan tamamen çıkarılmasına karar verildi.", "category": "negation_trap_q01"},
+      {"doc_id": "doc_33", "text": "Otoyollardaki şarj istasyonlarının tamamı arıza sebebiyle süresiz kapatıldı.", "category": "negation_trap_q03"},
+      {"doc_id": "doc_34", "text": "Türksat 6A fırlatma görevi başarısız oldu ve roket infilak etti.", "category": "negation_trap_q05"},
+      {"doc_id": "doc_35", "text": "Apartman yönetimleri sitelerde elektrikli araç şarj cihazı kurulumunu tamamen men etti.", "category": "negation_trap_q04"},
+
+      {"doc_id": "doc_36", "text": "Merkez Bankası dijital Türk Lirası pilot faz 2 testlerinin tamamlandığını duyurdu.", "category": "distractor_finance"},
+      {"doc_id": "doc_37", "text": "İstanbul Boğazı'nda yeni deniz taksi hatları seferlere başladı.", "category": "distractor_transport"},
+      {"doc_id": "doc_38", "text": "Meteoroloji Genel Müdürlüğü hafta sonu için şiddetli fırtına ve sağanak uyarısı yaptı.", "category": "distractor_weather"},
+      {"doc_id": "doc_39", "text": "Süper Lig'de haftanın derbi maçının hakem kadrosu açıklandı.", "category": "distractor_sports"},
+      {"doc_id": "doc_40", "text": "Sağlık Bakanlığı kış aylarında grip aşısı randevularının e-Nabız üzerinden açıldığını duyurdu.", "category": "distractor_health"},
+      {"doc_id": "doc_41", "text": "Kültür ve Turizm Bakanlığı Efes Antik Kenti gece müzeciliği ziyaretçi rekoru kırdı.", "category": "distractor_culture"},
+      {"doc_id": "doc_42", "text": "Sanayi ve Teknoloji Bakanlığı teknopark vergi muafiyeti düzenlemesini yayımladı.", "category": "distractor_industry"},
+      {"doc_id": "doc_43", "text": "Organik tarım üreticilerine yönelik yeni hibe ve kredi destek paketi Resmi Gazete'de yayımlandı.", "category": "distractor_agriculture"},
+      {"doc_id": "doc_44", "text": "Hazine ve Maliye Bakanlığı enflasyonla mücadele kapsamında yeni vergi denetim paketi açıkladı.", "category": "distractor_economy"},
+      {"doc_id": "doc_45", "text": "Yerli elektrikli lokomotif Eskişehir fabrikasında raylara indirilerek test sürüşüne başladı.", "category": "distractor_railway"},
+      {"doc_id": "doc_46", "text": "Yapay zekâ ile yazılan polisiye roman edebiyat ödülü kazandı.", "category": "distractor_ai_art"},
+      {"doc_id": "doc_47", "text": "Apartman çatılarına güneş paneli kurularak ortak alan aydınlatması sağlandı.", "category": "distractor_solar_roof"},
+      {"doc_id": "doc_48", "text": "Uzay teleskobu James Webb uzak galaksilerde su buharı tespit etti.", "category": "distractor_deep_space"},
+      {"doc_id": "doc_49", "text": "Otomobil fabrikası çip krizi nedeniyle vardiya sayısını bire indirdi.", "category": "distractor_automotive"},
+      {"doc_id": "doc_50", "text": "Açık deniz petrol ve doğalgaz arama sondaj gemisi yeni kuyu açtı.", "category": "distractor_energy_offshore"}
+    ]
+  }
+}

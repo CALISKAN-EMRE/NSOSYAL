@@ -57,6 +57,9 @@ export interface SourceContext {
   source_type: string;
   mention_count: number;
   reliability_note?: string;
+  relevance_score?: number;
+  dense_score?: number;
+  rank?: number;
 }
 
 export interface ContextCard {
@@ -72,6 +75,15 @@ export interface ContextCard {
   total_participants: number;
   generated_at: string;
   method: string;
+  semantic_cluster_id?: string;
+  cluster_confidence?: number;
+  pipeline_timing_ms?: {
+    clustering_ms?: number;
+    dense_retrieval_ms?: number;
+    reranking_ms?: number;
+    total_pipeline_ms?: number;
+  };
+  model_used?: string;
 }
 
 export interface SafetySignal {
@@ -122,6 +134,40 @@ export interface RecommendationExplanation {
 export interface RecommendedPost {
   post: Post;
   explanation: RecommendationExplanation;
+}
+
+export interface SearchResultItem {
+  post: Post;
+  relevance_score: number;
+  rank: number;
+  matched_highlights: string[];
+}
+
+export interface SearchResponse {
+  query: string;
+  total_results: number;
+  results: SearchResultItem[];
+  model_used: string;
+  search_latency_ms: number;
+}
+
+export interface SystemStatusResponse {
+  app_name: string;
+  version: string;
+  model_manager: {
+    status: string;
+    semantic_mode: string;
+    device: string;
+    is_gpu_accelerated: boolean;
+    cuda_vram_allocated_gb: number;
+    models_loaded: {
+      clustering_model: string;
+      search_model: string;
+      reranker_model: string;
+    };
+    error_detail?: string | null;
+  };
+  pipelines: Record<string, string>;
 }
 
 export interface SystemHealth {

@@ -66,3 +66,5 @@ Thumbs.db
 # Antigravity & Agent workspace artifacts
 .agent/
 .agents/scratch/
+scratch/
+

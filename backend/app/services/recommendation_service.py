@@ -11,19 +11,27 @@ from app.models.recommendation import (
 )
 from app.services.safety_service import SafetyService
 from app.models.safety import SafetyAnalysisRequest
+from app.ml.model_manager import ModelManager
 
 
 class RecommendationService:
-    """Explainable Recommendation Engine (Phase 1 Prototype).
+    """Explainable Recommendation Engine (Phase 2B Production Architecture).
 
-    Combines multi-factor scoring:
-    Score = (w1*Interest + w2*TopicAffinity + w3*Recency + w4*Diversity) - (w5*Repetition + w6*SafetyRisk)
-    Generates transparent 'Neden bunu görüyorum?' breakdowns for every recommended item.
+    Multi-factor Transparent Scoring Formula:
+    Score = (w1*SemanticInterest + w2*TopicAffinity + w3*Recency + w4*Diversity) - (w5*Repetition + w6*SafetyRisk)
+    
+    Generates transparent, mathematically verifiable 'Neden bunu görüyorum?' breakdowns for every item.
     """
 
-    def __init__(self, data_adapter: DataSourceAdapter, safety_service: SafetyService):
+    def __init__(
+        self,
+        data_adapter: DataSourceAdapter,
+        safety_service: SafetyService,
+        model_manager: Optional[ModelManager] = None,
+    ):
         self.adapter = data_adapter
         self.safety_service = safety_service
+        self.model_manager = model_manager or ModelManager.get_instance()
 
     def get_recommendations(
         self,
@@ -31,10 +39,11 @@ class RecommendationService:
         preferred_topic_id: Optional[str] = None,
         limit: int = 20,
     ) -> List[RecommendedPost]:
-        """Generate explainable recommended feed."""
+        """Generate explainable recommended feed with real embedding affinity scoring."""
         if not user_interests:
             user_interests = ["YapayZeka", "Yazılım", "Bilim", "Eğitim", "Teknoloji"]
 
+        self.model_manager.initialize()
         all_posts = self.adapter.get_posts(limit=100)
         recommended: List[RecommendedPost] = []
 
@@ -82,19 +91,30 @@ class RecommendationService:
         all_posts: Optional[List[Post]] = None,
     ) -> RecommendationExplanation:
         """Calculate mathematical and natural-language explanation breakdown for a single post."""
-        # Factor 1: Semantic Interest Match (w = 30)
-        interest_overlap = sum(
-            1 for tag in post.tags if any(ui.lower() in tag.lower() for ui in user_interests)
-        )
-        interest_raw = min(1.0, interest_overlap / max(1, len(post.tags))) if post.tags else 0.4
+        self.model_manager.initialize()
+
+        # Factor 1: Semantic Interest Match using Real Embeddings (w = 30)
+        if self.model_manager.similarity_service:
+            interest_raw = self.model_manager.similarity_service.compute_profile_similarity(
+                user_interests=user_interests, post_text=post.text, post_tags=post.tags
+            )
+        else:
+            # Heuristic tag match fallback
+            overlap = sum(
+                1 for tag in post.tags if any(ui.lower() in tag.lower() for ui in user_interests)
+            )
+            interest_raw = min(1.0, overlap / max(1, len(post.tags))) if post.tags else 0.4
+
         interest_weight = 30.0
         interest_impact = interest_raw * interest_weight
 
         # Factor 2: Topic Affinity (w = 25)
-        if preferred_topic_id and post.topic_id == preferred_topic_id:
+        if preferred_topic_id and (
+            post.topic_id == preferred_topic_id or preferred_topic_id in post.topic_id
+        ):
             affinity_raw = 1.0
-        elif post.topic_id in ["yapay-zeka-egitim", "acik-kaynak-yazilim"]:
-            affinity_raw = 0.8
+        elif post.topic_id in ["yapay-zeka-egitim", "acik-kaynak-yazilim", "semantic-cluster-1", "semantic-cluster-2"]:
+            affinity_raw = 0.85
         else:
             affinity_raw = 0.5
         affinity_weight = 25.0
@@ -106,13 +126,11 @@ class RecommendationService:
         recency_impact = recency_raw * recency_weight
 
         # Factor 4: Diversity & Discovery Boost (w = 15)
-        # Boost different perspectives (e.g. academic or critical perspectives for balance)
-        diversity_raw = 0.7 if post.perspective in ["critical", "academic", "expert"] else 0.4
+        diversity_raw = 0.75 if post.perspective in ["critical", "academic", "expert"] else 0.45
         diversity_weight = 15.0
         diversity_impact = diversity_raw * diversity_weight
 
         # Factor 5 (Penalty): Repetition Penalty (w = -20)
-        # Evaluate using safety heuristic
         safety_resp = self.safety_service.analyze_text(
             SafetyAnalysisRequest(
                 text=post.text,
@@ -130,20 +148,22 @@ class RecommendationService:
         safety_weight = 30.0
         safety_impact = -(safety_risk_raw * safety_weight)
 
-        # Total Calculation
+        # Total Score Calculation
         positive_total = interest_impact + affinity_impact + recency_impact + diversity_impact
         negative_total = abs(rep_impact) + abs(safety_impact)
         final_score = max(0.0, min(100.0, round(positive_total - negative_total, 1)))
 
+        mode_label = "ModernBERT Embedding Cosine" if self.model_manager.mode == "ml" else "Demo Heuristic"
+
         factors = [
             ScoreFactor(
                 factor_name="interest_match",
-                label="İlgi Alanı Eşleşmesi (Heuristic/Tag Match)",
+                label=f"Anlamsal İlgi Eşleşmesi ({mode_label})",
                 weight=interest_weight,
                 raw_score=round(interest_raw, 2),
                 weighted_impact=round(interest_impact, 1),
                 is_penalty=False,
-                explanation=f"Takip ettiğiniz etiketlerle (%{interest_raw * 100:.0f}) oranında örtüşüyor.",
+                explanation=f"İlgi profilinizle anlamsal vektör yakınlığı: %{interest_raw * 100:.0f}.",
             ),
             ScoreFactor(
                 factor_name="topic_affinity",
@@ -152,7 +172,7 @@ class RecommendationService:
                 raw_score=round(affinity_raw, 2),
                 weighted_impact=round(affinity_impact, 1),
                 is_penalty=False,
-                explanation=f"'{post.topic_title}' kategorisine gösterdiğiniz etkileşim geçmişi.",
+                explanation=f"'{post.topic_title}' kategorisi etkileşim katsayısı.",
             ),
             ScoreFactor(
                 factor_name="recency",
@@ -170,7 +190,7 @@ class RecommendationService:
                 raw_score=round(diversity_raw, 2),
                 weighted_impact=round(diversity_impact, 1),
                 is_penalty=False,
-                explanation="Yankı odası engellemek için farklı bakış açıları (uzman/eleştirel) ödüllendirildi.",
+                explanation="Farklı bakış açıları (uzman/eleştirel/akademik) yankı odasını kırmak için ödüllendirildi.",
             ),
             ScoreFactor(
                 factor_name="repetition_penalty",
@@ -179,7 +199,7 @@ class RecommendationService:
                 raw_score=round(rep_raw, 2),
                 weighted_impact=round(rep_impact, 1),
                 is_penalty=True,
-                explanation="Aynı veya benzer metnin tekrar paylaşılma sıklığı düşürüldü."
+                explanation="Aynı veya benzer metin tekrarı saptandığında puan düşürülür."
                 if rep_raw > 0
                 else "Tekrar saptanmadı (ceza yok).",
             ),
@@ -190,7 +210,7 @@ class RecommendationService:
                 raw_score=round(safety_risk_raw, 2),
                 weighted_impact=round(safety_impact, 1),
                 is_penalty=True,
-                explanation=f"Sezgisel moderasyon risk puanı: {safety_risk_raw:.2f}"
+                explanation=f"Moderasyon risk puanı: {safety_risk_raw:.2f}"
                 if safety_risk_raw > 0
                 else "Güvenlik riski saptanmadı.",
             ),
@@ -214,7 +234,6 @@ class RecommendationService:
             if dt.tzinfo is None:
                 dt = dt.replace(tzinfo=timezone.utc)
             diff_hours = (now - dt).total_seconds() / 3600.0
-            # Exponential decay over hours
             return max(0.1, min(1.0, 1.0 / (1.0 + (diff_hours / 24.0))))
         except Exception:
             return 0.5
@@ -227,7 +246,7 @@ class RecommendationService:
         topic_title: str,
     ) -> str:
         if safety_risk_raw > 0.6 or rep_raw > 0.6:
-            return "Bu gönderi yüksek oranda spam veya tekrar sinyali içerdiği için puanı önemli ölçüde düşürülmüştür."
+            return "Bu gönderi yüksek oranda spam veya tekrar sinyali içerdiği için puanı düşürülmüştür."
         if interest_raw >= 0.7:
-            return f"Bu gönderi '{topic_title}' alanındaki ilgi alanlarınız ve yüksek etkileşim potansiyeli nedeniyle önerilmektedir."
-        return f"'{topic_title}' başlığındaki dengeli perspektifleri ve güncel gelişmeleri keşfetmeniz için akışınıza eklendi."
+            return f"Bu gönderi '{topic_title}' alanındaki anlamsal ilgi profiliniz ve yüksek etkileşim potansiyeliyle eşleştiği için önerilmektedir."
+        return f"'{topic_title}' başlığındaki dengeli bakış açılarını ve güncel gelişmeleri keşfetmeniz için akışınıza eklendi."

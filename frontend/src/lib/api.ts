@@ -3,7 +3,9 @@ import {
   Post,
   RecommendedPost,
   SafetyAnalysisResponse,
+  SearchResponse,
   SystemHealth,
+  SystemStatusResponse,
   Topic,
 } from "./types";
 
@@ -37,6 +39,8 @@ async function fetchJson<T>(endpoint: string, options?: RequestInit): Promise<T>
 export const api = {
   getHealth: () => fetchJson<SystemHealth>("/health"),
 
+  getSystemStatus: () => fetchJson<SystemStatusResponse>("/api/system/status"),
+
   getPosts: (params?: { topic_id?: string; search?: string; limit?: number }) => {
     const searchParams = new URLSearchParams();
     if (params?.topic_id) searchParams.append("topic_id", params.topic_id);
@@ -57,6 +61,11 @@ export const api = {
     if (params?.limit) searchParams.append("limit", params.limit.toString());
     const query = searchParams.toString();
     return fetchJson<RecommendedPost[]>(`/api/recommendations${query ? `?${query}` : ""}`);
+  },
+
+  searchPosts: (query: string, limit: number = 20) => {
+    const searchParams = new URLSearchParams({ q: query, limit: limit.toString() });
+    return fetchJson<SearchResponse>(`/api/search?${searchParams.toString()}`);
   },
 
   analyzeSafety: (text: string, postId?: string, authorId?: string) =>

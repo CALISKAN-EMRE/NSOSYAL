@@ -7,6 +7,7 @@ import {
   Post,
   RecommendationExplanation,
   RecommendedPost,
+  SearchResultItem,
   SystemHealth,
   Topic,
 } from "../lib/types";
@@ -21,9 +22,9 @@ import {
   Sparkles,
   ShieldAlert,
   HelpCircle,
-  ExternalLink,
-  BookOpen,
   Info,
+  Search,
+  Cpu,
 } from "lucide-react";
 
 export default function Home() {
@@ -92,6 +93,12 @@ export default function Home() {
     setIsExplainModalOpen(true);
   };
 
+  const handleSelectSearchResult = (result: SearchResultItem) => {
+    if (result.post.topic_id) {
+      handleViewContext(result.post.topic_id);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#090d16] text-slate-100 flex flex-col">
       {/* Top Navigation Bar */}
@@ -99,6 +106,7 @@ export default function Home() {
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         onOpenSafetyPanel={() => setIsSafetyPanelOpen(true)}
+        onSelectSearchResult={handleSelectSearchResult}
         adapterStatus={health?.data_source_adapter?.adapter_type || "JsonDemoAdapter"}
         postCount={posts.length}
       />
@@ -111,49 +119,64 @@ export default function Home() {
             {/* Project Overview Card */}
             <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 backdrop-blur-sm space-y-4">
               <div className="flex items-center gap-2">
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                   <Info className="h-4 w-4" />
                 </span>
-                <h2 className="text-sm font-bold text-slate-100">Proje Hedefleri & Yetenekler</h2>
+                <h2 className="text-sm font-bold text-slate-100">Faz 2B Semantik Yetenekler</h2>
               </div>
 
               <div className="space-y-3 text-xs text-slate-300">
                 <div className="flex gap-2.5 rounded-xl border border-slate-800 bg-slate-950/40 p-3">
-                  <Layers className="h-4 w-4 shrink-0 text-blue-400 mt-0.5" />
+                  <Layers className="h-4 w-4 shrink-0 text-indigo-400 mt-0.5" />
                   <div>
-                    <strong className="text-slate-100 block">1. Bağlam Kartları (Context)</strong>
-                    <span>Tartışmaları anlamsal özetler, farklı bakış açılarını ve zaman akışını sunar.</span>
+                    <strong className="text-slate-100 block">1. Semantik Kümeleme (ModernBERT + HDBSCAN)</strong>
+                    <span>Metinleri otomatik gruplar, çoklu perspektif ve özet sentezler.</span>
                   </div>
                 </div>
 
                 <div className="flex gap-2.5 rounded-xl border border-slate-800 bg-slate-950/40 p-3">
-                  <HelpCircle className="h-4 w-4 shrink-0 text-indigo-400 mt-0.5" />
+                  <Cpu className="h-4 w-4 shrink-0 text-emerald-400 mt-0.5" />
                   <div>
-                    <strong className="text-slate-100 block">2. Şeffaf Tavsiye (Explainable)</strong>
-                    <span>&quot;Neden bunu görüyorum?&quot; gerekçelerini katsayılar ve açık formülle açıklar.</span>
+                    <strong className="text-slate-100 block">2. İki Aşamalı Reranker (ModernBERT-TR)</strong>
+                    <span>Yoğun arama ile ilk 15 adayı seçer, Cross-Encoder ile yeniden sıralar.</span>
                   </div>
                 </div>
 
                 <div className="flex gap-2.5 rounded-xl border border-slate-800 bg-slate-950/40 p-3">
-                  <ShieldAlert className="h-4 w-4 shrink-0 text-emerald-400 mt-0.5" />
+                  <Search className="h-4 w-4 shrink-0 text-blue-400 mt-0.5" />
                   <div>
-                    <strong className="text-slate-100 block">3. İçerik Güvenliği (Safety Signals)</strong>
-                    <span>Spam, koordinasyon ve sert dil anomalilerini insan denetimli sinyallerle puanlar.</span>
+                    <strong className="text-slate-100 block">3. Doğal Dil Arama (Multilingual-E5)</strong>
+                    <span>Türkçe soru ve sorgularla doğrudan anlamsal eşleşme sağlar.</span>
+                  </div>
+                </div>
+
+                <div className="flex gap-2.5 rounded-xl border border-slate-800 bg-slate-950/40 p-3">
+                  <HelpCircle className="h-4 w-4 shrink-0 text-amber-400 mt-0.5" />
+                  <div>
+                    <strong className="text-slate-100 block">4. Şeffaf Tavsiye & Anlamsal İlgi</strong>
+                    <span>Embedding kosinüs benzerliği ile &quot;Neden bunu görüyorum?&quot; faktörlerini açıklar.</span>
+                  </div>
+                </div>
+
+                <div className="flex gap-2.5 rounded-xl border border-slate-800 bg-slate-950/40 p-3">
+                  <ShieldAlert className="h-4 w-4 shrink-0 text-rose-400 mt-0.5" />
+                  <div>
+                    <strong className="text-slate-100 block">5. Güvenlik ve Moderasyon Sinyalleri</strong>
+                    <span>Spam ve koordinasyon risklerini insan denetimli sinyallerle puanlar.</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Prototype Notice Box */}
-            <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4 text-xs text-slate-300 space-y-2">
-              <div className="flex items-center gap-2 font-semibold text-amber-400">
+            {/* Production Architecture Notice Box */}
+            <div className="rounded-2xl border border-indigo-500/20 bg-indigo-500/5 p-4 text-xs text-slate-300 space-y-2">
+              <div className="flex items-center gap-2 font-semibold text-indigo-400">
                 <Sparkles className="h-4 w-4" />
-                <span>TEKNOFEST 2026 Faz 1 Notu</span>
+                <span>TEKNOFEST 2026 Faz 2B Notu</span>
               </div>
               <p className="text-[11px] leading-relaxed text-slate-400">
-                Bu prototipte yer alan paylaşımlar <strong>sentetik Türkçe demo verileridir</strong>.
-                Sistem kural ve sezgisel sinyallerle çalışmakta olup, gerçek yapay zekâ modelleri Faz 2&apos;de
-                entegre edilecektir.
+                Bu prototipte <strong>ModernBERT-TR</strong> ve <strong>Multilingual-E5</strong> modelleri
+                doğrudan yerel GPU üzerinde çalışmaktadır. Gerçek zamanlı arama, kümeleme ve iki aşamalı yeniden sıralama aktiftir.
               </p>
             </div>
           </aside>

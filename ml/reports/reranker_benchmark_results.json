@@ -1,0 +1,55 @@
+{
+  "reranker_metadata": {
+    "model_id": "ytu-ce-cosmos/modernbert-tr-reranker",
+    "architecture": "ModernBERT Cross-Encoder",
+    "device": "cuda",
+    "top_k_candidates": 15,
+    "reranker_vram_allocated_gb": 0.58,
+    "reranker_peak_vram_gb": 0.58,
+    "load_time_sec": 5.13
+  },
+  "experiments": {
+    "ytu-ce-cosmos/modernbert-tr-embed": {
+      "dense_before": {
+        "ndcg@1": 1.0,
+        "recall@1": 0.4,
+        "ndcg@5": 0.9591,
+        "recall@5": 0.9667,
+        "ndcg@10": 0.9758,
+        "recall@10": 1.0,
+        "mrr@10": 1.0,
+        "query_count": 10
+      },
+      "reranked_after": {
+        "ndcg@1": 1.0,
+        "ndcg@5": 0.9873,
+        "ndcg@10": 0.9873,
+        "mrr@10": 1.0,
+        "recall@10": 1.0,
+        "reranking_latency_ms_per_query": 51.06
+      },
+      "ndcg_delta": 0.0115
+    },
+    "intfloat/multilingual-e5-large-instruct": {
+      "dense_before": {
+        "ndcg@1": 1.0,
+        "recall@1": 0.4,
+        "ndcg@5": 0.9967,
+        "recall@5": 1.0,
+        "ndcg@10": 0.9967,
+        "recall@10": 1.0,
+        "mrr@10": 1.0,
+        "query_count": 10
+      },
+      "reranked_after": {
+        "ndcg@1": 1.0,
+        "ndcg@5": 0.9841,
+        "ndcg@10": 0.9841,
+        "mrr@10": 1.0,
+        "recall@10": 1.0,
+        "reranking_latency_ms_per_query": 47.2
+      },
+      "ndcg_delta": -0.0126
+    }
+  }
+}

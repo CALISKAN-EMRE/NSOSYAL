@@ -1,0 +1,172 @@
+{
+  "benchmark_metadata": {
+    "title": "Strictly Verified Primary-Source Published Benchmarks",
+    "description": "Every value in this table is sourced directly from official Hugging Face model cards, author README files, or published papers. Unreported metrics are explicitly denoted as 'Not Reported' to eliminate interpolation.",
+    "access_date": "2026-08-23",
+    "sources": [
+      {
+        "model_id": "ytu-ce-cosmos/turkish-e5-large",
+        "primary_url": "https://huggingface.co/ytu-ce-cosmos/turkish-e5-large",
+        "reported_metrics": "Finetuned multilingual-e5-large-instruct on Turkish datasets. Specific MTEB Turkish numbers not published in model card README."
+      },
+      {
+        "model_id": "ytu-ce-cosmos/modernbert-tr-embed",
+        "primary_url": "https://huggingface.co/ytu-ce-cosmos/modernbert-tr-embed",
+        "reported_metrics": "Official TR-MTEB Retrieval: ArguAnaTR (50.01), CQADupstackGamingTR (56.37), FiQA2018TR (46.20), MSMarcoTR (57.87)."
+      },
+      {
+        "model_id": "ytu-ce-cosmos/modernbert-tr-reranker",
+        "primary_url": "https://huggingface.co/ytu-ce-cosmos/modernbert-tr-reranker",
+        "reported_metrics": "Official TR-MTEB Retrieval Reranking: ArguAnaTR (54.75), CQADupstackGamingTR (61.10), SciFactTR (86.34), SquadTR (90.11)."
+      },
+      {
+        "model_id": "Qwen/Qwen3-Embedding-8B",
+        "primary_url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+        "reported_metrics": "Official MTEB Multilingual Leaderboard average: 70.58 (No.1 rank as of June 5, 2025)."
+      },
+      {
+        "model_id": "Qwen/Qwen3-Embedding-4B",
+        "primary_url": "https://huggingface.co/Qwen/Qwen3-Embedding-4B",
+        "reported_metrics": "Qwen3 Embedding series (4B dense architecture). Specific Turkish MTEB subset not individually isolated in model card."
+      },
+      {
+        "model_id": "Qwen/Qwen3-Embedding-0.6B",
+        "primary_url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+        "reported_metrics": "Qwen3 Embedding series (0.6B dense architecture)."
+      },
+      {
+        "model_id": "intfloat/multilingual-e5-large-instruct",
+        "primary_url": "https://huggingface.co/intfloat/multilingual-e5-large-instruct",
+        "reported_metrics": "Multilingual E5 model card MTEB evaluations (multilingual classification and retrieval)."
+      },
+      {
+        "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "primary_url": "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "reported_metrics": "50+ language sentence transformer baseline."
+      }
+    ]
+  },
+  "candidate_models": [
+    {
+      "model_id": "ytu-ce-cosmos/turkish-e5-large",
+      "license": "MIT",
+      "license_source_url": "https://huggingface.co/ytu-ce-cosmos/turkish-e5-large",
+      "parameters": "559.9M",
+      "embedding_dimension": 1024,
+      "max_context_length": 512,
+      "official_published_scores": {
+        "mteb_multilingual_avg": "Not Reported",
+        "tr_mteb_retrieval_avg": "Not Reported",
+        "tr_mteb_sts_spearman": "Not Reported",
+        "tr_mteb_clustering_nmi": "Not Reported"
+      },
+      "verified_source": "https://huggingface.co/ytu-ce-cosmos/turkish-e5-large"
+    },
+    {
+      "model_id": "ytu-ce-cosmos/modernbert-tr-embed",
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/ytu-ce-cosmos/modernbert-tr-embed",
+      "parameters": "148.7M",
+      "embedding_dimension": 768,
+      "max_context_length": 8192,
+      "official_published_scores": {
+        "mteb_multilingual_avg": "Not Reported",
+        "tr_mteb_retrieval_arguana_ndcg10": 50.01,
+        "tr_mteb_retrieval_cqadupstack_ndcg10": 56.37,
+        "tr_mteb_retrieval_fiqa_ndcg10": 46.20,
+        "tr_mteb_retrieval_msmarco_ndcg10": 57.87
+      },
+      "verified_source": "https://huggingface.co/ytu-ce-cosmos/modernbert-tr-embed"
+    },
+    {
+      "model_id": "ytu-ce-cosmos/modernbert-tr-reranker",
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/ytu-ce-cosmos/modernbert-tr-reranker",
+      "parameters": "148.7M",
+      "embedding_dimension": "Cross-Encoder (Logits)",
+      "max_context_length": 8192,
+      "official_published_scores": {
+        "tr_mteb_rerank_arguana_ndcg10": 54.75,
+        "tr_mteb_rerank_cqadupstack_ndcg10": 61.10,
+        "tr_mteb_rerank_scifact_ndcg10": 86.34,
+        "tr_mteb_rerank_squad_ndcg10": 90.11
+      },
+      "verified_source": "https://huggingface.co/ytu-ce-cosmos/modernbert-tr-reranker"
+    },
+    {
+      "model_id": "Qwen/Qwen3-Embedding-8B",
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+      "parameters": "7567.3M",
+      "embedding_dimension": 4096,
+      "max_context_length": 32768,
+      "official_published_scores": {
+        "mteb_multilingual_avg": 70.58,
+        "tr_mteb_retrieval_avg": "Not Reported Separately in Card",
+        "tr_mteb_sts_spearman": "Not Reported Separately in Card",
+        "tr_mteb_clustering_nmi": "Not Reported Separately in Card"
+      },
+      "verified_source": "https://huggingface.co/Qwen/Qwen3-Embedding-8B"
+    },
+    {
+      "model_id": "Qwen/Qwen3-Embedding-4B",
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/Qwen/Qwen3-Embedding-4B",
+      "parameters": "4021.8M",
+      "embedding_dimension": 2560,
+      "max_context_length": 32768,
+      "official_published_scores": {
+        "mteb_multilingual_avg": "Not Reported in Card",
+        "tr_mteb_retrieval_avg": "Not Reported",
+        "tr_mteb_sts_spearman": "Not Reported",
+        "tr_mteb_clustering_nmi": "Not Reported"
+      },
+      "verified_source": "https://huggingface.co/Qwen/Qwen3-Embedding-4B"
+    },
+    {
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+      "parameters": "595.8M",
+      "embedding_dimension": 1024,
+      "max_context_length": 32768,
+      "official_published_scores": {
+        "mteb_multilingual_avg": "Not Reported in Card",
+        "tr_mteb_retrieval_avg": "Not Reported",
+        "tr_mteb_sts_spearman": "Not Reported",
+        "tr_mteb_clustering_nmi": "Not Reported"
+      },
+      "verified_source": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B"
+    },
+    {
+      "model_id": "intfloat/multilingual-e5-large-instruct",
+      "license": "MIT",
+      "license_source_url": "https://huggingface.co/intfloat/multilingual-e5-large-instruct",
+      "parameters": "559.9M",
+      "embedding_dimension": 1024,
+      "max_context_length": 512,
+      "official_published_scores": {
+        "mteb_multilingual_avg": "Not Reported in Card",
+        "tr_mteb_retrieval_avg": "Not Reported",
+        "tr_mteb_sts_spearman": "Not Reported",
+        "tr_mteb_clustering_nmi": "Not Reported"
+      },
+      "verified_source": "https://huggingface.co/intfloat/multilingual-e5-large-instruct"
+    },
+    {
+      "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "parameters": "117.7M",
+      "embedding_dimension": 384,
+      "max_context_length": 128,
+      "official_published_scores": {
+        "mteb_multilingual_avg": "Not Reported in Card",
+        "tr_mteb_retrieval_avg": "Not Reported",
+        "tr_mteb_sts_spearman": "Not Reported",
+        "tr_mteb_clustering_nmi": "Not Reported"
+      },
+      "verified_source": "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    }
+  ]
+}

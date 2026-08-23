@@ -1,5 +1,6 @@
+import os
 from pathlib import Path
-from typing import List, Union
+from typing import List, Optional, Union
 from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -10,7 +11,7 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "development"
     DEBUG: bool = True
     APP_NAME: str = "NSosyal Pusula"
-    APP_VERSION: str = "0.1.0"
+    APP_VERSION: str = "0.2.0"
 
     HOST: str = "0.0.0.0"
     PORT: int = 8000
@@ -22,9 +23,19 @@ class Settings(BaseSettings):
         Path(__file__).resolve().parent.parent.parent / "data" / "demo_posts.json"
     )
 
-    AI_EMBEDDING_PROVIDER: str = "mock"
+    # Semantic ML Runtime Mode: "ml" (CUDA / Local Models) or "demo" (Deterministic Fallback)
+    SEMANTIC_MODE: str = os.getenv("SEMANTIC_MODE", "ml")
+    DEVICE: Optional[str] = os.getenv("DEVICE", None)  # Auto-detects cuda/cpu if None
+
+    # Model IDs for Phase 2 Production ML Architecture
+    MODEL_CLUSTERING_EMBED: str = "ytu-ce-cosmos/modernbert-tr-embed"
+    MODEL_SEARCH_EMBED: str = "intfloat/multilingual-e5-large-instruct"
+    MODEL_CONTEXT_RERANKER: str = "ytu-ce-cosmos/modernbert-tr-reranker"
+    RERANKER_TOP_K: int = 15
+
+    # Moderation & Recommendation providers
     AI_MODERATION_PROVIDER: str = "heuristic"
-    AI_RECOMMENDATION_PROVIDER: str = "rule_based"
+    AI_RECOMMENDATION_PROVIDER: str = "semantic_multi_factor"
 
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8", extra="ignore"

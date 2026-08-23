@@ -8,6 +8,8 @@ from app.adapters.json_adapter import JsonDemoAdapter
 from app.services.safety_service import SafetyService
 from app.services.context_service import ContextService
 from app.services.recommendation_service import RecommendationService
+from app.services.search_service import SearchService
+from app.ml.model_manager import ModelManager
 from app.api import health_router, api_v1_router
 
 # Configure logging
@@ -21,33 +23,39 @@ logger = logging.getLogger("nsosyal_pusula")
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifecycle initialization."""
-    logger.info("Initializing NSosyal Pusula Data Adapter and Intelligence Services...")
+    logger.info(f"Initializing {settings.APP_NAME} v{settings.APP_VERSION} (SEMANTIC_MODE='{settings.SEMANTIC_MODE}')...")
 
-    # Initialize data source adapter based on configuration
+    # 1. Initialize data source adapter
     if settings.DATA_SOURCE_TYPE == "json":
         data_adapter = JsonDemoAdapter(data_path=settings.DEMO_DATA_PATH)
     else:
-        # Fallback to demo JSON adapter if unknown
         logger.warning(
             f"Unknown DATA_SOURCE_TYPE '{settings.DATA_SOURCE_TYPE}', falling back to JsonDemoAdapter."
         )
         data_adapter = JsonDemoAdapter(data_path=settings.DEMO_DATA_PATH)
 
-    # Initialize domain services
+    # 2. Initialize ML Model Manager (Single load on GPU / CPU)
+    model_manager = ModelManager.get_instance()
+    model_manager.initialize()
+
+    # 3. Initialize domain services with injected model manager
     safety_service = SafetyService()
-    context_service = ContextService(data_adapter=data_adapter)
+    context_service = ContextService(data_adapter=data_adapter, model_manager=model_manager)
     recommendation_service = RecommendationService(
-        data_adapter=data_adapter, safety_service=safety_service
+        data_adapter=data_adapter, safety_service=safety_service, model_manager=model_manager
     )
+    search_service = SearchService(data_adapter=data_adapter, model_manager=model_manager)
 
     # Attach to application state
     app.state.data_adapter = data_adapter
+    app.state.model_manager = model_manager
     app.state.safety_service = safety_service
     app.state.context_service = context_service
     app.state.recommendation_service = recommendation_service
+    app.state.search_service = search_service
 
     logger.info(
-        f"NSosyal Pusula Backend ready. Loaded {len(data_adapter.get_posts())} demo posts."
+        f"NSosyal Pusula Backend ready. Loaded {len(data_adapter.get_posts())} posts. ML Status: {model_manager.mode} on {model_manager.device}."
     )
     yield
     logger.info("Shutting down NSosyal Pusula Backend...")
@@ -60,7 +68,7 @@ def create_app() -> FastAPI:
         version=settings.APP_VERSION,
         description=(
             "NSosyal Pusula - Yapay Zekâ Destekli Bağlam ve Şeffaf Öneri Sistemi REST API. "
-            "(TEKNOFEST 2026 Prototipi - Faz 1)"
+            "(TEKNOFEST 2026 - Faz 2B Üretim Semantik Mimarisi)"
         ),
         lifespan=lifespan,
     )

@@ -29,6 +29,11 @@ class DataSourceAdapter(ABC):
         pass
 
     @abstractmethod
+    def get_posts_by_ids(self, post_ids: List[str]) -> List[Post]:
+        """Retrieve a list of posts by their IDs."""
+        pass
+
+    @abstractmethod
     def get_topics(self) -> List[Topic]:
         """Retrieve all active discussion topics with aggregated stats."""
         pass

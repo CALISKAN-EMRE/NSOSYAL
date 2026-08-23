@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Dict, List, Optional
 from pydantic import BaseModel, Field
 
 
@@ -25,6 +25,13 @@ class SourceContext(BaseModel):
     source_type: str
     mention_count: int = 1
     reliability_note: Optional[str] = None
+    relevance_score: Optional[float] = Field(
+        default=None, description="Cross-encoder reranked semantic relevance score in [0, 1]"
+    )
+    dense_score: Optional[float] = Field(
+        default=None, description="Initial dense retrieval similarity score"
+    )
+    rank: Optional[int] = Field(default=None, description="Reranked position (1, 2, ...)")
 
 
 class ContextCard(BaseModel):
@@ -40,6 +47,12 @@ class ContextCard(BaseModel):
     total_participants: int = 0
     generated_at: str
     method: str = Field(
-        default="deterministic_aggregation",
-        description="Method used for generation: deterministic_aggregation or ai_synthesis",
+        default="semantic_clustering_and_reranking",
+        description="Method used for generation: semantic_clustering_and_reranking or deterministic_aggregation",
     )
+    semantic_cluster_id: Optional[str] = None
+    cluster_confidence: Optional[float] = None
+    pipeline_timing_ms: Optional[Dict[str, float]] = Field(
+        default=None, description="Internal pipeline execution timing breakdown in ms"
+    )
+    model_used: Optional[str] = None

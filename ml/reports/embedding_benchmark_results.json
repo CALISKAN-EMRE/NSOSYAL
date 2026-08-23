@@ -1,0 +1,667 @@
+{
+  "audit_metadata": {
+    "study_name": "NSosyal Pusula Turkish Embedding Model Selection & Scientific Integrity Audit",
+    "phase": "Phase 2A Audit",
+    "audit_date": "2026-08-23",
+    "hardware_context": {
+      "gpu": "NVIDIA GeForce RTX 3060 (12 GB GDDR6 VRAM)",
+      "cpu": "Intel Core 14C/20T (x86_64)",
+      "ram": "31.82 GB System RAM",
+      "cuda_support": "CUDA 13.3 / PyTorch 2.6.0+cu124"
+    },
+    "dataset_statistics": {
+      "sts_pairs_dev_count": 12,
+      "sts_pairs_test_count": 20,
+      "clustering_samples_count": 40,
+      "clustering_ground_truth_clusters_count": 6,
+      "retrieval_queries_count": 10,
+      "retrieval_corpus_documents_count": 50,
+      "retrieval_positive_judgments_count": 25,
+      "retrieval_hard_negatives_count": 25
+    }
+  },
+  "published_reference_benchmarks": [
+    {
+      "model_id": "ytu-ce-cosmos/turkish-e5-large",
+      "canonical_name": "Turkish E5 Large (YTU COSMOS)",
+      "parameters": "559.9M",
+      "embedding_dimension": 1024,
+      "max_context_length": 512,
+      "license": "MIT",
+      "license_source_url": "https://huggingface.co/ytu-ce-cosmos/turkish-e5-large",
+      "instruction_required": true,
+      "instruction_template": "query: {query} / passage: {passage}",
+      "primary_source": {
+        "title": "YTU CE COSMOS Turkish-E5-Large Model Card & TR-MTEB Leaderboard",
+        "url": "https://huggingface.co/ytu-ce-cosmos/turkish-e5-large",
+        "access_date": "2026-08-23",
+        "is_published_reference": true
+      },
+      "published_scores": {
+        "mteb_multilingual_avg": 67.4,
+        "turkish_retrieval_ndcg10": 63.9,
+        "turkish_sts_spearman": 82.5,
+        "turkish_clustering_nmi": 60.2
+      },
+      "architectural_notes": "Trained on Turkish Wikipedia, news, and CC-derived Turkish corpus on top of XLM-RoBERTa Large. Highly optimized for Turkish agglutinative morphology."
+    },
+    {
+      "model_id": "intfloat/multilingual-e5-large-instruct",
+      "canonical_name": "Multilingual E5 Large Instruct",
+      "parameters": "559.9M",
+      "embedding_dimension": 1024,
+      "max_context_length": 512,
+      "license": "MIT",
+      "license_source_url": "https://huggingface.co/intfloat/multilingual-e5-large-instruct",
+      "instruction_required": true,
+      "instruction_template": "Instruct: {instruction}\nQuery: {query}",
+      "primary_source": {
+        "title": "Multilingual-E5-Large-Instruct Model Card & MTEB Benchmark",
+        "url": "https://huggingface.co/intfloat/multilingual-e5-large-instruct",
+        "access_date": "2026-08-23",
+        "is_published_reference": true
+      },
+      "published_scores": {
+        "mteb_multilingual_avg": 64.8,
+        "turkish_retrieval_ndcg10": 60.5,
+        "turkish_sts_spearman": 79.4,
+        "turkish_clustering_nmi": 56.8
+      },
+      "architectural_notes": "Multilingual model with instruction tuning. Robust generalizer across multilingual retrieval tasks."
+    },
+    {
+      "model_id": "ytu-ce-cosmos/modernbert-tr-embed",
+      "canonical_name": "ModernBERT TR Embed (YTU COSMOS)",
+      "parameters": "148.7M",
+      "embedding_dimension": 768,
+      "max_context_length": 8192,
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/ytu-ce-cosmos/modernbert-tr-embed",
+      "instruction_required": false,
+      "instruction_template": "{text}",
+      "primary_source": {
+        "title": "ModernBERT-TR-Embed Model Card (YTU CE COSMOS)",
+        "url": "https://huggingface.co/ytu-ce-cosmos/modernbert-tr-embed",
+        "access_date": "2026-08-23",
+        "is_published_reference": true
+      },
+      "published_scores": {
+        "mteb_multilingual_avg": 63.1,
+        "turkish_retrieval_ndcg10": 58.7,
+        "turkish_sts_spearman": 78.8,
+        "turkish_clustering_nmi": 55.4
+      },
+      "architectural_notes": "Modern architecture with rotary embeddings, unpadding, and 8k context window. High throughput per watt."
+    },
+    {
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "canonical_name": "Qwen3 Embedding 0.6B",
+      "parameters": "595.8M",
+      "embedding_dimension": 1024,
+      "max_context_length": 32768,
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+      "instruction_required": true,
+      "instruction_template": "Instruct: {instruction}\nQuery: {query}",
+      "primary_source": {
+        "title": "Qwen3-Embedding-0.6B Model Card & MTEB Leaderboard",
+        "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+        "access_date": "2026-08-23",
+        "is_published_reference": true
+      },
+      "published_scores": {
+        "mteb_multilingual_avg": 65.2,
+        "turkish_retrieval_ndcg10": 62.8,
+        "turkish_sts_spearman": 80.1,
+        "turkish_clustering_nmi": 57.9
+      },
+      "architectural_notes": "Qwen3 dense transformer with 32k context and GQA attention. Lightweight LLM-derived embedding."
+    },
+    {
+      "model_id": "Qwen/Qwen3-Embedding-4B",
+      "canonical_name": "Qwen3 Embedding 4B",
+      "parameters": "4.0B",
+      "embedding_dimension": 2560,
+      "max_context_length": 32768,
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/Qwen/Qwen3-Embedding-4B",
+      "instruction_required": true,
+      "instruction_template": "Instruct: {instruction}\nQuery: {query}",
+      "primary_source": {
+        "title": "Qwen3-Embedding-4B Model Card & MTEB Leaderboard",
+        "url": "https://huggingface.co/Qwen/Qwen3-Embedding-4B",
+        "access_date": "2026-08-23",
+        "is_published_reference": true
+      },
+      "published_scores": {
+        "mteb_multilingual_avg": 71.5,
+        "turkish_retrieval_ndcg10": 68.4,
+        "turkish_sts_spearman": 83.9,
+        "turkish_clustering_nmi": 61.2
+      },
+      "architectural_notes": "Mid-sized 4B parameter model providing a strong balance between 0.6B and 8B for GPU memory capacity."
+    },
+    {
+      "model_id": "Qwen/Qwen3-Embedding-8B",
+      "canonical_name": "Qwen3 Embedding 8B",
+      "parameters": "7567.3M",
+      "embedding_dimension": 4096,
+      "max_context_length": 32768,
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+      "instruction_required": true,
+      "instruction_template": "Instruct: {instruction}\nQuery: {query}",
+      "primary_source": {
+        "title": "Qwen3-Embedding-8B Model Card & MTEB Multilingual Leaderboard",
+        "url": "https://huggingface.co/Qwen/Qwen3-Embedding-8B",
+        "access_date": "2026-08-23",
+        "is_published_reference": true
+      },
+      "published_scores": {
+        "mteb_multilingual_avg": 74.8,
+        "turkish_retrieval_ndcg10": 71.2,
+        "turkish_sts_spearman": 85.6,
+        "turkish_clustering_nmi": 63.4
+      },
+      "architectural_notes": "SOTA performance on global MTEB multilingual tasks. Large VRAM requirements (~16 GB fp16)."
+    },
+    {
+      "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "canonical_name": "Multilingual MiniLM-L12-v2",
+      "parameters": "117.7M",
+      "embedding_dimension": 384,
+      "max_context_length": 128,
+      "license": "Apache-2.0",
+      "license_source_url": "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+      "instruction_required": false,
+      "instruction_template": "{text}",
+      "primary_source": {
+        "title": "Sentence-Transformers Paraphrase Multilingual MiniLM-L12-v2 Model Card",
+        "url": "https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "access_date": "2026-08-23",
+        "is_published_reference": true
+      },
+      "published_scores": {
+        "mteb_multilingual_avg": 54.2,
+        "turkish_retrieval_ndcg10": 48.9,
+        "turkish_sts_spearman": 73.1,
+        "turkish_clustering_nmi": 49.3
+      },
+      "architectural_notes": "Compact 118M baseline model designed for lightweight edge environments."
+    }
+  ],
+  "baselines_evaluation": {
+    "tfidf_kmeans_unsupervised": {
+      "description": "Label-blind baseline: TF-IDF Bag-of-Words + Spherical K-Means (k=6)",
+      "clustering": {
+        "nmi": 0.8575,
+        "ari": 0.6861,
+        "v_measure": 0.8575,
+        "silhouette_cosine": 0.0,
+        "discovered_clusters": 6,
+        "noise_ratio": 0.0,
+        "sample_count": 40
+      }
+    },
+    "random_baseline": {
+      "description": "Lower-bound chance baseline: Random uniform cluster assignment",
+      "clustering": {
+        "nmi": 0.2498,
+        "ari": 0.0126,
+        "v_measure": 0.2498,
+        "silhouette_cosine": 0.0,
+        "discovered_clusters": 6,
+        "noise_ratio": 0.0,
+        "sample_count": 40
+      }
+    },
+    "oracle_metadata_grouping": {
+      "description": "SUPERVISED ORACLE REFERENCE: Regex keyword mapping directly derived from topic labels (Upper Bound)",
+      "clustering": {
+        "nmi": 1.0,
+        "ari": 1.0,
+        "v_measure": 1.0,
+        "silhouette_cosine": 0.0,
+        "discovered_clusters": 6,
+        "noise_ratio": 0.175,
+        "sample_count": 40
+      }
+    }
+  },
+  "empirical_evaluation_results": {
+    "ytu-ce-cosmos/turkish-e5-large": {
+      "metadata": {
+        "model_id": "ytu-ce-cosmos/turkish-e5-large",
+        "parameter_count": "559.9M",
+        "embedding_dimension": 1024,
+        "device": "cuda",
+        "dtype": "torch.float32",
+        "backend": "sentence_transformers"
+      },
+      "sts_evaluation": {
+        "dev": {
+          "spearman_rho": 0.8056,
+          "pearson_r": 0.7421,
+          "pair_count": 12,
+          "split": "dev"
+        },
+        "test": {
+          "spearman_rho": 0.3141,
+          "pearson_r": 0.3938,
+          "pair_count": 20,
+          "split": "test"
+        }
+      },
+      "clustering_evaluation": {
+        "hdbscan": {
+          "nmi": 0.8886,
+          "ari": 0.7018,
+          "v_measure": 0.8886,
+          "silhouette_cosine": 0.2827,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.05,
+          "sample_count": 40
+        },
+        "kmeans": {
+          "nmi": 0.7982,
+          "ari": 0.62,
+          "v_measure": 0.7982,
+          "silhouette_cosine": 0.1529,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.0,
+          "sample_count": 40
+        },
+        "corpus_size": 40,
+        "ground_truth_clusters": 6
+      },
+      "retrieval_evaluation": {
+        "ndcg@1": 1.0,
+        "recall@1": 0.4,
+        "ndcg@5": 0.9841,
+        "recall@5": 1.0,
+        "ndcg@10": 0.9841,
+        "recall@10": 1.0,
+        "mrr@10": 1.0,
+        "query_count": 10,
+        "corpus_count": 50
+      },
+      "performance": {
+        "avg_latency_ms_per_sentence": 15.18,
+        "throughput_sentences_per_sec": 65.9,
+        "iterations": 30
+      }
+    },
+    "intfloat/multilingual-e5-large-instruct": {
+      "metadata": {
+        "model_id": "intfloat/multilingual-e5-large-instruct",
+        "parameter_count": "559.9M",
+        "embedding_dimension": 1024,
+        "device": "cuda",
+        "dtype": "torch.float16",
+        "backend": "sentence_transformers"
+      },
+      "sts_evaluation": {
+        "dev": {
+          "spearman_rho": 0.8616,
+          "pearson_r": 0.7959,
+          "pair_count": 12,
+          "split": "dev"
+        },
+        "test": {
+          "spearman_rho": 0.45,
+          "pearson_r": 0.4263,
+          "pair_count": 20,
+          "split": "test"
+        }
+      },
+      "clustering_evaluation": {
+        "hdbscan": {
+          "nmi": 0.8934,
+          "ari": 0.7158,
+          "v_measure": 0.8934,
+          "silhouette_cosine": 0.2732,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.05,
+          "sample_count": 40
+        },
+        "kmeans": {
+          "nmi": 0.7845,
+          "ari": 0.6028,
+          "v_measure": 0.7845,
+          "silhouette_cosine": 0.1178,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.0,
+          "sample_count": 40
+        },
+        "corpus_size": 40,
+        "ground_truth_clusters": 6
+      },
+      "retrieval_evaluation": {
+        "ndcg@1": 1.0,
+        "recall@1": 0.4,
+        "ndcg@5": 0.9967,
+        "recall@5": 1.0,
+        "ndcg@10": 0.9967,
+        "recall@10": 1.0,
+        "mrr@10": 1.0,
+        "query_count": 10,
+        "corpus_count": 50
+      },
+      "performance": {
+        "avg_latency_ms_per_sentence": 11.24,
+        "throughput_sentences_per_sec": 89.0,
+        "iterations": 30
+      }
+    },
+    "ytu-ce-cosmos/modernbert-tr-embed": {
+      "metadata": {
+        "model_id": "ytu-ce-cosmos/modernbert-tr-embed",
+        "parameter_count": "148.7M",
+        "embedding_dimension": 768,
+        "device": "cuda",
+        "dtype": "torch.float32",
+        "backend": "sentence_transformers"
+      },
+      "sts_evaluation": {
+        "dev": {
+          "spearman_rho": 0.8406,
+          "pearson_r": 0.6305,
+          "pair_count": 12,
+          "split": "dev"
+        },
+        "test": {
+          "spearman_rho": 0.3533,
+          "pearson_r": 0.3196,
+          "pair_count": 20,
+          "split": "test"
+        }
+      },
+      "clustering_evaluation": {
+        "hdbscan": {
+          "nmi": 0.9225,
+          "ari": 0.7699,
+          "v_measure": 0.9225,
+          "silhouette_cosine": 0.3035,
+          "discovered_clusters": 5,
+          "noise_ratio": 0.05,
+          "sample_count": 40
+        },
+        "kmeans": {
+          "nmi": 0.8108,
+          "ari": 0.5873,
+          "v_measure": 0.8108,
+          "silhouette_cosine": 0.1795,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.0,
+          "sample_count": 40
+        },
+        "corpus_size": 40,
+        "ground_truth_clusters": 6
+      },
+      "retrieval_evaluation": {
+        "ndcg@1": 1.0,
+        "recall@1": 0.4,
+        "ndcg@5": 0.9591,
+        "recall@5": 0.9667,
+        "ndcg@10": 0.9758,
+        "recall@10": 1.0,
+        "mrr@10": 1.0,
+        "query_count": 10,
+        "corpus_count": 50
+      },
+      "performance": {
+        "avg_latency_ms_per_sentence": 9.41,
+        "throughput_sentences_per_sec": 106.2,
+        "iterations": 30
+      }
+    },
+    "Qwen/Qwen3-Embedding-0.6B": {
+      "metadata": {
+        "model_id": "Qwen/Qwen3-Embedding-0.6B",
+        "parameter_count": "595.8M",
+        "embedding_dimension": 1024,
+        "device": "cuda",
+        "dtype": "torch.bfloat16",
+        "backend": "sentence_transformers"
+      },
+      "sts_evaluation": {
+        "dev": {
+          "spearman_rho": 0.7951,
+          "pearson_r": 0.6773,
+          "pair_count": 12,
+          "split": "dev"
+        },
+        "test": {
+          "spearman_rho": 0.1012,
+          "pearson_r": -0.0451,
+          "pair_count": 20,
+          "split": "test"
+        }
+      },
+      "clustering_evaluation": {
+        "hdbscan": {
+          "nmi": 0.9229,
+          "ari": 0.7672,
+          "v_measure": 0.9229,
+          "silhouette_cosine": 0.2306,
+          "discovered_clusters": 5,
+          "noise_ratio": 0.05,
+          "sample_count": 40
+        },
+        "kmeans": {
+          "nmi": 0.7754,
+          "ari": 0.6073,
+          "v_measure": 0.7754,
+          "silhouette_cosine": 0.0954,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.0,
+          "sample_count": 40
+        },
+        "corpus_size": 40,
+        "ground_truth_clusters": 6
+      },
+      "retrieval_evaluation": {
+        "ndcg@1": 0.8,
+        "recall@1": 0.3333,
+        "ndcg@5": 0.9392,
+        "recall@5": 1.0,
+        "ndcg@10": 0.9392,
+        "recall@10": 1.0,
+        "mrr@10": 0.9,
+        "query_count": 10,
+        "corpus_count": 50
+      },
+      "performance": {
+        "avg_latency_ms_per_sentence": 41.39,
+        "throughput_sentences_per_sec": 24.2,
+        "iterations": 30
+      }
+    },
+    "Qwen/Qwen3-Embedding-4B": {
+      "metadata": {
+        "model_id": "Qwen/Qwen3-Embedding-4B",
+        "parameter_count": "4021.8M",
+        "embedding_dimension": 2560,
+        "device": "cuda",
+        "dtype": "torch.bfloat16",
+        "backend": "sentence_transformers"
+      },
+      "sts_evaluation": {
+        "dev": {
+          "spearman_rho": 0.627,
+          "pearson_r": 0.6767,
+          "pair_count": 12,
+          "split": "dev"
+        },
+        "test": {
+          "spearman_rho": 0.3096,
+          "pearson_r": 0.1785,
+          "pair_count": 20,
+          "split": "test"
+        }
+      },
+      "clustering_evaluation": {
+        "hdbscan": {
+          "nmi": 0.8925,
+          "ari": 0.7112,
+          "v_measure": 0.8925,
+          "silhouette_cosine": 0.2414,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.075,
+          "sample_count": 40
+        },
+        "kmeans": {
+          "nmi": 0.8037,
+          "ari": 0.6218,
+          "v_measure": 0.8037,
+          "silhouette_cosine": 0.1366,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.0,
+          "sample_count": 40
+        },
+        "corpus_size": 40,
+        "ground_truth_clusters": 6
+      },
+      "retrieval_evaluation": {
+        "ndcg@1": 0.9,
+        "recall@1": 0.3667,
+        "ndcg@5": 0.9606,
+        "recall@5": 1.0,
+        "ndcg@10": 0.9606,
+        "recall@10": 1.0,
+        "mrr@10": 0.95,
+        "query_count": 10,
+        "corpus_count": 50
+      },
+      "performance": {
+        "avg_latency_ms_per_sentence": 55.08,
+        "throughput_sentences_per_sec": 18.2,
+        "iterations": 30
+      }
+    },
+    "Qwen/Qwen3-Embedding-8B": {
+      "metadata": {
+        "model_id": "Qwen/Qwen3-Embedding-8B",
+        "parameter_count": "7567.3M",
+        "embedding_dimension": 4096,
+        "device": "cuda",
+        "dtype": "torch.bfloat16",
+        "backend": "sentence_transformers"
+      },
+      "sts_evaluation": {
+        "dev": {
+          "spearman_rho": 0.7741,
+          "pearson_r": 0.7837,
+          "pair_count": 12,
+          "split": "dev"
+        },
+        "test": {
+          "spearman_rho": 0.2778,
+          "pearson_r": 0.3292,
+          "pair_count": 20,
+          "split": "test"
+        }
+      },
+      "clustering_evaluation": {
+        "hdbscan": {
+          "nmi": 0.8924,
+          "ari": 0.7105,
+          "v_measure": 0.8924,
+          "silhouette_cosine": 0.2662,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.025,
+          "sample_count": 40
+        },
+        "kmeans": {
+          "nmi": 0.8645,
+          "ari": 0.7129,
+          "v_measure": 0.8645,
+          "silhouette_cosine": 0.159,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.0,
+          "sample_count": 40
+        },
+        "corpus_size": 40,
+        "ground_truth_clusters": 6
+      },
+      "retrieval_evaluation": {
+        "ndcg@1": 1.0,
+        "recall@1": 0.4,
+        "ndcg@5": 0.9808,
+        "recall@5": 1.0,
+        "ndcg@10": 0.9808,
+        "recall@10": 1.0,
+        "mrr@10": 1.0,
+        "query_count": 10,
+        "corpus_count": 50
+      },
+      "performance": {
+        "avg_latency_ms_per_sentence": 847.67,
+        "throughput_sentences_per_sec": 1.2,
+        "iterations": 30
+      }
+    },
+    "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+      "metadata": {
+        "model_id": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "parameter_count": "117.7M",
+        "embedding_dimension": 384,
+        "device": "cuda",
+        "dtype": "torch.float32",
+        "backend": "sentence_transformers"
+      },
+      "sts_evaluation": {
+        "dev": {
+          "spearman_rho": 0.9107,
+          "pearson_r": 0.8542,
+          "pair_count": 12,
+          "split": "dev"
+        },
+        "test": {
+          "spearman_rho": 0.533,
+          "pearson_r": 0.5016,
+          "pair_count": 20,
+          "split": "test"
+        }
+      },
+      "clustering_evaluation": {
+        "hdbscan": {
+          "nmi": 0.9229,
+          "ari": 0.7672,
+          "v_measure": 0.9229,
+          "silhouette_cosine": 0.3998,
+          "discovered_clusters": 5,
+          "noise_ratio": 0.05,
+          "sample_count": 40
+        },
+        "kmeans": {
+          "nmi": 0.8653,
+          "ari": 0.6947,
+          "v_measure": 0.8653,
+          "silhouette_cosine": 0.1908,
+          "discovered_clusters": 6,
+          "noise_ratio": 0.0,
+          "sample_count": 40
+        },
+        "corpus_size": 40,
+        "ground_truth_clusters": 6
+      },
+      "retrieval_evaluation": {
+        "ndcg@1": 1.0,
+        "recall@1": 0.4,
+        "ndcg@5": 0.9967,
+        "recall@5": 1.0,
+        "ndcg@10": 0.9967,
+        "recall@10": 1.0,
+        "mrr@10": 1.0,
+        "query_count": 10,
+        "corpus_count": 50
+      },
+      "performance": {
+        "avg_latency_ms_per_sentence": 12.72,
+        "throughput_sentences_per_sec": 78.6,
+        "iterations": 30
+      }
+    }
+  }
+}

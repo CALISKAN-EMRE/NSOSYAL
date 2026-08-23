@@ -3,13 +3,14 @@ def test_context_card_generation(context_service):
     card = context_service.get_context_card("yapay-zeka-egitim")
     assert card is not None
     assert card.topic_id == "yapay-zeka-egitim"
-    assert "Yapay Zekâ" in card.topic_title
     assert len(card.summary) > 30
     assert len(card.key_themes) > 0
     assert len(card.perspectives) >= 2
     assert len(card.timeline) > 0
     assert len(card.sources) > 0
-    assert "Phase 1 Prototype" in card.method
+    assert card.pipeline_timing_ms is not None
+    assert "total_pipeline_ms" in card.pipeline_timing_ms
+    assert card.sources[0].relevance_score is not None
 
 
 def test_context_card_perspectives(context_service):

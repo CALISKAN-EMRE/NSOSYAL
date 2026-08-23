@@ -115,6 +115,10 @@ class JsonDemoAdapter(DataSourceAdapter):
                 return post
         return None
 
+    def get_posts_by_ids(self, post_ids: List[str]) -> List[Post]:
+        id_set = set(post_ids)
+        return [p for p in self._posts_cache if p.id in id_set]
+
     def get_topics(self) -> List[Topic]:
         return sorted(
             list(self._topics_cache.values()),
