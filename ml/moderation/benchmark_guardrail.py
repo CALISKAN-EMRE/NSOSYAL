@@ -160,7 +160,9 @@ def run_test_benchmark(max_samples: int = 1000):
     os.makedirs(out_dir, exist_ok=True)
     report = {
         "model_id": ModernBERTGuardrailClassifier.MODEL_ID,
-        "dataset": "ytu-ce-cosmos/guardrail-tr (TEST split)",
+        "dataset_name": "ytu-ce-cosmos/guardrail-tr",
+        "dataset_split": "test",
+        "evaluation_scope": "Sampled subset of 1,000 held-out TEST rows (from the ~405K total dataset)",
         "sample_count": len(samples),
         "device": str(classifier.device),
         "latency_per_sample_ms": round(latency_per_sample_ms, 2),

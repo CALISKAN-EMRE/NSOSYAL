@@ -1,0 +1,38 @@
+[
+  {
+    "pipeline": "ModernBERT-TR Dense Retrieval",
+    "reranker": "None (İlk Aşama Yoğun Vektör Arama)",
+    "top_k": 15,
+    "ndcg_10": 0.9758,
+    "ndcg_5": 0.9591,
+    "recall_10": 1.0,
+    "rerank_latency_ms": 0.0
+  },
+  {
+    "pipeline": "ModernBERT-TR + ModernBERT Cross-Encoder",
+    "reranker": "ytu-ce-cosmos/modernbert-tr-reranker",
+    "top_k": 15,
+    "ndcg_10": 0.9873,
+    "ndcg_5": 0.9873,
+    "recall_10": 1.0,
+    "rerank_latency_ms": 51.06
+  },
+  {
+    "pipeline": "Multilingual-E5-Large-Instruct Dense",
+    "reranker": "None (İlk Aşama Yoğun Vektör Arama)",
+    "top_k": 15,
+    "ndcg_10": 0.9967,
+    "ndcg_5": 0.9967,
+    "recall_10": 1.0,
+    "rerank_latency_ms": 0.0
+  },
+  {
+    "pipeline": "Multilingual-E5-Large-Instruct + Cross-Encoder",
+    "reranker": "ytu-ce-cosmos/modernbert-tr-reranker",
+    "top_k": 15,
+    "ndcg_10": 0.9841,
+    "ndcg_5": 0.9841,
+    "recall_10": 1.0,
+    "rerank_latency_ms": 47.2
+  }
+]

@@ -1,0 +1,12 @@
+category_key,category_label,calibrated_threshold,precision,recall,f1,support_positives
+unsafe,Genel Güvensizlik (unsafe),0.55,0.9663,0.9107,0.9377,504
+SEXUAL_CONTENT_ADULT,Müstehcenlik / Yetişkin,0.5,0.8923,0.9508,0.9206,61
+SELF_HARM_SUICIDE,Kendine Zarar / İntihar,0.85,0.902,0.8846,0.8932,52
+HARASSMENT_OFFENSIVE,Taciz / Ağır Hakaret,0.8,0.8786,0.9005,0.8894,201
+PRIVACY_VIOLATION,Gizlilik / KVKK İhlali,0.8,0.8929,0.8621,0.8772,29
+HATE_DISCRIMINATION,Nefret / Ayrımcılık,0.65,0.8417,0.8632,0.8523,117
+INJECTION_JAILBREAK,Komut / Jailbreak,0.45,0.7843,0.8889,0.8333,45
+VIOLENT_CRIMES,Şiddet Eylemleri / Tehdit,0.8,0.7797,0.7797,0.7797,59
+NON_VIOLENT_CRIMES,Yasadışı / Finansal Suç,0.3,0.7049,0.86,0.7748,50
+CSAE,Çocuk İstismarı (CSAE),0.85,0.75,0.75,0.75,20
+MISINFORMATION_POLITICAL,Siyasi Dezenformasyon,0.35,0.7273,0.7619,0.7442,21

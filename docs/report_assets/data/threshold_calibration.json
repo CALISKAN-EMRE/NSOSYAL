@@ -1,0 +1,98 @@
+{
+  "dataset": "ytu-ce-cosmos/guardrail-tr",
+  "split_used": "validation (DEV)",
+  "objective": "Max F1 on DEV with severe harm safety margin",
+  "sample_count": 1000,
+  "per_category_thresholds": {
+    "unsafe": 0.55,
+    "VIOLENT_CRIMES": 0.8,
+    "NON_VIOLENT_CRIMES": 0.3,
+    "HATE_DISCRIMINATION": 0.65,
+    "HARASSMENT_OFFENSIVE": 0.8,
+    "SEXUAL_CONTENT_ADULT": 0.5,
+    "CSAE": 0.85,
+    "SELF_HARM_SUICIDE": 0.85,
+    "INJECTION_JAILBREAK": 0.45,
+    "MISINFORMATION_POLITICAL": 0.35,
+    "PRIVACY_VIOLATION": 0.8
+  },
+  "dev_metrics": {
+    "unsafe": {
+      "calibrated_threshold": 0.55,
+      "dev_precision": 0.9412,
+      "dev_recall": 0.9299,
+      "dev_f1": 0.9355,
+      "support": 499
+    },
+    "VIOLENT_CRIMES": {
+      "calibrated_threshold": 0.8,
+      "dev_precision": 0.8308,
+      "dev_recall": 0.7941,
+      "dev_f1": 0.812,
+      "support": 68
+    },
+    "NON_VIOLENT_CRIMES": {
+      "calibrated_threshold": 0.3,
+      "dev_precision": 0.6923,
+      "dev_recall": 0.766,
+      "dev_f1": 0.7273,
+      "support": 47
+    },
+    "HATE_DISCRIMINATION": {
+      "calibrated_threshold": 0.65,
+      "dev_precision": 0.7818,
+      "dev_recall": 0.8958,
+      "dev_f1": 0.835,
+      "support": 96
+    },
+    "HARASSMENT_OFFENSIVE": {
+      "calibrated_threshold": 0.8,
+      "dev_precision": 0.89,
+      "dev_recall": 0.9347,
+      "dev_f1": 0.9118,
+      "support": 199
+    },
+    "SEXUAL_CONTENT_ADULT": {
+      "calibrated_threshold": 0.5,
+      "dev_precision": 0.8718,
+      "dev_recall": 0.9444,
+      "dev_f1": 0.9067,
+      "support": 72
+    },
+    "CSAE": {
+      "calibrated_threshold": 0.85,
+      "dev_precision": 0.6111,
+      "dev_recall": 1.0,
+      "dev_f1": 0.7586,
+      "support": 11
+    },
+    "SELF_HARM_SUICIDE": {
+      "calibrated_threshold": 0.85,
+      "dev_precision": 0.9365,
+      "dev_recall": 0.9833,
+      "dev_f1": 0.9593,
+      "support": 60
+    },
+    "INJECTION_JAILBREAK": {
+      "calibrated_threshold": 0.45,
+      "dev_precision": 0.7973,
+      "dev_recall": 0.9365,
+      "dev_f1": 0.8613,
+      "support": 63
+    },
+    "MISINFORMATION_POLITICAL": {
+      "calibrated_threshold": 0.35,
+      "dev_precision": 1.0,
+      "dev_recall": 0.875,
+      "dev_f1": 0.9333,
+      "support": 16
+    },
+    "PRIVACY_VIOLATION": {
+      "calibrated_threshold": 0.8,
+      "dev_precision": 0.7692,
+      "dev_recall": 0.9524,
+      "dev_f1": 0.8511,
+      "support": 21
+    }
+  }
+}

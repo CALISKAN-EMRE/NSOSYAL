@@ -17,7 +17,7 @@ in Turkish social media contexts. It is NOT human-annotated organic platform dat
 import os
 import json
 import numpy as np
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import List, Dict, Any
 
 from backend.app.moderation.base import (
@@ -191,22 +191,23 @@ def run_sanity_evaluation(use_ml_model: bool = True):
         print(f"  Scores: Unsafe={r_vec.overall_unsafe_probability:.2f}, Spam={r_vec.spam_score:.2f}, Repetition={r_vec.repetition_score:.2f}, Coord={r_vec.suspected_coordination_score:.2f}")
         print(f"  Explanation: {r_vec.summary_explanation}")
 
-    accuracy = (correct_review_flags / total_samples) * 100.0
+    passed_count = correct_review_flags
     print("\n" + "=" * 70)
-    print(f"SANITY BENCHMARK ACCURACY: {correct_review_flags}/{total_samples} ({accuracy:.1f}%)")
+    print(f"CONTROLLED SANITY SCENARIOS PASSED: {passed_count}/{total_samples} ({(passed_count/total_samples)*100:.1f}%)")
     print("=" * 70)
 
     out_file = "ml/evaluation/results/sanity_moderation_evaluation.json"
     os.makedirs(os.path.dirname(out_file), exist_ok=True)
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump({
-            "timestamp": datetime.utcnow().isoformat(),
-            "total_samples": total_samples,
-            "accuracy_percent": round(accuracy, 2),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "total_controlled_scenarios": total_samples,
+            "scenarios_passed": passed_count,
+            "pass_rate_percent": round((passed_count / total_samples) * 100.0, 2),
             "results": results
         }, f, ensure_ascii=False, indent=2)
 
-    return accuracy
+    return passed_count
 
 
 if __name__ == "__main__":

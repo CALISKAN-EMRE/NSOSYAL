@@ -1,0 +1,5 @@
+pipeline,reranker,top_k,ndcg_10,ndcg_5,recall_10,rerank_latency_ms
+ModernBERT-TR Dense Retrieval,None (İlk Aşama Yoğun Vektör Arama),15,0.9758,0.9591,1.0,0.0
+ModernBERT-TR + ModernBERT Cross-Encoder,ytu-ce-cosmos/modernbert-tr-reranker,15,0.9873,0.9873,1.0,51.06
+Multilingual-E5-Large-Instruct Dense,None (İlk Aşama Yoğun Vektör Arama),15,0.9967,0.9967,1.0,0.0
+Multilingual-E5-Large-Instruct + Cross-Encoder,ytu-ce-cosmos/modernbert-tr-reranker,15,0.9841,0.9841,1.0,47.2

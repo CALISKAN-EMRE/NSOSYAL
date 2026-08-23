@@ -1,0 +1,62 @@
+[
+  {
+    "model_id": "ytu-ce-cosmos/modernbert-tr-embed",
+    "model_name": "ModernBERT-TR-Embed (Primary)",
+    "nmi": 0.8148,
+    "ari": 0.672,
+    "latency_ms": 1.7,
+    "vram_gb": 0.58,
+    "parameters_m": 149,
+    "license": "Apache-2.0"
+  },
+  {
+    "model_id": "intfloat/multilingual-e5-large-instruct",
+    "model_name": "mE5-Large-Instruct (Search)",
+    "nmi": 0.7712,
+    "ari": 0.598,
+    "latency_ms": 6.96,
+    "vram_gb": 2.15,
+    "parameters_m": 560,
+    "license": "MIT"
+  },
+  {
+    "model_id": "intfloat/multilingual-e5-base",
+    "model_name": "mE5-Base (Fallback)",
+    "nmi": 0.7289,
+    "ari": 0.534,
+    "latency_ms": 2.37,
+    "vram_gb": 1.07,
+    "parameters_m": 278,
+    "license": "MIT"
+  },
+  {
+    "model_id": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+    "model_name": "Paraphrase-Multilingual-MPNet",
+    "nmi": 0.6974,
+    "ari": 0.481,
+    "latency_ms": 2.45,
+    "vram_gb": 1.07,
+    "parameters_m": 278,
+    "license": "Apache-2.0"
+  },
+  {
+    "model_id": "emrecan/bert-base-turkish-cased-mean-nli-stsb-tr",
+    "model_name": "BERT-Base-Turkish-STSb-TR",
+    "nmi": 0.612,
+    "ari": 0.395,
+    "latency_ms": 2.21,
+    "vram_gb": 0.44,
+    "parameters_m": 110,
+    "license": "MIT"
+  },
+  {
+    "model_id": "ytu-ce-cosmos/turkish-base-bert-uncased",
+    "model_name": "Turkish-Base-BERT-Uncased",
+    "nmi": 0.4985,
+    "ari": 0.281,
+    "latency_ms": 2.23,
+    "vram_gb": 0.44,
+    "parameters_m": 110,
+    "license": "Apache-2.0"
+  }
+]

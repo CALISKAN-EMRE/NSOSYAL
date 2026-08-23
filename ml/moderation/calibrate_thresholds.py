@@ -166,6 +166,7 @@ def calibrate_thresholds(max_samples: int = 1000):
     payload = {
         "dataset": "ytu-ce-cosmos/guardrail-tr",
         "split_used": "validation (DEV)",
+        "calibration_scope": "Sampled subset of 1,000 validation (DEV) rows (from ~405K total dataset)",
         "objective": "Max F1 on DEV with severe harm safety margin",
         "sample_count": len(samples),
         "per_category_thresholds": calibrated_thresholds,

@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 720" width="100%" height="100%" style="background-color: #0F172A; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="grad-blue-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="flow-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <marker id="flow-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38BDF8"/>
+    </marker>
+    <marker id="flow-arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10B981"/>
+    </marker>
+    <marker id="flow-arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#A855F7"/>
+    </marker>
+  </defs>
+
+  <!-- Main Title -->
+  <text x="575" y="40" text-anchor="middle" fill="#F8FAFC" font-size="20" font-weight="800">NSOSYAL PUSULA — KULLANICI AKIŞ DİYAGRAMI</text>
+  <text x="575" y="62" text-anchor="middle" fill="#94A3B8" font-size="12">3 Temel Kullanıcı Deneyimi Döngüsü: Bağlam Keşfi, Şeffaf Öneri ve Moderasyon Denetimi</text>
+
+  <!-- FLOW A: CONTEXT DISCOVERY -->
+  <g transform="translate(40, 90)" filter="url(#flow-shadow)">
+    <rect width="1070" height="170" rx="14" fill="#1E293B" stroke="#0284C7" stroke-width="1.5"/>
+    <rect width="1070" height="28" rx="14" fill="#0369A1"/>
+    <rect y="14" width="1070" height="14" fill="#0369A1"/>
+    <text x="20" y="19" fill="#FFFFFF" font-size="11.5" font-weight="700">AKIŞ A: BAĞLAM VE PERSPEKTİF KEŞFİ (Context Discovery Flow)</text>
+
+    <!-- Step A1 -->
+    <g transform="translate(25, 45)">
+      <rect width="160" height="100" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+      <text x="80" y="24" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="700">1. Akışta Gezinme</text>
+      <text x="80" y="48" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Kullanıcı akışta</text>
+      <text x="80" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">bir gönderi görür</text>
+      <text x="80" y="85" text-anchor="middle" fill="#FBBF24" font-size="9" font-weight="600">"Bağlamı Gör" Butonu</text>
+    </g>
+
+    <path d="M 190 95 L 225 95" stroke="#38BDF8" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+    <!-- Step A2 -->
+    <g transform="translate(235, 45)">
+      <rect width="175" height="100" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+      <text x="87" y="24" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="700">2. Anlamsal Küme</text>
+      <text x="87" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">ModernBERT + HDBSCAN</text>
+      <text x="87" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Gönderinin ait olduğu</text>
+      <text x="87" y="82" text-anchor="middle" fill="#CBD5E1" font-size="9.5">anlamsal küme yüklenir</text>
+    </g>
+
+    <path d="M 415 95 L 450 95" stroke="#38BDF8" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+    <!-- Step A3 -->
+    <g transform="translate(460, 45)">
+      <rect width="180" height="100" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+      <text x="90" y="24" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="700">3. Bağlam Kartı Açılır</text>
+      <text x="90" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Dinamik c-TF-IDF Başlık</text>
+      <text x="90" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Tartışma Özeti &amp;</text>
+      <text x="90" y="82" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Küme Üyelik Skoru</text>
+    </g>
+
+    <path d="M 645 95 L 680 95" stroke="#38BDF8" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+    <!-- Step A4 -->
+    <g transform="translate(690, 45)">
+      <rect width="170" height="100" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+      <text x="85" y="24" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="700">4. Perspektif Ayrıştırma</text>
+      <text x="85" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Lehte / Aleyhte / Nötr</text>
+      <text x="85" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Sekmeler arası geçiş &amp;</text>
+      <text x="85" y="82" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Temsilci kanıt alıntıları</text>
+    </g>
+
+    <path d="M 865 95 L 900 95" stroke="#38BDF8" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+    <!-- Step A5 -->
+    <g transform="translate(910, 45)">
+      <rect width="145" height="100" rx="8" fill="#0F172A" stroke="#38BDF8" stroke-width="1"/>
+      <text x="72" y="24" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="700">5. Güvenilir Kaynak</text>
+      <text x="72" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Reranker onaylı</text>
+      <text x="72" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">doğrulanmış kaynak</text>
+      <text x="72" y="82" text-anchor="middle" fill="#CBD5E1" font-size="9.5">&amp; referans bağlantı</text>
+    </g>
+  </g>
+
+  <!-- FLOW B: TRANSPARENT RECOMMENDATION -->
+  <g transform="translate(40, 290)" filter="url(#flow-shadow)">
+    <rect width="1070" height="170" rx="14" fill="#1E293B" stroke="#059669" stroke-width="1.5"/>
+    <rect width="1070" height="28" rx="14" fill="#047857"/>
+    <rect y="14" width="1070" height="14" fill="#047857"/>
+    <text x="20" y="19" fill="#FFFFFF" font-size="11.5" font-weight="700">AKIŞ B: ŞEFFAF VE AÇIKLANABİLİR ÖNERİ (Explainable Recommendation Flow)</text>
+
+    <!-- Step B1 -->
+    <g transform="translate(25, 45)">
+      <rect width="165" height="100" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+      <text x="82" y="24" text-anchor="middle" fill="#34D399" font-size="11" font-weight="700">1. Kişiselleştirilmiş Akış</text>
+      <text x="82" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Kullanıcı ilgi profiliyle</text>
+      <text x="82" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">eşleşen gönderi sunulur</text>
+      <text x="82" y="85" text-anchor="middle" fill="#34D399" font-size="9" font-weight="600">Rozet: "%75 İlgi Uyumu"</text>
+    </g>
+
+    <path d="M 195 95 L 235 95" stroke="#10B981" stroke-width="2" marker-end="url(#flow-arrow-green)"/>
+
+    <!-- Step B2 -->
+    <g transform="translate(245, 45)">
+      <rect width="180" height="100" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+      <text x="90" y="24" text-anchor="middle" fill="#34D399" font-size="11" font-weight="700">2. Neden Bunu Görüyorum?</text>
+      <text x="90" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Kullanıcı gönderi kartındaki</text>
+      <text x="90" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">şeffaflık butonuna</text>
+      <text x="90" y="82" text-anchor="middle" fill="#CBD5E1" font-size="9.5">tıklar</text>
+    </g>
+
+    <path d="M 430 95 L 470 95" stroke="#10B981" stroke-width="2" marker-end="url(#flow-arrow-green)"/>
+
+    <!-- Step B3 -->
+    <g transform="translate(480, 45)">
+      <rect width="260" height="100" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+      <text x="130" y="24" text-anchor="middle" fill="#34D399" font-size="11" font-weight="700">3. 6 Faktörlü Skor Ayrışımı</text>
+      <text x="15" y="48" fill="#CBD5E1" font-size="9">• Anlamsal İlgi: +22.6 pt | Konu: +21.2 pt</text>
+      <text x="15" y="66" fill="#CBD5E1" font-size="9">• Güncellik: +20.0 pt | Çeşitlilik: +11.2 pt</text>
+      <text x="15" y="84" fill="#CBD5E1" font-size="9">• Spam / Tekrar Cezaları: -0.0 pt</text>
+    </g>
+
+    <path d="M 745 95 L 785 95" stroke="#10B981" stroke-width="2" marker-end="url(#flow-arrow-green)"/>
+
+    <!-- Step B4 -->
+    <g transform="translate(795, 45)">
+      <rect width="255" height="100" rx="8" fill="#0F172A" stroke="#10B981" stroke-width="1"/>
+      <text x="127" y="24" text-anchor="middle" fill="#34D399" font-size="11" font-weight="700">4. Kullanıcı Denetimi</text>
+      <text x="127" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Doğrulanmış gerekçe metni</text>
+      <text x="127" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Geri bildirim butonları:</text>
+      <text x="127" y="85" text-anchor="middle" fill="#FBBF24" font-size="9" font-weight="600">[Daha Çok Gör] | [Daha Az Gör]</text>
+    </g>
+  </g>
+
+  <!-- FLOW C: MODERATION & RISK AUDIT -->
+  <g transform="translate(40, 490)" filter="url(#flow-shadow)">
+    <rect width="1070" height="170" rx="14" fill="#1E293B" stroke="#7C3AED" stroke-width="1.5"/>
+    <rect width="1070" height="28" rx="14" fill="#6D28D9"/>
+    <rect y="14" width="1070" height="14" fill="#6D28D9"/>
+    <text x="20" y="19" fill="#FFFFFF" font-size="11.5" font-weight="700">AKIŞ C: ŞEFFAF İÇERİK GÜVENLİĞİ VE MODERASYON DENETİMİ (Moderation &amp; Risk Audit Flow)</text>
+
+    <!-- Step C1 -->
+    <g transform="translate(25, 45)">
+      <rect width="165" height="100" rx="8" fill="#0F172A" stroke="#A855F7" stroke-width="1"/>
+      <text x="82" y="24" text-anchor="middle" fill="#C084FC" font-size="11" font-weight="700">1. Metin Girişi</text>
+      <text x="82" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Kullanıcı veya denetçi</text>
+      <text x="82" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">metni gönderir ya da</text>
+      <text x="82" y="82" text-anchor="middle" fill="#CBD5E1" font-size="9.5">hazır senaryo seçer</text>
+    </g>
+
+    <path d="M 195 95 L 235 95" stroke="#A855F7" stroke-width="2" marker-end="url(#flow-arrow-purple)"/>
+
+    <!-- Step C2 -->
+    <g transform="translate(245, 45)">
+      <rect width="190" height="100" rx="8" fill="#0F172A" stroke="#A855F7" stroke-width="1"/>
+      <text x="95" y="24" text-anchor="middle" fill="#C084FC" font-size="11" font-weight="700">2. Çok Boyutlu Analiz</text>
+      <text x="15" y="46" fill="#CBD5E1" font-size="9">• ModernBERT Guardrail (11 Sınıf)</text>
+      <text x="15" y="64" fill="#CBD5E1" font-size="9">• Spam / TLD / Link Yoğunluğu</text>
+      <text x="15" y="82" fill="#CBD5E1" font-size="9">• Koordinasyon &amp; Kopya Şablon</text>
+    </g>
+
+    <path d="M 440 95 L 475 95" stroke="#A855F7" stroke-width="2" marker-end="url(#flow-arrow-purple)"/>
+
+    <!-- Step C3 -->
+    <g transform="translate(485, 45)">
+      <rect width="230" height="100" rx="8" fill="#0F172A" stroke="#A855F7" stroke-width="1"/>
+      <text x="115" y="24" text-anchor="middle" fill="#C084FC" font-size="11" font-weight="700">3. Eşik Karşılaştırma &amp; Füzyon</text>
+      <text x="115" y="46" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Kalibre Edilmiş Eşikler (DEV)</text>
+      <text x="115" y="64" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Bileşik Risk Skoru Hesaplanır</text>
+      <text x="115" y="82" text-anchor="middle" fill="#CBD5E1" font-size="9.5">Öncelik: LOW / MED / HIGH / CRIT</text>
+    </g>
+
+    <path d="M 720 95 L 755 95" stroke="#A855F7" stroke-width="2" marker-end="url(#flow-arrow-purple)"/>
+
+    <!-- Step C4 -->
+    <g transform="translate(765, 45)">
+      <rect width="285" height="100" rx="8" fill="#0F172A" stroke="#A855F7" stroke-width="1"/>
+      <text x="142" y="24" text-anchor="middle" fill="#C084FC" font-size="11" font-weight="700">4. Şeffaf Çıktı &amp; İnceleme Kararı</text>
+      <text x="15" y="46" fill="#CBD5E1" font-size="9">• İnsan Moderatör İnceleme Önerisi</text>
+      <text x="15" y="64" fill="#CBD5E1" font-size="9">• Gerekçeli Türkçe Risk Açıklaması</text>
+      <text x="15" y="82" fill="#CBD5E1" font-size="9">• Asla otomatik kesin sansür uygulanmaz</text>
+    </g>
+  </g>
+</svg>

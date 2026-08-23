@@ -1,0 +1,22 @@
+[
+  {
+    "stage": "Faz 2B İlk Canlı Çıktı (Ham Demo)",
+    "corpus_size": 12,
+    "discovered_clusters": 2,
+    "nmi": 0.521,
+    "ari": 0.312,
+    "v_measure": 0.521,
+    "outlier_ratio_percent": 33.3,
+    "titling_method": "Statik/Ham Kelime Birleştirme"
+  },
+  {
+    "stage": "Faz 2B Güçlendirilmiş Pipeline (Hardened)",
+    "corpus_size": 50,
+    "discovered_clusters": 9,
+    "nmi": 0.8086,
+    "ari": 0.6591,
+    "v_measure": 0.8086,
+    "outlier_ratio_percent": 0.0,
+    "titling_method": "Dinamik c-TF-IDF Ayırt Edici N-Gram"
+  }
+]
