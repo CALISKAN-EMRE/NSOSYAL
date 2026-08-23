@@ -15,12 +15,12 @@ from app.ml.model_manager import ModelManager
 
 
 class RecommendationService:
-    """Explainable Recommendation Engine (Phase 2B Production Architecture).
+    """Explainable Recommendation Engine (Phase 2B Hardened Architecture).
 
     Multi-factor Transparent Scoring Formula:
     Score = (w1*SemanticInterest + w2*TopicAffinity + w3*Recency + w4*Diversity) - (w5*Repetition + w6*SafetyRisk)
     
-    Generates transparent, mathematically verifiable 'Neden bunu görüyorum?' breakdowns for every item.
+    Generates transparent, strictly grounded 'Neden bunu görüyorum?' breakdowns for every item.
     """
 
     def __init__(
@@ -48,7 +48,6 @@ class RecommendationService:
         recommended: List[RecommendedPost] = []
 
         for post in all_posts:
-            # 1. Calculate factor scores
             explanation = self.explain_post_recommendation(
                 post=post,
                 user_interests=user_interests,
@@ -90,16 +89,15 @@ class RecommendationService:
         preferred_topic_id: Optional[str] = None,
         all_posts: Optional[List[Post]] = None,
     ) -> RecommendationExplanation:
-        """Calculate mathematical and natural-language explanation breakdown for a single post."""
+        """Calculate mathematical and strictly grounded explanation breakdown for a single post."""
         self.model_manager.initialize()
 
-        # Factor 1: Semantic Interest Match using Real Embeddings (w = 30)
+        # Factor 1: Semantic Interest Match using ModernBERT Embeddings (w = 30)
         if self.model_manager.similarity_service:
             interest_raw = self.model_manager.similarity_service.compute_profile_similarity(
                 user_interests=user_interests, post_text=post.text, post_tags=post.tags
             )
         else:
-            # Heuristic tag match fallback
             overlap = sum(
                 1 for tag in post.tags if any(ui.lower() in tag.lower() for ui in user_interests)
             )
@@ -113,7 +111,7 @@ class RecommendationService:
             post.topic_id == preferred_topic_id or preferred_topic_id in post.topic_id
         ):
             affinity_raw = 1.0
-        elif post.topic_id in ["yapay-zeka-egitim", "acik-kaynak-yazilim", "semantic-cluster-1", "semantic-cluster-2"]:
+        elif post.topic_id in ["yapay-zeka-egitim", "acik-kaynak-kamu", "sarj-istasyonlari", "semantic-cluster-1", "semantic-cluster-2"]:
             affinity_raw = 0.85
         else:
             affinity_raw = 0.5
@@ -153,7 +151,7 @@ class RecommendationService:
         negative_total = abs(rep_impact) + abs(safety_impact)
         final_score = max(0.0, min(100.0, round(positive_total - negative_total, 1)))
 
-        mode_label = "ModernBERT Embedding Cosine" if self.model_manager.mode == "ml" else "Demo Heuristic"
+        mode_label = "ModernBERT Vektör Benzerliği" if self.model_manager.mode == "ml" else "Demo Sezgisel Eşleşme"
 
         factors = [
             ScoreFactor(
@@ -163,7 +161,7 @@ class RecommendationService:
                 raw_score=round(interest_raw, 2),
                 weighted_impact=round(interest_impact, 1),
                 is_penalty=False,
-                explanation=f"İlgi profilinizle anlamsal vektör yakınlığı: %{interest_raw * 100:.0f}.",
+                explanation=f"Seçili ilgi alanlarınızla anlamsal profil benzerliği: %{interest_raw * 100:.0f}.",
             ),
             ScoreFactor(
                 factor_name="topic_affinity",
@@ -181,7 +179,7 @@ class RecommendationService:
                 raw_score=round(recency_raw, 2),
                 weighted_impact=round(recency_impact, 1),
                 is_penalty=False,
-                explanation="Gönderinin yayınlanma zamanı ve tazelik katsayısı.",
+                explanation="Gönderinin yayınlanma tazeliği ve zaman sönümleme puanı.",
             ),
             ScoreFactor(
                 factor_name="diversity_boost",
@@ -217,7 +215,13 @@ class RecommendationService:
         ]
 
         summary_reason = self._generate_summary_reason(
-            interest_raw, safety_risk_raw, rep_raw, post.topic_title
+            interest_raw=interest_raw,
+            affinity_raw=affinity_raw,
+            recency_raw=recency_raw,
+            diversity_raw=diversity_raw,
+            safety_risk_raw=safety_risk_raw,
+            rep_raw=rep_raw,
+            topic_title=post.topic_title,
         )
 
         return RecommendationExplanation(
@@ -241,12 +245,30 @@ class RecommendationService:
     def _generate_summary_reason(
         self,
         interest_raw: float,
+        affinity_raw: float,
+        recency_raw: float,
+        diversity_raw: float,
         safety_risk_raw: float,
         rep_raw: float,
         topic_title: str,
     ) -> str:
-        if safety_risk_raw > 0.6 or rep_raw > 0.6:
-            return "Bu gönderi yüksek oranda spam veya tekrar sinyali içerdiği için puanı düşürülmüştür."
-        if interest_raw >= 0.7:
-            return f"Bu gönderi '{topic_title}' alanındaki anlamsal ilgi profiliniz ve yüksek etkileşim potansiyeliyle eşleştiği için önerilmektedir."
-        return f"'{topic_title}' başlığındaki dengeli bakış açılarını ve güncel gelişmeleri keşfetmeniz için akışınıza eklendi."
+        """Generate strictly grounded explanation prose based ONLY on evaluated factors."""
+        # Check penalties first
+        if safety_risk_raw >= 0.40:
+            return f"Bu gönderi güvenlik risk sinyali (%{safety_risk_raw*100:.0f}) içerdiği için cezalandırılmıştır."
+        if rep_raw >= 0.40:
+            return f"Bu gönderi tekrarlı bot/spam örüntüsü (%{rep_raw*100:.0f}) tespit edildiği için cezalandırılmıştır."
+
+        reasons = []
+        if interest_raw >= 0.65:
+            reasons.append(f"ilgi profilinizle yüksek anlamsal benzerlik (%{interest_raw*100:.0f})")
+        if affinity_raw >= 0.80:
+            reasons.append(f"'{topic_title}' kategorisi yakınlığı")
+        if diversity_raw >= 0.70:
+            reasons.append("farklı uzman/eleştirel bakış açısı ödülü")
+        if recency_raw >= 0.75:
+            reasons.append("içerik güncelliği")
+
+        if reasons:
+            return f"Bu gönderi {', '.join(reasons)} faktörleri doğrultusunda önerilmektedir."
+        return f"'{topic_title}' kategorisindeki güncel ve dengeli paylaşımları keşfetmeniz için önerilmektedir."

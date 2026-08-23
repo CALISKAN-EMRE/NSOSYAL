@@ -47,19 +47,22 @@ export const ContextCardModal: React.FC<ContextCardModalProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400">
-                  Bağlam Kartı (Context Card)
-                </span>
-                {card?.semantic_cluster_id && (
-                  <span className="rounded bg-indigo-950/70 px-2 py-0.5 text-[10px] text-indigo-300 border border-indigo-700/50 font-mono">
-                    {card.semantic_cluster_id}
+                <div className="flex items-center gap-2">
+                  <span className="rounded-md bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-400 border border-indigo-500/20">
+                    {card?.semantic_cluster_id || "Semantik Bağlam Kartı"}
                   </span>
-                )}
-                {card?.cluster_confidence !== undefined && (
-                  <span className="rounded bg-emerald-950/70 px-2 py-0.5 text-[10px] text-emerald-300 border border-emerald-700/50 font-semibold">
-                    Küme Güveni: %{(card.cluster_confidence * 100).toFixed(0)}
-                  </span>
-                )}
+                  {card?.cluster_confidence !== undefined && (
+                    <span className="rounded-md bg-slate-800 px-2 py-0.5 text-xs font-medium text-slate-300 border border-slate-700">
+                      Küme Üyelik Skoru: %{(card.cluster_confidence * 100).toFixed(0)}
+                    </span>
+                  )}
+                  {card?.gated_spam_candidates_count !== undefined && card.gated_spam_candidates_count > 0 && (
+                    <span className="rounded-md bg-amber-950/60 px-2 py-0.5 text-xs font-medium text-amber-300 border border-amber-800/50 flex items-center gap-1">
+                      <ShieldAlert className="w-3 h-3" />
+                      {card.gated_spam_candidates_count} Spam Aday Elendi
+                    </span>
+                  )}
+                </div>
               </div>
               <h2 className="text-lg font-bold text-slate-100 mt-0.5">
                 {card?.topic_title || "Konu Bağlamı"}

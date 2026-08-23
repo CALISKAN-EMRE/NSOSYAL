@@ -31,10 +31,11 @@ class Settings(BaseSettings):
     MODEL_CLUSTERING_EMBED: str = "ytu-ce-cosmos/modernbert-tr-embed"
     MODEL_SEARCH_EMBED: str = "intfloat/multilingual-e5-large-instruct"
     MODEL_CONTEXT_RERANKER: str = "ytu-ce-cosmos/modernbert-tr-reranker"
+    MODEL_GUARDRAIL: str = "ytu-ce-cosmos/modernbert-tr-guardrail"
     RERANKER_TOP_K: int = 15
 
     # Moderation & Recommendation providers
-    AI_MODERATION_PROVIDER: str = "heuristic"
+    AI_MODERATION_PROVIDER: str = "modernbert_guardrail"
     AI_RECOMMENDATION_PROVIDER: str = "semantic_multi_factor"
 
     model_config = SettingsConfigDict(

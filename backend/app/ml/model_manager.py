@@ -36,6 +36,17 @@ class ModelManager:
         self.is_initialized: bool = False
         self.error_detail: Optional[str] = None
 
+    @property
+    def is_gpu_accelerated(self) -> bool:
+        return (self.device or "").startswith("cuda")
+
+    @property
+    def cuda_vram_gb(self) -> float:
+        import torch
+        if torch.cuda.is_available():
+            return round(torch.cuda.memory_allocated() / (1024**3), 2)
+        return 0.0
+
     @classmethod
     def get_instance(cls) -> "ModelManager":
         if cls._instance is None:
@@ -76,7 +87,15 @@ class ModelManager:
                     model_id=settings.MODEL_CONTEXT_RERANKER, device=self.device
                 )
 
-                # 4. Composite Services
+                # 4. ModernBERT TR Guardrail (Moderation & Safety)
+                logger.info(f"Loading guardrail classifier model: {settings.MODEL_GUARDRAIL}")
+                from backend.app.moderation.guardrail_classifier import ModernBERTGuardrailClassifier
+                from backend.app.moderation.fusion_service import ModerationFusionService
+
+                self.guardrail_classifier = ModernBERTGuardrailClassifier(device=self.device)
+                self.moderation_service = ModerationFusionService(classifier=self.guardrail_classifier)
+
+                # 5. Composite Services
                 self.cluster_service = SemanticClusterService(
                     embedding_service=self.clustering_embedder, min_cluster_size=3
                 )
@@ -102,6 +121,10 @@ class ModelManager:
         self.clustering_embedder = DemoEmbeddingService(dimension=384, model_name="demo-wordhash-384")
         self.search_embedder = DemoEmbeddingService(dimension=384, model_name="demo-wordhash-search")
         self.context_reranker = DemoRerankerService()
+        from backend.app.moderation.guardrail_classifier import DemoGuardrailClassifier
+        from backend.app.moderation.fusion_service import ModerationFusionService
+        self.guardrail_classifier = DemoGuardrailClassifier()
+        self.moderation_service = ModerationFusionService(classifier=self.guardrail_classifier)
         self.cluster_service = DemoClusterService()
         self.similarity_service = SemanticSimilarityService(embedding_service=self.clustering_embedder)
         self.is_initialized = True
@@ -124,6 +147,7 @@ class ModelManager:
                 "clustering_model": settings.MODEL_CLUSTERING_EMBED if self.mode == "ml" else "demo_baseline",
                 "search_model": settings.MODEL_SEARCH_EMBED if self.mode == "ml" else "demo_baseline",
                 "reranker_model": settings.MODEL_CONTEXT_RERANKER if self.mode == "ml" else "demo_baseline",
+                "guardrail_model": settings.MODEL_GUARDRAIL if self.mode == "ml" else "demo_baseline",
             },
             "error_detail": self.error_detail,
         }

@@ -3,264 +3,1911 @@
     "id": "post-001",
     "author": {
       "id": "user-101",
-      "name": "Prof. Dr. Bilge Kaya",
-      "handle": "@bilgek_akademi",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=bilge",
-      "badge": "Eğitim Araştırmacısı"
+      "name": "Prof. Dr. Ahmet Yılmaz",
+      "handle": "@ayilmaz_bilisim",
+      "badge": "academic"
     },
-    "text": "Üniversitelerde yapay zekâ destekli kişiselleştirilmiş öğrenme sistemleri pilot olarak başlatıldı. İlk bulgular, öğrencilerin karmaşık konseptleri kavramasında %35'lik bir hızlanma olduğunu gösteriyor. Ancak eleştirel düşünme becerilerini zayıflatmaması için müfredat dengesi şart.",
-    "created_at": "2026-08-23T10:15:00Z",
+    "text": "Eğitimde üretken yapay zekâ araçlarının kullanımı artık kaçınılmaz. Ancak öğretmenlerin rehberlik rolü her zamankinden daha kritik. Ezberci değil sorgulayıcı ödev modelleri geliştirmeliyiz.",
+    "created_at": "2026-08-23T08:30:00Z",
     "topic_id": "yapay-zeka-egitim",
-    "topic_title": "Yapay Zekâ ve Eğitimde Dönüşüm",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
     "source_type": "academic",
-    "perspective": "supportive_cautious",
-    "tags": ["YapayZeka", "Eğitim", "GeleceğinOkulu", "Akademi"],
+    "perspective": "supportive",
+    "tags": [
+      "YapayZeka",
+      "Eğitim",
+      "Gelecek",
+      "Pedagoji"
+    ],
     "metrics": {
-      "likes": 428,
-      "reposts": 86,
-      "replies": 34
-    }
+      "likes": 1240,
+      "reposts": 412,
+      "replies": 89
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-002",
     "author": {
       "id": "user-102",
-      "name": "Deniz Arda",
-      "handle": "@denizardaa",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=deniz",
-      "badge": "Öğrenci Temsilcisi"
+      "name": "Milli Eğitim Politikaları Rehberi (Sentetik Demo)",
+      "handle": "@demo_meb_politikasi",
+      "badge": "official"
     },
-    "text": "Yapay zekâ araçlarının sınav değerlendirmesinde kullanılması etik açıdan büyük riskler taşıyor. Ödevlerimizin bir algoritma tarafından puanlanması şeffaflıktan uzak ve itiraz mekanizması belirsiz. Bu aceleci uygulamayı durdurmalıyız.",
-    "created_at": "2026-08-23T11:00:00Z",
+    "text": "K12 okullarımızda güvenli ve etik yapay zekâ kullanımı için hazırlanan 'Öğretmen ve Öğrenci Yapay Zekâ Uygulama Rehberi' tüm il müdürlüklerimize dağıtılmıştır.",
+    "created_at": "2026-08-23T09:15:00Z",
     "topic_id": "yapay-zeka-egitim",
-    "topic_title": "Yapay Zekâ ve Eğitimde Dönüşüm",
-    "source_type": "user",
-    "perspective": "critical",
-    "tags": ["YapayZeka", "ÖğrenciHakları", "Eğitim"],
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "official_source",
+    "perspective": "neutral_fact",
+    "tags": [
+      "MEB",
+      "Eğitim",
+      "YapayZekaRehberi",
+      "Duyuru"
+    ],
     "metrics": {
-      "likes": 612,
-      "reposts": 145,
-      "replies": 89
-    }
+      "likes": 3420,
+      "reposts": 1150,
+      "replies": 145
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-003",
     "author": {
       "id": "user-103",
-      "name": "TeknoGündem Bülteni",
-      "handle": "@teknogundem_tr",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=teknogundem",
-      "badge": "Haber Bülteni"
+      "name": "Eğitimciler Dayanışma Bülteni (Sentetik Demo)",
+      "handle": "@demo_egitimciler",
+      "badge": "expert"
     },
-    "text": "Milli Eğitim ve YÖK koordinasyonunda hazırlanan 'Eğitimde Üretken YZ Etik Rehberi' kamuoyuna duyuruldu. Rehberde veri mahremiyeti, intihal kontrolleri ve öğretmen rehberliğinin zorunlu olduğu maddeler yer alıyor.",
-    "created_at": "2026-08-23T08:30:00Z",
+    "text": "Yapay zekâ tabanlı ödev takip yazılımları öğrenci mahremiyetini ve veri güvenliğini tehdit edebilir. Altyapı ve pedagojik eğitim olmadan yapılan dayatmaları doğru bulmuyoruz.",
+    "created_at": "2026-08-23T10:00:00Z",
     "topic_id": "yapay-zeka-egitim",
-    "topic_title": "Yapay Zekâ ve Eğitimde Dönüşüm",
-    "source_type": "news_outlet",
-    "perspective": "neutral_fact",
-    "tags": ["Haber", "MilliEğitim", "YapayZekaRehberi"],
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "community",
+    "perspective": "critical",
+    "tags": [
+      "EğitimSen",
+      "VeriGizliliği",
+      "Etik",
+      "ÖğrenciHakları"
+    ],
     "metrics": {
-      "likes": 980,
-      "reposts": 310,
-      "replies": 52
-    }
+      "likes": 890,
+      "reposts": 260,
+      "replies": 64
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-004",
     "author": {
       "id": "user-104",
-      "name": "Emre Canpolat",
-      "handle": "@emre_otoelektronik",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=emre",
-      "badge": "Enerji & Otomotiv Yazarı"
+      "name": "Zeynep Çelik",
+      "handle": "@zeynep_ogretmen",
+      "badge": "user"
     },
-    "text": "Şehirlerarası otoyollarda yüksek hızlı DC şarj istasyonu kurulumları geçen yıla göre %120 arttı. Artık 200 km aralıklarla ultra hızlı şarj noktasına ulaşmak mümkün. Uzun yol menzil kaygısı büyük oranda çözülüyor.",
-    "created_at": "2026-08-23T09:45:00Z",
-    "topic_id": "elektrikli-arac-altyapisi",
-    "topic_title": "Elektrikli Araçlar ve Şarj Ağı",
-    "source_type": "expert",
+    "text": "Sınıfta ChatGPT ile proje hazırlattım, öğrencilerin araştırma isteği ve fikir üretme hızı inanılmaz arttı. Yasaklamak yerine doğru komut (prompt) yazmayı öğretmeliyiz.",
+    "created_at": "2026-08-23T10:45:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "user",
     "perspective": "supportive",
-    "tags": ["ElektrikliAraç", "ŞarjAğı", "Enerji", "Sürdürülebilirlik"],
+    "tags": [
+      "EğitimTeknolojileri",
+      "PromptEngineering",
+      "Öğretmenler"
+    ],
     "metrics": {
-      "likes": 340,
-      "reposts": 55,
-      "replies": 21
-    }
+      "likes": 540,
+      "reposts": 112,
+      "replies": 43
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-005",
     "author": {
       "id": "user-105",
-      "name": "Selin Varol",
-      "handle": "@selin_surucu",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=selin",
-      "badge": "Kullanıcı"
+      "name": "Dr. Mehmet Karaca",
+      "handle": "@mkaraca_pedagoji",
+      "badge": "academic"
     },
-    "text": "Otoyollarda istasyon var ama şehir içi sitelerde ve sokaklarda şarj altyapısı hala çok yetersiz. Apartman yönetimleri priz taktırmaya izin vermiyor. Şehir içi çözümler olmadan elektrikli araca geçiş tabana yayılmaz.",
+    "text": "Öğrencilerin kompozisyon ve ödevlerinde yapay zekâ dedektörleri %30'a varan hatalı pozitif (false positive) üretiyor. Masum öğrencileri intihalle suçlama riski çok yüksek.",
     "created_at": "2026-08-23T11:20:00Z",
-    "topic_id": "elektrikli-arac-altyapisi",
-    "topic_title": "Elektrikli Araçlar ve Şarj Ağı",
-    "source_type": "user",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "academic",
     "perspective": "critical",
-    "tags": ["ElektrikliAraç", "ŞehirYaşamı", "Altyapı"],
+    "tags": [
+      "AkademikDürüstlük",
+      "YapayZeka",
+      "Eğitim"
+    ],
     "metrics": {
-      "likes": 515,
-      "reposts": 72,
-      "replies": 43
-    }
+      "likes": 1120,
+      "reposts": 380,
+      "replies": 71
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-006",
     "author": {
       "id": "user-106",
-      "name": "Enerji Piyasası Gözlemcisi",
-      "handle": "@enerji_gozlem",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=enerji",
-      "badge": "Sektörel Rapor"
+      "name": "Eğitim Teknolojileri Bülteni",
+      "handle": "@edutech_tr",
+      "badge": "news_outlet"
     },
-    "text": "EPDK verilerine göre ülke genelinde soket başına düşen elektrikli araç sayısı Avrupa ortalamasının üzerinde bir verimlilik seviyesinde (1 sokete 7.2 araç). 2026 yılı sonu hedefi 50.000 şarj noktası.",
-    "created_at": "2026-08-23T07:15:00Z",
-    "topic_id": "elektrikli-arac-altyapisi",
-    "topic_title": "Elektrikli Araçlar ve Şarj Ağı",
-    "source_type": "official_source",
+    "text": "Türkiye genelinde 50 pilot okulda yapay zekâ destekli kişiselleştirilmiş matematik öğrenme platformu test edilmeye başlandı.",
+    "created_at": "2026-08-23T12:00:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "news_outlet",
     "perspective": "neutral_fact",
-    "tags": ["EPDK", "EnerjiRaporu", "İstatistik"],
+    "tags": [
+      "EduTech",
+      "Matematik",
+      "PilotUygulama"
+    ],
     "metrics": {
-      "likes": 845,
-      "reposts": 190,
-      "replies": 16
-    }
+      "likes": 670,
+      "reposts": 140,
+      "replies": 18
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-007",
     "author": {
       "id": "user-107",
-      "name": "Dr. Taylan Özdemir",
-      "handle": "@taylan_astro",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=taylan",
-      "badge": "Astrofizikçi"
+      "name": "Canan Dağdeviren",
+      "handle": "@canan_veli",
+      "badge": "user"
     },
-    "text": "GÖKTÜRK-X yer gözlem ve araştırma uydumuzdan ilk yüksek çözünürlüklü spektral görüntüler başarıyla yer istasyonuna indirildi. Tarımsal rekolte tahmini ve kuraklık haritalamasında çığır açacak kalitede veri elde ediyoruz.",
-    "created_at": "2026-08-23T12:00:00Z",
-    "topic_id": "uzay-misyonu-bilim",
-    "topic_title": "Yer Gözlem Uydusu ve Uzay Misyonu",
-    "source_type": "academic",
-    "perspective": "supportive",
-    "tags": ["Uzay", "Uydu", "Bilim", "Gözlem"],
+    "text": "Oğlumun lise ödevlerinin tamamını yapay zekaya yaptırdığını fark ettim. Çocuk düşünmeyi bırakıyor, okulların acilen sınavları sınıf içi klasik formata çevirmesi lazım.",
+    "created_at": "2026-08-23T13:10:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "user",
+    "perspective": "critical",
+    "tags": [
+      "VeliGörüşü",
+      "EğitimSorunları",
+      "YapayZeka"
+    ],
     "metrics": {
-      "likes": 1540,
-      "reposts": 480,
-      "replies": 76
-    }
+      "likes": 920,
+      "reposts": 215,
+      "replies": 88
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-008",
     "author": {
       "id": "user-108",
-      "name": "Açık Kaynak Türkiye İnisiyatifi",
-      "handle": "@acikkaynak_tr",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=opensource",
-      "badge": "Topluluk"
+      "name": "Teknoloji ve Eğitim Derneği",
+      "handle": "@ted_dernek",
+      "badge": "expert"
     },
-    "text": "Kamu kurumlarının açık kaynak kodlu yazılımlara geçiş rehberi güncellendi. Artık kamu ihalelerinde açık kaynak alternatiflerin önceliklendirilmesi yasal teşvik kapsamına alınıyor. Geliştirici ekosistemimiz için tarihi bir fırsat!",
-    "created_at": "2026-08-23T06:45:00Z",
-    "topic_id": "acik-kaynak-yazilim",
-    "topic_title": "Açık Kaynak ve Yerli Yazılım Ekosistemi",
-    "source_type": "community",
+    "text": "Yapay zekâ ders materyali uyarlamada özel gereksinimli bireyler ve disleksi hastası öğrenciler için devrim niteliğinde kolaylıklar sağlıyor.",
+    "created_at": "2026-08-23T14:30:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "expert",
     "perspective": "supportive",
-    "tags": ["AçıkKaynak", "Yazılım", "Linux", "Geliştirici"],
+    "tags": [
+      "ÖzelEğitim",
+      "Erişilebilirlik",
+      "YapayZeka"
+    ],
     "metrics": {
-      "likes": 1210,
-      "reposts": 360,
-      "replies": 65
-    }
+      "likes": 810,
+      "reposts": 290,
+      "replies": 22
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-009",
     "author": {
       "id": "user-109",
-      "name": "BotNet Test Hesabı 1",
-      "handle": "@firsat_kampanya_99",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=bot99",
-      "badge": "Hesap"
+      "name": "Bilişim Öğretmenleri Forumu",
+      "handle": "@bilisim_ogretmen",
+      "badge": "community"
     },
-    "text": "İNANILMAZ KAZANÇ FIRSATI!!! HEMEN TIKLA VE KAZAN: http://bit.ly/bedava-hediye-2026 http://link-spam.xyz http://promo-fake.site BEDAVA BEDAVA BEDAVA!!!",
-    "created_at": "2026-08-23T13:00:00Z",
-    "topic_id": "acik-kaynak-yazilim",
-    "topic_title": "Açık Kaynak ve Yerli Yazılım Ekosistemi",
-    "source_type": "user",
-    "perspective": "neutral_fact",
-    "tags": ["Kazanç", "Fırsat", "Bedava"],
+    "text": "Bakanlığın yapay zekâ vizyonunu destekliyoruz fakat okullardaki bilişim laboratuvarlarının donanım eksiklikleri giderilmeden bu rehberler kağıt üstünde kalır.",
+    "created_at": "2026-08-23T15:40:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "community",
+    "perspective": "critical",
+    "tags": [
+      "BilişimÖğretmenleri",
+      "Altyapı",
+      "MEB"
+    ],
     "metrics": {
-      "likes": 2,
-      "reposts": 0,
-      "replies": 0
-    }
+      "likes": 1450,
+      "reposts": 520,
+      "replies": 105
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-010",
     "author": {
       "id": "user-110",
-      "name": "BotNet Test Hesabı 2",
-      "handle": "@firsat_kampanya_88",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=bot88",
-      "badge": "Hesap"
+      "name": "TÜBİTAK BİLGEM",
+      "handle": "@tubitak_bilgem",
+      "badge": "official"
     },
-    "text": "İNANILMAZ KAZANÇ FIRSATI!!! HEMEN TIKLA VE KAZAN: http://bit.ly/bedava-hediye-2026 http://link-spam.xyz http://promo-fake.site BEDAVA BEDAVA BEDAVA!!!",
-    "created_at": "2026-08-23T13:01:00Z",
-    "topic_id": "acik-kaynak-yazilim",
-    "topic_title": "Açık Kaynak ve Yerli Yazılım Ekosistemi",
-    "source_type": "user",
+    "text": "Kamuda açık kaynak işletim sistemi ve yazılım çözümleri kullanımına ilişkin 2026 Ulusal Eylem Planı kapsamında Pardus göçü hızlandırılıyor.",
+    "created_at": "2026-08-23T08:00:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
+    "source_type": "official_source",
     "perspective": "neutral_fact",
-    "tags": ["Kazanç", "Fırsat", "Bedava"],
+    "tags": [
+      "Pardus",
+      "AçıkKaynak",
+      "TÜBİTAK",
+      "MilliTeknoloji"
+    ],
     "metrics": {
-      "likes": 1,
-      "reposts": 0,
-      "replies": 0
-    }
+      "likes": 3120,
+      "reposts": 980,
+      "replies": 94
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-011",
     "author": {
       "id": "user-111",
-      "name": "Murat Keskin",
-      "handle": "@mkeskin_dev",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=murat",
-      "badge": "Yazılım Mimarı"
+      "name": "Özgür Yazılım Derneği",
+      "handle": "@oyd_turkiye",
+      "badge": "expert"
     },
-    "text": "Açık kaynak kararı harika fakat kamuda sürdürülebilirlik ve bakım bütçesi ayrılmadığı sürece projeler atıl kalıyor. Geliştiricilere maddi destek ve kurumsal sponsorluk modeli şart.",
-    "created_at": "2026-08-23T09:10:00Z",
-    "topic_id": "acik-kaynak-yazilim",
-    "topic_title": "Açık Kaynak ve Yerli Yazılım Ekosistemi",
+    "text": "Tüm kamu kurumlarında PostgreSQL, LibreOffice ve Pardus kullanımı yıllık milyonlarca dolar lisans maliyetini engeller ve siber egemenliğimizi güçlendirir.",
+    "created_at": "2026-08-23T08:45:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
     "source_type": "expert",
-    "perspective": "critical",
-    "tags": ["Yazılım", "Sürdürülebilirlik", "AçıkKaynak"],
+    "perspective": "supportive",
+    "tags": [
+      "ÖzgürYazılım",
+      "AçıkKaynak",
+      "PostgreSQL",
+      "Pardus"
+    ],
     "metrics": {
-      "likes": 470,
-      "reposts": 98,
-      "replies": 29
-    }
+      "likes": 1840,
+      "reposts": 620,
+      "replies": 73
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   },
   {
     "id": "post-012",
     "author": {
       "id": "user-112",
-      "name": "Zeynep Çelik",
-      "handle": "@zeynepcelik_ai",
-      "avatar": "https://api.dicebear.com/7.x/bottts/svg?seed=zeynep",
-      "badge": "Veri Bilimci"
+      "name": "Burak Demir",
+      "handle": "@bdemir_sysadmin",
+      "badge": "user"
     },
-    "text": "Eğitimde yapay zekâ modellerinin Türkçe dil kalitesi ve kültürel bağlam uyumu her geçen gün artıyor. Yerli modeller sayesinde öğrenci yanıtlarının analizinde doğruluk oranı hissedilir derecede yükseldi.",
-    "created_at": "2026-08-23T12:45:00Z",
-    "topic_id": "yapay-zeka-egitim",
-    "topic_title": "Yapay Zekâ ve Eğitimde Dönüşüm",
+    "text": "Belediyemizde Pardus göçü başlattık fakat kamu personeli arayüze alışmakta çok zorlanıyor. Yazıcı sürücüleri ve özel legacy yazılımlar sürekli hata veriyor.",
+    "created_at": "2026-08-23T09:30:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
+    "source_type": "user",
+    "perspective": "critical",
+    "tags": [
+      "Pardus",
+      "KamuBT",
+      "SistemYönetimi",
+      "Linux"
+    ],
+    "metrics": {
+      "likes": 760,
+      "reposts": 180,
+      "replies": 92
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-013",
+    "author": {
+      "id": "user-113",
+      "name": "Bakanlık Bilgi İşlem Dairesi",
+      "handle": "@kamubt_haber",
+      "badge": "official"
+    },
+    "text": "Sağlık Bakanlığı taşra teşkilatında 15.000 bilgisayarın Pardus kurumsal sürümüne geçişi tamamlandı. Yıllık tasarruf 4 milyon doları aştı.",
+    "created_at": "2026-08-23T10:15:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
+    "source_type": "official_source",
+    "perspective": "supportive",
+    "tags": [
+      "SağlıkBakanlığı",
+      "Tasarruf",
+      "Pardus",
+      "Kamu"
+    ],
+    "metrics": {
+      "likes": 2450,
+      "reposts": 810,
+      "replies": 65
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-014",
+    "author": {
+      "id": "user-114",
+      "name": "Kerem Yurtseven",
+      "handle": "@keremyurt_dev",
+      "badge": "user"
+    },
+    "text": "Açık kaynak sadece işletim sistemi değil; kamu API'lerinin açık standartlarda olması ve genç geliştiricilerin kamu yazılımlarına katkı vermesi sağlanmalı.",
+    "created_at": "2026-08-23T11:00:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
+    "source_type": "user",
+    "perspective": "supportive",
+    "tags": [
+      "OpenSource",
+      "YazılımGeliştirme",
+      "KamuTeknoloji"
+    ],
+    "metrics": {
+      "likes": 620,
+      "reposts": 140,
+      "replies": 31
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-015",
+    "author": {
+      "id": "user-115",
+      "name": "Bilişim Güvenliği Uzmanı Selin",
+      "handle": "@selin_sec",
+      "badge": "expert"
+    },
+    "text": "Açık kaynak yazılımlar kapalı kutu proprietary sistemlere göre güvenlik açıkları bakımından topluluk tarafından daha şeffaf denetlenir.",
+    "created_at": "2026-08-23T12:30:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
     "source_type": "expert",
     "perspective": "supportive",
-    "tags": ["YapayZeka", "TürkçeNLP", "EğitimTeknolojileri"],
+    "tags": [
+      "SiberGüvenlik",
+      "AçıkKaynak",
+      "Denetim"
+    ],
+    "metrics": {
+      "likes": 990,
+      "reposts": 280,
+      "replies": 34
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-016",
+    "author": {
+      "id": "user-116",
+      "name": "Murat Akın",
+      "handle": "@makin_it",
+      "badge": "user"
+    },
+    "text": "PostgreSQL göçü teknik olarak harika oldu ama veritabanı yöneticisi (DBA) bulmakta zorlanıyoruz, piyasada açık kaynak tecrübeli uzman sayısı hala az.",
+    "created_at": "2026-08-23T14:15:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
+    "source_type": "user",
+    "perspective": "critical",
+    "tags": [
+      "PostgreSQL",
+      "İstihdam",
+      "KamuBT"
+    ],
+    "metrics": {
+      "likes": 510,
+      "reposts": 88,
+      "replies": 41
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-017",
+    "author": {
+      "id": "user-117",
+      "name": "Enerji Piyasaları Analiz Bülteni (Sentetik Demo)",
+      "handle": "@epdk_resmi",
+      "badge": "official"
+    },
+    "text": "Türkiye genelinde elektrikli araç şarj soketi sayısı 25.000'e ulaştı. Soket başına düşen elektrikli araç sayısında Avrupa ortalamasının üzerindeyiz.",
+    "created_at": "2026-08-23T07:45:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "official_source",
+    "perspective": "neutral_fact",
+    "tags": [
+      "EPDK",
+      "ElektrikliAraç",
+      "Şarjİstasyonu",
+      "Enerji"
+    ],
+    "metrics": {
+      "likes": 2890,
+      "reposts": 920,
+      "replies": 110
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-018",
+    "author": {
+      "id": "user-118",
+      "name": "Otomotiv Gazetecisi Emre",
+      "handle": "@emre_oto",
+      "badge": "news_outlet"
+    },
+    "text": "Şehirlerarası otoyollarda 300 kW üzeri DC yüksek hızlı şarj istasyonları yaygınlaşıyor. İstanbul-Ankara hattında bekleme süreleri 20 dakikaya indi.",
+    "created_at": "2026-08-23T08:50:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "news_outlet",
+    "perspective": "supportive",
+    "tags": [
+      "Otomotiv",
+      "ElektrikliAraç",
+      "TOGG",
+      "DCŞarj"
+    ],
+    "metrics": {
+      "likes": 1640,
+      "reposts": 370,
+      "replies": 62
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-019",
+    "author": {
+      "id": "user-119",
+      "name": "Kemal Arslan",
+      "handle": "@karslan_ev",
+      "badge": "user"
+    },
+    "text": "Otoyollarda şarj kolay ama eski apartmanlarda ve sitelerde şarj ünitesi taktırmak komşularla kavga sebebi. Şehir içi AC şarj altyapısı çok yetersiz.",
+    "created_at": "2026-08-23T09:40:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "user",
+    "perspective": "critical",
+    "tags": [
+      "ApartmanŞarj",
+      "ŞehirYaşamı",
+      "ElektrikliAraba"
+    ],
+    "metrics": {
+      "likes": 2150,
+      "reposts": 580,
+      "replies": 185
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-020",
+    "author": {
+      "id": "user-120",
+      "name": "Elektrikli Araç Kulübü Derneği",
+      "handle": "@evdernek_tr",
+      "badge": "expert"
+    },
+    "text": "Yoğun bayram tatillerinde otoyol dinlenme tesislerindeki şarj istasyonlarında oluşan 1 saatlik kuyruklar için mobil şarj batarya araçları devreye girmeli.",
+    "created_at": "2026-08-23T11:15:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "expert",
+    "perspective": "critical",
+    "tags": [
+      "ŞarjAltyapısı",
+      "BayramTrafiği",
+      "MobilŞarj"
+    ],
+    "metrics": {
+      "likes": 1340,
+      "reposts": 410,
+      "replies": 79
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-021",
+    "author": {
+      "id": "user-121",
+      "name": "Gökhan Yıldız",
+      "handle": "@gyildiz_solar",
+      "badge": "user"
+    },
+    "text": "Evimin çatısına kurduğum güneş paneliyle aracımı gündüz bedavaya şarj ediyorum. Güneş ve elektrikli araç kombinasyonu geleceğin enerji modeli.",
+    "created_at": "2026-08-23T13:00:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "user",
+    "perspective": "supportive",
+    "tags": [
+      "GüneşEnerjisi",
+      "YeşilEnerji",
+      "ElektrikliAraç"
+    ],
+    "metrics": {
+      "likes": 1780,
+      "reposts": 490,
+      "replies": 88
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-022",
+    "author": {
+      "id": "user-122",
+      "name": "Enerji İktisatçısı Tolga",
+      "handle": "@tolga_enerji",
+      "badge": "academic"
+    },
+    "text": "Elektrikli araç şarj tarifelerindeki gece/gündüz fiyat makası açılmalı. Gece şebekedeki atıl kapasiteyi teşvik etmek şebeke stabilitesini korur.",
+    "created_at": "2026-08-23T14:45:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "academic",
+    "perspective": "supportive",
+    "tags": [
+      "EnerjiTarifesi",
+      "ElektrikŞebekesi",
+      "AkıllıŞebeke"
+    ],
+    "metrics": {
+      "likes": 870,
+      "reposts": 210,
+      "replies": 33
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-023",
+    "author": {
+      "id": "user-123",
+      "name": "Av. Mehmet Fatih",
+      "handle": "@av_mfatih",
+      "badge": "expert"
+    },
+    "text": "Otonom araçların karıştığı kazalarda hukuki sorumluluk araç sahibinde mi, yazılım üreticisinde mi yoksa sensör tedarikçisinde mi? Türk Ticaret ve Borçlar Kanunu güncellenmeli.",
+    "created_at": "2026-08-23T08:15:00Z",
+    "topic_id": "otonom-hukuk",
+    "topic_title": "Otonom Sürüş Sistemleri ve Hukuki Sorumluluk",
+    "source_type": "expert",
+    "perspective": "critical",
+    "tags": [
+      "OtonomAraç",
+      "YapayZekaHukuku",
+      "KazaSorumluluğu"
+    ],
+    "metrics": {
+      "likes": 1420,
+      "reposts": 490,
+      "replies": 84
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-024",
+    "author": {
+      "id": "user-124",
+      "name": "Bilişim Hukuku Derneği",
+      "handle": "@bhd_hukuk",
+      "badge": "expert"
+    },
+    "text": "Seviye 3 ve Seviye 4 otonom sürüş sistemleri için Avrupa Birliği Yapay Zekâ Tüzüğü (EU AI Act) uyumlu zorunlu veri karakutusu düzenlemesi getirilmelidir.",
+    "created_at": "2026-08-23T09:30:00Z",
+    "topic_id": "otonom-hukuk",
+    "topic_title": "Otonom Sürüş Sistemleri ve Hukuki Sorumluluk",
+    "source_type": "expert",
+    "perspective": "neutral_fact",
+    "tags": [
+      "EUAIAct",
+      "OtonomSürüş",
+      "Hukuk",
+      "Karakutu"
+    ],
+    "metrics": {
+      "likes": 980,
+      "reposts": 310,
+      "replies": 41
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-025",
+    "author": {
+      "id": "user-125",
+      "name": "Otomotiv Mühendisi Serdar",
+      "handle": "@serdar_auto",
+      "badge": "user"
+    },
+    "text": "İstatistikler otonom sürüş sistemlerinin insan sürücülere göre %80 daha az kaza yaptığını gösteriyor. Hukuki tereddütler teknolojinin hayat kurtarmasını geciktirmemeli.",
+    "created_at": "2026-08-23T10:45:00Z",
+    "topic_id": "otonom-hukuk",
+    "topic_title": "Otonom Sürüş Sistemleri ve Hukuki Sorumluluk",
+    "source_type": "user",
+    "perspective": "supportive",
+    "tags": [
+      "OtonomTeknoloji",
+      "TrafikGüvenliği",
+      "YapayZeka"
+    ],
+    "metrics": {
+      "likes": 1150,
+      "reposts": 340,
+      "replies": 72
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-026",
+    "author": {
+      "id": "user-126",
+      "name": "Sigorta Tahkim Bülteni",
+      "handle": "@sigorta_tahkim",
+      "badge": "news_outlet"
+    },
+    "text": "Sigorta şirketleri otonom araç poliçelerinde yazılım arızası ve siber saldırı risklerini kapsayan yeni kasko klozlarını uygulamaya koyuyor.",
+    "created_at": "2026-08-23T12:15:00Z",
+    "topic_id": "otonom-hukuk",
+    "topic_title": "Otonom Sürüş Sistemleri ve Hukuki Sorumluluk",
+    "source_type": "news_outlet",
+    "perspective": "neutral_fact",
+    "tags": [
+      "Sigorta",
+      "Kasko",
+      "OtonomAraç",
+      "SiberRisk"
+    ],
     "metrics": {
       "likes": 730,
       "reposts": 160,
+      "replies": 19
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-027",
+    "author": {
+      "id": "user-127",
+      "name": "Filozof & Etikçi Can",
+      "handle": "@can_etik",
+      "badge": "academic"
+    },
+    "text": "Otonom aracın kaza anında kaçınılmaz çarpışmada yayayı mı yolcuyu mu koruyacağına yazılımcı karar veremez. Bu etik ikilem demokratik konsensüsle çözülmeli.",
+    "created_at": "2026-08-23T13:50:00Z",
+    "topic_id": "otonom-hukuk",
+    "topic_title": "Otonom Sürüş Sistemleri ve Hukuki Sorumluluk",
+    "source_type": "academic",
+    "perspective": "critical",
+    "tags": [
+      "Etik",
+      "TrolleyProblem",
+      "YapayZekaAhlakı"
+    ],
+    "metrics": {
+      "likes": 1690,
+      "reposts": 540,
+      "replies": 130
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-028",
+    "author": {
+      "id": "user-128",
+      "name": "Ressam & İllüstratör Derya",
+      "handle": "@derya_art",
+      "badge": "user"
+    },
+    "text": "Yıllardır çizdiğim dijital eserlerin iznim olmadan Midjourney ve Stable Diffusion modellerine beslendiğini gördüm. Emeğimizin çalınmasına dur denmeli!",
+    "created_at": "2026-08-23T08:10:00Z",
+    "topic_id": "yapay-zeka-telif",
+    "topic_title": "Yapay Zekâ ve Sanatçı Telif Hakları",
+    "source_type": "user",
+    "perspective": "critical",
+    "tags": [
+      "TelifHakkı",
+      "SanatçıHakları",
+      "GenerativeAI",
+      "EmekHırsızlığı"
+    ],
+    "metrics": {
+      "likes": 3410,
+      "reposts": 1280,
+      "replies": 210
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-029",
+    "author": {
+      "id": "user-129",
+      "name": "Fikri Mülkiyet Araştırmaları Forumu (Sentetik Demo)",
+      "handle": "@fikrimulkiyet_tr",
+      "badge": "expert"
+    },
+    "text": "Üretken yapay zekâ çıktılarında insan katkısı 'özgün yaratıcılık' eşiğini aşmadığı sürece telif koruması sağlanamayacağına dair emsal karar verildi.",
+    "created_at": "2026-08-23T09:20:00Z",
+    "topic_id": "yapay-zeka-telif",
+    "topic_title": "Yapay Zekâ ve Sanatçı Telif Hakları",
+    "source_type": "expert",
+    "perspective": "neutral_fact",
+    "tags": [
+      "FikriMülkiyet",
+      "TelifHukuku",
+      "YapayZeka"
+    ],
+    "metrics": {
+      "likes": 1560,
+      "reposts": 490,
+      "replies": 55
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-030",
+    "author": {
+      "id": "user-130",
+      "name": "Yapay Zekâ Sanatçısı Bora",
+      "handle": "@bora_aiartist",
+      "badge": "user"
+    },
+    "text": "Fotoğraf makinesi çıktığında da ressamlar karşı çıkmıştı. Yapay zekâ yeni bir fırçadır, komut mimarisi ve küratörlük de bir sanat formudur.",
+    "created_at": "2026-08-23T10:35:00Z",
+    "topic_id": "yapay-zeka-telif",
+    "topic_title": "Yapay Zekâ ve Sanatçı Telif Hakları",
+    "source_type": "user",
+    "perspective": "supportive",
+    "tags": [
+      "DijitalSanat",
+      "AIArt",
+      "Yaratıcılık"
+    ],
+    "metrics": {
+      "likes": 1120,
+      "reposts": 290,
+      "replies": 165
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-031",
+    "author": {
+      "id": "user-131",
+      "name": "Telif Hakları Bilgilendirme Masası (Sentetik Demo)",
+      "handle": "@telifhaklari_gov",
+      "badge": "official"
+    },
+    "text": "Büyük dil modellerinin ve görsel üreticilerin eğitim verilerinde kullanılan eserler için 'opt-out' (veri kazıma ret) mekanizması zorunlu hale getiriliyor.",
+    "created_at": "2026-08-23T11:50:00Z",
+    "topic_id": "yapay-zeka-telif",
+    "topic_title": "Yapay Zekâ ve Sanatçı Telif Hakları",
+    "source_type": "official_source",
+    "perspective": "supportive",
+    "tags": [
+      "TelifMevzuatı",
+      "VeriKazıma",
+      "OptOut",
+      "ResmiDuyuru"
+    ],
+    "metrics": {
+      "likes": 2980,
+      "reposts": 1040,
+      "replies": 92
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-032",
+    "author": {
+      "id": "user-132",
+      "name": "Uzay Teknolojileri Çalışma Grubu (Sentetik Demo)",
+      "handle": "@tubitakuzay",
+      "badge": "official"
+    },
+    "text": "Yerli ve milli haberleşme uydumuz TÜRKSAT 6A yörünge testlerini başarıyla tamamlayarak tam kapasite operasyonel hizmete alınmıştır.",
+    "created_at": "2026-08-23T07:15:00Z",
+    "topic_id": "uzay-turksat",
+    "topic_title": "Yerli Uydu ve Uzay Teknolojileri",
+    "source_type": "official_source",
+    "perspective": "supportive",
+    "tags": [
+      "TÜRKSAT6A",
+      "TÜBİTAKUZAY",
+      "MilliUzayProgramı",
+      "Uydu"
+    ],
+    "metrics": {
+      "likes": 5620,
+      "reposts": 2100,
+      "replies": 180
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-033",
+    "author": {
+      "id": "user-133",
+      "name": "Uzay Muhabiri Hakan",
+      "handle": "@hakan_space",
+      "badge": "news_outlet"
+    },
+    "text": "TÜRKSAT 6A ile Türkiye, dünyada kendi haberleşme uydusunu üretebilen 11 ülkeden biri oldu. Kapsama alanı Hindistan ve Güneydoğu Asya'yı da içine alıyor.",
+    "created_at": "2026-08-23T08:40:00Z",
+    "topic_id": "uzay-turksat",
+    "topic_title": "Yerli Uydu ve Uzay Teknolojileri",
+    "source_type": "news_outlet",
+    "perspective": "supportive",
+    "tags": [
+      "HaberleşmeUydusu",
+      "Teknoloji",
+      "UzayHaberleri"
+    ],
+    "metrics": {
+      "likes": 2340,
+      "reposts": 720,
+      "replies": 51
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-034",
+    "author": {
+      "id": "user-134",
+      "name": "Astronom Dr. Ece Kaya",
+      "handle": "@ece_astro",
+      "badge": "academic"
+    },
+    "text": "Uydu sayısının artması milli haberleşme için harika ancak alçak yörünge uydu takımyıldızları yer tabanlı optik teleskop gözlemlerini ciddi şekilde engelliyor.",
+    "created_at": "2026-08-23T10:10:00Z",
+    "topic_id": "uzay-turksat",
+    "topic_title": "Yerli Uydu ve Uzay Teknolojileri",
+    "source_type": "academic",
+    "perspective": "critical",
+    "tags": [
+      "Astronomi",
+      "IşıkKirliliği",
+      "UzayÇöpü",
+      "Gözlemevi"
+    ],
+    "metrics": {
+      "likes": 1210,
+      "reposts": 360,
+      "replies": 68
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-035",
+    "author": {
+      "id": "user-135",
+      "name": "Uzay Sanayii Analisti",
+      "handle": "@space_analiz",
+      "badge": "expert"
+    },
+    "text": "Gelecek hedef yerli fırlatma roket sistemlerini tamamlayarak uydularımızı kendi fırlatma rampalarımızdan uzaya gönderebilmek olmalıdır.",
+    "created_at": "2026-08-23T12:00:00Z",
+    "topic_id": "uzay-turksat",
+    "topic_title": "Yerli Uydu ve Uzay Teknolojileri",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": [
+      "RoketTeknolojisi",
+      "MilliUzay",
+      "SavunmaSanayii"
+    ],
+    "metrics": {
+      "likes": 1750,
+      "reposts": 530,
+      "replies": 44
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-036",
+    "author": {
+      "id": "user-136",
+      "name": "Kripto Fırsat Botu",
+      "handle": "@kripto_kazanc_1",
+      "badge": "user"
+    },
+    "text": "BEDAVA 500 USDT KAZANMAK İÇİN HEMEN TIKLAYIN! GÜNLÜK %50 KAZANÇ GARANTİSİ http://kripto-dolandiricilik.xyz/airdrop #Bitcoin #Kripto",
+    "created_at": "2026-08-23T08:00:00Z",
+    "topic_id": "spam-noise",
+    "topic_title": "Spam ve Bot Gönderileri",
+    "source_type": "user",
+    "perspective": "neutral_fact",
+    "tags": [
+      "Kripto",
+      "Kazanç",
+      "Airdrop"
+    ],
+    "metrics": {
+      "likes": 2,
+      "reposts": 0,
+      "replies": 0
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-037",
+    "author": {
+      "id": "user-137",
+      "name": "BotNet Test Hesabı 1",
+      "handle": "@botnet_test_1",
+      "badge": "user"
+    },
+    "text": "Ücretsiz hediye çeki kazanmak için hemen tıklayın ve formu doldurun link profilde http://hediye-sahte.com",
+    "created_at": "2026-08-23T08:05:00Z",
+    "topic_id": "spam-noise",
+    "topic_title": "Spam ve Bot Gönderileri",
+    "source_type": "user",
+    "perspective": "neutral_fact",
+    "tags": [
+      "Hediye",
+      "Kupon",
+      "Kampanya"
+    ],
+    "metrics": {
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-038",
+    "author": {
+      "id": "user-138",
+      "name": "BotNet Test Hesabı 2",
+      "handle": "@botnet_test_2",
+      "badge": "user"
+    },
+    "text": "Ücretsiz hediye çeki kazanmak için hemen tıklayın ve formu doldurun link profilde http://hediye-sahte.com",
+    "created_at": "2026-08-23T08:06:00Z",
+    "topic_id": "spam-noise",
+    "topic_title": "Spam ve Bot Gönderileri",
+    "source_type": "user",
+    "perspective": "neutral_fact",
+    "tags": [
+      "Hediye",
+      "Kupon",
+      "Kampanya"
+    ],
+    "metrics": {
+      "likes": 1,
+      "reposts": 0,
+      "replies": 0
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-039",
+    "author": {
+      "id": "user-139",
+      "name": "Rastgele Kullanıcı Berk",
+      "handle": "@berk_gunluk",
+      "badge": "user"
+    },
+    "text": "Bugün Kadıköy'de harika bir kahve içtim, hava da oldukça güneşliydi. Herkese iyi pazarlar dilerim.",
+    "created_at": "2026-08-23T14:00:00Z",
+    "topic_id": "spam-noise",
+    "topic_title": "Ayrık Günlük Paylaşımlar (Noise)",
+    "source_type": "user",
+    "perspective": "neutral_fact",
+    "tags": [
+      "Günlük",
+      "Kahve",
+      "Kadıköy"
+    ],
+    "metrics": {
+      "likes": 45,
+      "reposts": 2,
+      "replies": 5
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-040",
+    "author": {
+      "id": "user-140",
+      "name": "Doç. Dr. Ozan Bilgin",
+      "handle": "@obilgin_ai",
+      "badge": "academic"
+    },
+    "text": "Eğitimde yapay zekâ modellerinin halüsinasyon (yanılsama) riski öğrencilerin yanlış bilgi öğrenmesine sebep olabilir. Kaynak doğrulama becerisi müfredata eklenmeli.",
+    "created_at": "2026-08-23T16:00:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "academic",
+    "perspective": "critical",
+    "tags": [
+      "Halüsinasyon",
+      "YapayZeka",
+      "Eğitim",
+      "EleştirelDüşünce"
+    ],
+    "metrics": {
+      "likes": 1540,
+      "reposts": 480,
+      "replies": 83
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-041",
+    "author": {
+      "id": "user-141",
+      "name": "Linux Kullanıcıları Derneği",
+      "handle": "@lkd_turkiye",
+      "badge": "expert"
+    },
+    "text": "Kamu kurumlarında çalışan geliştiricilerin açık kaynak projelere katkı vermesi hem çalışan motivasyonunu artırıyor hem de yerli ekosistemi güçlendiriyor.",
+    "created_at": "2026-08-23T16:30:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": [
+      "Linux",
+      "AçıkKaynak",
+      "YazılımGeliştirme"
+    ],
+    "metrics": {
+      "likes": 1390,
+      "reposts": 410,
+      "replies": 52
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-042",
+    "author": {
+      "id": "user-142",
+      "name": "Batarya Teknolojileri Enstitüsü",
+      "handle": "@batarya_tech",
+      "badge": "expert"
+    },
+    "text": "Yeni nesil katı hal (solid-state) bataryalar şarj sürelerini 10 dakikanın altına indirirken menzili 1000 km seviyesine çıkaracak.",
+    "created_at": "2026-08-23T15:30:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": [
+      "SolidState",
+      "Batarya",
+      "ElektrikliAraç",
+      "İnovasyon"
+    ],
+    "metrics": {
+      "likes": 2210,
+      "reposts": 680,
+      "replies": 94
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-043",
+    "author": {
+      "id": "user-143",
+      "name": "Tüketici Hakları Derneği",
+      "handle": "@tuketici_haklari",
+      "badge": "expert"
+    },
+    "text": "Otonom araç kazalarında tüketiciye 'yazılım hatası kullanıcı sorumluluğundadır' şeklinde dayatılan sözleşme maddeleri hukuken geçersiz sayılmalıdır.",
+    "created_at": "2026-08-23T15:00:00Z",
+    "topic_id": "otonom-hukuk",
+    "topic_title": "Otonom Sürüş Sistemleri ve Hukuki Sorumluluk",
+    "source_type": "expert",
+    "perspective": "critical",
+    "tags": [
+      "TüketiciHakları",
+      "OtonomAraç",
+      "Hukuk"
+    ],
+    "metrics": {
+      "likes": 1470,
+      "reposts": 490,
+      "replies": 71
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-044",
+    "author": {
+      "id": "user-144",
+      "name": "Dijital Sanatçılar Birliği",
+      "handle": "@disan_birlik",
+      "badge": "community"
+    },
+    "text": "Görsel yapay zekâ şirketlerinin telif ödemeden sanatçıların tarzını taklit eden modeller satması telif yasasının ivedilikle güncellenmesini gerektiriyor.",
+    "created_at": "2026-08-23T14:20:00Z",
+    "topic_id": "yapay-zeka-telif",
+    "topic_title": "Yapay Zekâ ve Sanatçı Telif Hakları",
+    "source_type": "community",
+    "perspective": "critical",
+    "tags": [
+      "SanatçıHakları",
+      "Telif",
+      "YapayZeka"
+    ],
+    "metrics": {
+      "likes": 2840,
+      "reposts": 960,
+      "replies": 182
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-045",
+    "author": {
+      "id": "user-145",
+      "name": "Uzay Gözlem ve Analiz Topluluğu (Sentetik Demo)",
+      "handle": "@uzay_gozlem",
+      "badge": "expert"
+    },
+    "text": "TÜRKSAT 6A'nın yerli elektrikli itki motoru sistemi derin uzay görevleri ve Ay misyonumuz için kritik bir teknoloji doğrulaması oldu.",
+    "created_at": "2026-08-23T15:10:00Z",
+    "topic_id": "uzay-turksat",
+    "topic_title": "Yerli Uydu ve Uzay Teknolojileri",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": [
+      "İtkiMotoru",
+      "TÜRKSAT6A",
+      "UzayTeknolojisi"
+    ],
+    "metrics": {
+      "likes": 2100,
+      "reposts": 640,
+      "replies": 48
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-046",
+    "author": {
+      "id": "user-146",
+      "name": "Öğretmenler Meclisi",
+      "handle": "@ogretmen_meclis",
+      "badge": "community"
+    },
+    "text": "Yapay zekâ ders planı hazırlamada öğretmenlere saatler kazandırıyor. Ancak öğrenci değerlendirmesinde yapay zekaya tam teslimiyet insani dokunuşu yok eder.",
+    "created_at": "2026-08-23T17:00:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "community",
+    "perspective": "supportive",
+    "tags": [
+      "Öğretmenlik",
+      "DersPlanı",
+      "YapayZeka"
+    ],
+    "metrics": {
+      "likes": 1620,
+      "reposts": 410,
+      "replies": 75
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-047",
+    "author": {
+      "id": "user-147",
+      "name": "Kamu Veritabanı Yöneticileri",
+      "handle": "@kamu_dba",
+      "badge": "expert"
+    },
+    "text": "Devlet kurumlarında açık kaynak veritabanlarına göç eden kurumlar için merkezi destek ofisi kurulmalı. Kritik anlarda kurumsal destek hayati önem taşıyor.",
+    "created_at": "2026-08-23T17:20:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
+    "source_type": "expert",
+    "perspective": "critical",
+    "tags": [
+      "PostgreSQL",
+      "KamuBT",
+      "TeknikDestek"
+    ],
+    "metrics": {
+      "likes": 890,
+      "reposts": 230,
+      "replies": 38
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-048",
+    "author": {
+      "id": "user-148",
+      "name": "Şarj İstasyonu İşletmecileri Derneği",
+      "handle": "@sarjder_tr",
+      "badge": "expert"
+    },
+    "text": "EPDK düzenlemeleriyle şarj istasyonu kurulum izinleri hızlandırıldı. 2026 sonuna kadar hedef tüm ilçe merkezlerinde en az iki adet DC hızlı şarj istasyonu kurmak.",
+    "created_at": "2026-08-23T16:15:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": [
+      "Şarjİstasyonu",
+      "EPDK",
+      "Yatırım",
+      "ElektrikliAraç"
+    ],
+    "metrics": {
+      "likes": 1420,
+      "reposts": 390,
+      "replies": 45
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-049",
+    "author": {
+      "id": "user-149",
+      "name": "Yapay Zekâ Hukukçuları Platformu",
+      "handle": "@ai_law_tr",
+      "badge": "expert"
+    },
+    "text": "Otonom araç test izinlerinde Türkiye'nin özel test bölgeleri (sandbox) ilan etmesi yerli otonom yazılım geliştiren girişimler için büyük fırsat sunuyor.",
+    "created_at": "2026-08-23T16:45:00Z",
+    "topic_id": "otonom-hukuk",
+    "topic_title": "Otonom Sürüş Sistemleri ve Hukuki Sorumluluk",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": [
+      "Sandbox",
+      "OtonomTest",
+      "Girişimcilik"
+    ],
+    "metrics": {
+      "likes": 990,
+      "reposts": 280,
+      "replies": 29
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-050",
+    "author": {
+      "id": "user-150",
+      "name": "Telif Hakları Derneği",
+      "handle": "@telif_dernek",
+      "badge": "expert"
+    },
+    "text": "Üretken yapay zekâ modellerini eğiten şirketlerin hangi veri setlerini kullandıklarını şeffafça açıklamaları zorunlu olmalıdır.",
+    "created_at": "2026-08-23T17:10:00Z",
+    "topic_id": "yapay-zeka-telif",
+    "topic_title": "Yapay Zekâ ve Sanatçı Telif Hakları",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": [
+      "Şeffaflık",
+      "EğitimVerisi",
+      "Telif"
+    ],
+    "metrics": {
+      "likes": 1820,
+      "reposts": 530,
+      "replies": 62
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-051",
+    "author": {
+      "id": "user-151",
+      "name": "Uzay ve Havacılık Portalı",
+      "handle": "@aerospace_tr",
+      "badge": "news_outlet"
+    },
+    "text": "TÜRKSAT 6A haberleşme uydumuzun yerli batarya ve güç dağıtım ünitesi 15 yıllık görev ömrü boyunca kesintisiz güç sağlayacak şekilde tasarlandı.",
+    "created_at": "2026-08-23T16:30:00Z",
+    "topic_id": "uzay-turksat",
+    "topic_title": "Yerli Uydu ve Uzay Teknolojileri",
+    "source_type": "news_outlet",
+    "perspective": "supportive",
+    "tags": [
+      "TÜRKSAT6A",
+      "UzayHaber",
+      "MilliTeknoloji"
+    ],
+    "metrics": {
+      "likes": 1950,
+      "reposts": 520,
+      "replies": 35
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-052",
+    "author": {
+      "id": "user-152",
+      "name": "Prof. Dr. İbrahim Uzay",
+      "handle": "@iuzay_astro",
+      "badge": "academic"
+    },
+    "text": "Küçük uydu (cubesat) fırlatma maliyetlerinin düşmesi üniversite öğrencilerimizin uzay araştırmalarına doğrudan donanım göndermesine olanak tanıyor.",
+    "created_at": "2026-08-23T17:45:00Z",
+    "topic_id": "uzay-turksat",
+    "topic_title": "Yerli Uydu ve Uzay Teknolojileri",
+    "source_type": "academic",
+    "perspective": "supportive",
+    "tags": [
+      "KüpUydu",
+      "Üniversite",
+      "ArGe"
+    ],
+    "metrics": {
+      "likes": 1420,
+      "reposts": 390,
       "replies": 41
-    }
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-053",
+    "author": {
+      "id": "user-153",
+      "name": "Elektrikli Sürüş Blogu",
+      "handle": "@ev_surus_blog",
+      "badge": "user"
+    },
+    "text": "İstanbul-İzmir otoyolunda şarj istasyonlarının tamamı çalışır vaziyetteydi. Uygulamadan boş soketleri canlı görüp rezervasyon yapmak seyahati çok kolaylaştırdı.",
+    "created_at": "2026-08-23T17:30:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "user",
+    "perspective": "supportive",
+    "tags": [
+      "ElektrikliAraç",
+      "Şarjİstasyonu",
+      "Otoyol"
+    ],
+    "metrics": {
+      "likes": 980,
+      "reposts": 210,
+      "replies": 47
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-054",
+    "author": {
+      "id": "user-154",
+      "name": "Şehir Plancısı Mine",
+      "handle": "@mine_sehir",
+      "badge": "expert"
+    },
+    "text": "Tarihi kent merkezlerinde elektrikli şarj soketleri için trafo kapasitesi yetersiz kalıyor. Şehir merkezlerine yönelik mikro şarj çözümleri planlanmalı.",
+    "created_at": "2026-08-23T18:00:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "expert",
+    "perspective": "critical",
+    "tags": [
+      "ŞehirPlanlama",
+      "ŞarjAltyapısı",
+      "Trafo"
+    ],
+    "metrics": {
+      "likes": 1150,
+      "reposts": 320,
+      "replies": 39
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-055",
+    "author": {
+      "id": "user-155",
+      "name": "Açık Kaynak Gönüllüsü Ali",
+      "handle": "@ali_opensource",
+      "badge": "user"
+    },
+    "text": "Pardus topluluk sürümünde XFCE masaüstü ortamı eski bilgisayarlarda bile yağ gibi akıyor. Okullardaki eski PC'ler Pardus ile yeniden hayat buldu.",
+    "created_at": "2026-08-23T18:15:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
+    "source_type": "user",
+    "perspective": "supportive",
+    "tags": [
+      "Pardus",
+      "Linux",
+      "GeriDönüşüm",
+      "Eğitim"
+    ],
+    "metrics": {
+      "likes": 1670,
+      "reposts": 480,
+      "replies": 62
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-056",
+    "author": {
+      "id": "user-156",
+      "name": "Yazılım Mimarı Tarık",
+      "handle": "@tarik_arch",
+      "badge": "expert"
+    },
+    "text": "Kamu kurumlarının dışa bağımlı veritabanı lisanslarını terk edip PostgreSQL ve Redis gibi açık kaynak alternatiflere geçmesi stratejik bir zorunluluktur.",
+    "created_at": "2026-08-23T18:40:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": [
+      "PostgreSQL",
+      "AçıkKaynak",
+      "YazılımGeliştirme"
+    ],
+    "metrics": {
+      "likes": 2040,
+      "reposts": 610,
+      "replies": 74
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-057",
+    "author": {
+      "id": "user-157",
+      "name": "Müzik Meslek Birlikleri Federasyonu",
+      "handle": "@muzik_birlik",
+      "badge": "expert"
+    },
+    "text": "Yapay zekâ ile ses klonlama ve bestecilerin tarzının izinsiz taklit edilmesi müzik sektöründe telif haklarını baltalıyor. Ses hakkı koruma altına alınmalı.",
+    "created_at": "2026-08-23T18:10:00Z",
+    "topic_id": "yapay-zeka-telif",
+    "topic_title": "Yapay Zekâ ve Sanatçı Telif Hakları",
+    "source_type": "expert",
+    "perspective": "critical",
+    "tags": [
+      "SesKlonlama",
+      "MüzikTelif",
+      "YapayZeka"
+    ],
+    "metrics": {
+      "likes": 2320,
+      "reposts": 780,
+      "replies": 115
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-058",
+    "author": {
+      "id": "user-158",
+      "name": "Grafik Tasarımcı Sinan",
+      "handle": "@sinan_des",
+      "badge": "user"
+    },
+    "text": "Telif tartışmalarını anlıyorum ama yapay zekâ araçları storyboard ve konsept tasarım süreçlerimi 3 kat hızlandırdı. Tasarımcı işini kaybetmez, yapay zeka kullanan tasarımcı öne geçer.",
+    "created_at": "2026-08-23T18:50:00Z",
+    "topic_id": "yapay-zeka-telif",
+    "topic_title": "Yapay Zekâ ve Sanatçı Telif Hakları",
+    "source_type": "user",
+    "perspective": "supportive",
+    "tags": [
+      "GrafikTasarım",
+      "YapayZeka",
+      "Üretkenlik"
+    ],
+    "metrics": {
+      "likes": 1280,
+      "reposts": 350,
+      "replies": 98
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-059",
+    "author": {
+      "id": "user-159",
+      "name": "Otonom Yazılım Geliştiricisi Onur",
+      "handle": "@onur_autonomous",
+      "badge": "expert"
+    },
+    "text": "LiDAR ve kamera füzyonu ile çalışan otonom sistemlerde yağmurlu ve sisli havalarda algılama doğruluğunu artıran yeni derin öğrenme modelimizi test ettik.",
+    "created_at": "2026-08-23T17:55:00Z",
+    "topic_id": "otonom-hukuk",
+    "topic_title": "Otonom Sürüş Sistemleri ve Hukuki Sorumluluk",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": [
+      "LiDAR",
+      "DerinÖğrenme",
+      "OtonomAraç"
+    ],
+    "metrics": {
+      "likes": 1410,
+      "reposts": 390,
+      "replies": 43
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-060",
+    "author": {
+      "id": "user-160",
+      "name": "Trafik Güvenliği Uzmanı Nehir",
+      "handle": "@nehir_trafik",
+      "badge": "expert"
+    },
+    "text": "Otonom araçların karma trafikte insan sürücülerle etkileşimi sırasında öngörülemeyen ani frenleme (phantom braking) vakaları acilen regüle edilmelidir.",
+    "created_at": "2026-08-23T18:30:00Z",
+    "topic_id": "otonom-hukuk",
+    "topic_title": "Otonom Sürüş Sistemleri ve Hukuki Sorumluluk",
+    "source_type": "expert",
+    "perspective": "critical",
+    "tags": [
+      "PhantomBraking",
+      "TrafikGüvenliği",
+      "Regülasyon"
+    ],
+    "metrics": {
+      "likes": 1190,
+      "reposts": 310,
+      "replies": 55
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-061",
+    "author": {
+      "id": "user-161",
+      "name": "Üniversite Öğrencisi Arda",
+      "handle": "@arda_ogrenci",
+      "badge": "user"
+    },
+    "text": "Yapay zekâ hocanın anlattığı karmaşık diferansiyel denklemleri adım adım açıklıyor, gece 3'te bile soru sorabileceğim bir özel öğretmenim var gibi hissediyorum.",
+    "created_at": "2026-08-23T19:00:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "user",
+    "perspective": "supportive",
+    "tags": [
+      "Üniversite",
+      "Matematik",
+      "YapayZekaÖğretmen"
+    ],
+    "metrics": {
+      "likes": 1890,
+      "reposts": 470,
+      "replies": 84
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-062",
+    "author": {
+      "id": "user-162",
+      "name": "Sosyolog Dr. Hande",
+      "handle": "@hande_sosyo",
+      "badge": "academic"
+    },
+    "text": "Eğitimde yapay zekâ araçlarına erişimi olan varlıklı ailelerin çocukları ile devlet okullarındaki dezavantajlı öğrenciler arasındaki dijital uçurum daha da derinleşiyor.",
+    "created_at": "2026-08-23T19:20:00Z",
+    "topic_id": "yapay-zeka-egitim",
+    "topic_title": "Eğitimde Yapay Zekâ ve Pedagojik Uygulamalar",
+    "source_type": "academic",
+    "perspective": "critical",
+    "tags": [
+      "FırsatEşitliği",
+      "DijitalUçurum",
+      "EğitimSosyolojisi"
+    ],
+    "metrics": {
+      "likes": 2780,
+      "reposts": 910,
+      "replies": 140
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-063",
+    "author": {
+      "id": "user-163",
+      "name": "Airdrop Avcısı Bot 3",
+      "handle": "@airdrop_bot_3",
+      "badge": "user"
+    },
+    "text": "BEDAVA 1000 USDT KAZANMAK İÇİN HEMEN TIKLAYIN! GÜNLÜK %50 KAZANÇ GARANTİSİ http://kripto-dolandiricilik.xyz/airdrop #Bitcoin #Kripto",
+    "created_at": "2026-08-23T08:10:00Z",
+    "topic_id": "spam-noise",
+    "topic_title": "Spam ve Bot Gönderileri",
+    "source_type": "user",
+    "perspective": "neutral_fact",
+    "tags": [
+      "Kripto",
+      "Kazanç",
+      "Airdrop"
+    ],
+    "metrics": {
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-064",
+    "author": {
+      "id": "user-164",
+      "name": "BotNet Test Hesabı 3",
+      "handle": "@botnet_test_3",
+      "badge": "user"
+    },
+    "text": "Ücretsiz hediye çeki kazanmak için hemen tıklayın ve formu doldurun link profilde http://hediye-sahte.com",
+    "created_at": "2026-08-23T08:15:00Z",
+    "topic_id": "spam-noise",
+    "topic_title": "Spam ve Bot Gönderileri",
+    "source_type": "user",
+    "perspective": "neutral_fact",
+    "tags": [
+      "Hediye",
+      "Kupon",
+      "Kampanya"
+    ],
+    "metrics": {
+      "likes": 0,
+      "reposts": 0,
+      "replies": 0
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-065",
+    "author": {
+      "id": "user-165",
+      "name": "Aykırı Kullanıcı Aylin",
+      "handle": "@aylin_pasta",
+      "badge": "user"
+    },
+    "text": "Evde yaptığım limonlu cheesecake fırından yeni çıktı, kokusu bütün evi sardı. Akşama misafirler bayılacak.",
+    "created_at": "2026-08-23T15:30:00Z",
+    "topic_id": "spam-noise",
+    "topic_title": "Ayrık Günlük Paylaşımlar (Noise)",
+    "source_type": "user",
+    "perspective": "neutral_fact",
+    "tags": [
+      "Yemek",
+      "Cheesecake",
+      "Tarif"
+    ],
+    "metrics": {
+      "likes": 38,
+      "reposts": 1,
+      "replies": 4
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-066",
+    "author": {
+      "id": "user-166",
+      "name": "Milli Teknoloji Hamlesi Bülteni",
+      "handle": "@milli_tech",
+      "badge": "news_outlet"
+    },
+    "text": "Kamuda açık kaynak işletim sistemi Pardus göçü sayesinde 2026 yılının ilk yarısında kamu kurumlarında 150 milyon TL lisans tasarrufu sağlandı.",
+    "created_at": "2026-08-23T19:15:00Z",
+    "topic_id": "acik-kaynak-kamu",
+    "topic_title": "Kamuda Pardus ve Açık Kaynak Yazılım Göçü",
+    "source_type": "news_outlet",
+    "perspective": "supportive",
+    "tags": [
+      "MilliTeknoloji",
+      "Pardus",
+      "Tasarruf",
+      "Kamu"
+    ],
+    "metrics": {
+      "likes": 2670,
+      "reposts": 840,
+      "replies": 59
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-067",
+    "author": {
+      "id": "user-167",
+      "name": "Uzay Mühendisleri Topluluğu",
+      "handle": "@uzay_muh",
+      "badge": "expert"
+    },
+    "text": "TÜRKSAT 6A'nın tüm yer kontrol yazılımları C2Tech ve yerli mühendislerimiz tarafından yazıldı. Uydu yer istasyonlarında yabancı yazılım bağımlılığı sıfırlandı.",
+    "created_at": "2026-08-23T19:30:00Z",
+    "topic_id": "uzay-turksat",
+    "topic_title": "Yerli Uydu ve Uzay Teknolojileri",
+    "source_type": "expert",
+    "perspective": "supportive",
+    "tags": [
+      "YerliYazılım",
+      "TÜRKSAT6A",
+      "UzayMühendisliği"
+    ],
+    "metrics": {
+      "likes": 3120,
+      "reposts": 980,
+      "replies": 67
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-068",
+    "author": {
+      "id": "user-168",
+      "name": "Hukuk Fakültesi Öğrencisi Berk",
+      "handle": "@berk_hukuk",
+      "badge": "user"
+    },
+    "text": "Otonom araç kazalarında kusur sorumluluğu yerine tehlike sorumluluğu ve zorunlu garanti fonu getirilmesi mağduriyetleri önlemenin en adil yoludur.",
+    "created_at": "2026-08-23T19:40:00Z",
+    "topic_id": "otonom-hukuk",
+    "topic_title": "Otonom Sürüş Sistemleri ve Hukuki Sorumluluk",
+    "source_type": "user",
+    "perspective": "supportive",
+    "tags": [
+      "Hukuk",
+      "SorumlulukHukuku",
+      "OtonomAraç"
+    ],
+    "metrics": {
+      "likes": 840,
+      "reposts": 210,
+      "replies": 32
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-069",
+    "author": {
+      "id": "user-169",
+      "name": "Fotoğraf Sanatçısı Cengiz",
+      "handle": "@cengiz_photo",
+      "badge": "user"
+    },
+    "text": "Stok fotoğraf sitelerinin fotoğrafçılara sormadan portföylerimizi yapay zekâ modellerine toptan satması sanatçı emeğinin sömürülmesidir.",
+    "created_at": "2026-08-23T19:50:00Z",
+    "topic_id": "yapay-zeka-telif",
+    "topic_title": "Yapay Zekâ ve Sanatçı Telif Hakları",
+    "source_type": "user",
+    "perspective": "critical",
+    "tags": [
+      "Fotoğrafçılık",
+      "StokFotoğraf",
+      "TelifHakkı"
+    ],
+    "metrics": {
+      "likes": 2190,
+      "reposts": 730,
+      "replies": 108
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
+  },
+  {
+    "id": "post-070",
+    "author": {
+      "id": "user-170",
+      "name": "Elektrik Dağıtım Şebekesi Gözlemi (Sentetik Demo)",
+      "handle": "@elder_turkiye",
+      "badge": "official"
+    },
+    "text": "Elektrikli araç şarj istasyonlarının trafo bağlantı kapasiteleri dijital ikiz simülasyonları ile modellenmekte, aşırı yüklenmeler anlık dengelenmektedir.",
+    "created_at": "2026-08-23T20:00:00Z",
+    "topic_id": "sarj-istasyonlari",
+    "topic_title": "Elektrikli Araç Şarj Altyapısı ve İstasyonlar",
+    "source_type": "official_source",
+    "perspective": "supportive",
+    "tags": [
+      "AkıllıŞebeke",
+      "Trafo",
+      "Dijitalİkiz",
+      "Enerji"
+    ],
+    "metrics": {
+      "likes": 1780,
+      "reposts": 460,
+      "replies": 31
+    },
+    "is_synthetic": true,
+    "provenance": "Sentetik Demo Örneği"
   }
 ]

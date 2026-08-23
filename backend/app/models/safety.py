@@ -28,7 +28,13 @@ class SafetyRiskVector(BaseModel):
     hate_speech_score: float = Field(default=0.0, ge=0.0, le=1.0)
     overall_risk_score: float = Field(default=0.0, ge=0.0, le=1.0)
     risk_level: RiskLevel = RiskLevel.LOW
+    review_priority: str = Field(default="LOW", description="LOW, MEDIUM, HIGH, CRITICAL")
+    hazard_scores: Optional[dict] = Field(default=None, description="Exact 11-category ModernBERT probabilities")
+    summary_explanation: Optional[str] = Field(default=None, description="Grounded non-definitive Turkish explanation")
     signals: List[SafetySignal] = Field(default_factory=list)
+    coordination_evidence: Optional[dict] = None
+    spam_evidence: Optional[dict] = None
+    repetition_evidence: Optional[dict] = None
     is_actionable: bool = False
     human_review_recommended: bool = False
 

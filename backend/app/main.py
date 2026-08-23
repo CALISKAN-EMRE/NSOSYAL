@@ -39,7 +39,7 @@ async def lifespan(app: FastAPI):
     model_manager.initialize()
 
     # 3. Initialize domain services with injected model manager
-    safety_service = SafetyService()
+    safety_service = SafetyService(fusion_service=model_manager.moderation_service)
     context_service = ContextService(data_adapter=data_adapter, model_manager=model_manager)
     recommendation_service = RecommendationService(
         data_adapter=data_adapter, safety_service=safety_service, model_manager=model_manager

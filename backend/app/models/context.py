@@ -42,7 +42,12 @@ class ContextCard(BaseModel):
     key_themes: List[str] = Field(default_factory=list)
     perspectives: List[PerspectiveDetail] = Field(default_factory=list)
     timeline: List[TimelineItem] = Field(default_factory=list)
-    sources: List[SourceContext] = Field(default_factory=list)
+    sources: List[SourceContext] = Field(
+        default_factory=list, description="Safety-gated and reranked context sources"
+    )
+    community_post_ids: List[str] = Field(
+        default_factory=list, description="All semantic cluster member post IDs (community discussions)"
+    )
     total_posts: int = 0
     total_participants: int = 0
     generated_at: str
@@ -51,8 +56,17 @@ class ContextCard(BaseModel):
         description="Method used for generation: semantic_clustering_and_reranking or deterministic_aggregation",
     )
     semantic_cluster_id: Optional[str] = None
-    cluster_confidence: Optional[float] = None
+    cluster_confidence: Optional[float] = Field(
+        default=None, description="Average HDBSCAN cluster membership strength in [0, 1]"
+    )
+    cluster_membership_score: Optional[float] = Field(
+        default=None, description="Mathematically defined HDBSCAN membership probability score"
+    )
+    gated_spam_candidates_count: int = Field(
+        default=0, description="Count of spam/bot candidates excluded from context sources"
+    )
     pipeline_timing_ms: Optional[Dict[str, float]] = Field(
         default=None, description="Internal pipeline execution timing breakdown in ms"
     )
     model_used: Optional[str] = None
+

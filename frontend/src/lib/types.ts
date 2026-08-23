@@ -77,6 +77,9 @@ export interface ContextCard {
   method: string;
   semantic_cluster_id?: string;
   cluster_confidence?: number;
+  cluster_membership_score?: number;
+  community_post_ids?: string[];
+  gated_spam_candidates_count?: number;
   pipeline_timing_ms?: {
     clustering_ms?: number;
     dense_retrieval_ms?: number;
@@ -103,7 +106,30 @@ export interface SafetyRiskVector {
   hate_speech_score: number;
   overall_risk_score: number;
   risk_level: "LOW" | "MEDIUM" | "HIGH";
+  review_priority?: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+  hazard_scores?: Record<string, number>;
+  summary_explanation?: string;
   signals: SafetySignal[];
+  coordination_evidence?: {
+    suspected_coordination_score?: number;
+    similar_post_ids?: string[];
+    participating_authors?: string[];
+    time_window_minutes?: number;
+    shared_urls_or_domains?: string[];
+  };
+  spam_evidence?: {
+    spam_score?: number;
+    link_count?: number;
+    suspicious_tld_detected?: boolean;
+    uppercase_ratio?: number;
+    promotional_keyword_hits?: string[];
+  };
+  repetition_evidence?: {
+    repetition_score?: number;
+    within_text_word_repetition?: number;
+    corpus_duplicate_count?: number;
+    duplicate_post_ids?: string[];
+  };
   is_actionable: boolean;
   human_review_recommended: boolean;
 }

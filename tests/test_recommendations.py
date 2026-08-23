@@ -18,7 +18,7 @@ def test_recommendation_feed_generation(recommendation_service):
 
 def test_recommendation_penalty_application(recommendation_service, json_adapter):
     """Test that spam posts receive safety penalties and lower scores."""
-    spam_post = json_adapter.get_post_by_id("post-009")
+    spam_post = json_adapter.get_post_by_id("post-036")
     assert spam_post is not None
 
     explanation = recommendation_service.explain_post_recommendation(

@@ -1,3 +1,4 @@
+import logging
 import time
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
@@ -15,37 +16,59 @@ from app.models.post import Post
 from app.models.topic import Topic
 from app.ml.base import RerankCandidate, SemanticCluster
 from app.ml.model_manager import ModelManager
+from app.services.safety_service import SafetyService
+from app.models.safety import SafetyAnalysisRequest
+
+logger = logging.getLogger(__name__)
 
 
 class ContextService:
-    """Context Card Aggregation & Semantic Intelligence Engine (Phase 2B Production Architecture).
+    """Context Card Aggregation & Semantic Intelligence Engine (Phase 2B Hardened Architecture).
 
     Pipelines:
-    1. Unsupervised Semantic Clustering (ModernBERT-TR + HDBSCAN)
-    2. Multi-Perspective Extraction
-    3. Two-Stage Context-Source Candidate Retrieval & Cross-Encoder Reranking (ModernBERT-TR-Reranker)
+    1. Unsupervised Semantic Clustering (ModernBERT-TR + PCA + HDBSCAN + c-TF-IDF)
+    2. Multi-Perspective Extraction with Verifiable Post ID Evidence
+    3. Safety-Gated Two-Stage Context Retrieval & Reranking (ModernBERT-TR-Reranker)
+       - Candidate Retrieval (Dense Top-20)
+       - Safety & Spam Gating (Excludes botnet/spam candidates from becoming context sources)
+       - Cross-Encoder Reranking (Top-6 Gated Context Sources)
     """
 
-    def __init__(self, data_adapter: DataSourceAdapter, model_manager: Optional[ModelManager] = None):
+    def __init__(
+        self,
+        data_adapter: DataSourceAdapter,
+        safety_service: Optional[SafetyService] = None,
+        model_manager: Optional[ModelManager] = None,
+    ):
         self.adapter = data_adapter
+        self.safety_service = safety_service or SafetyService()
         self.model_manager = model_manager or ModelManager.get_instance()
         self._cached_clusters: Optional[List[SemanticCluster]] = None
         self._clusters_last_computed: float = 0.0
 
     def get_semantic_topics(self) -> List[Topic]:
-        """Discover dynamic semantic topic clusters from all posts without relying on static topic_hints."""
+        """Discover dynamic semantic topic clusters without reading synthetic topic_hints."""
         clusters = self._get_or_compute_clusters()
         topics = []
         for c in clusters:
             cluster_posts = self.adapter.get_posts_by_ids(c.post_ids)
             participant_count = len(set(p.author.id for p in cluster_posts))
-            last_activity = max((p.created_at for p in cluster_posts), default=datetime.now(timezone.utc).isoformat())
+            last_activity = max(
+                (p.created_at for p in cluster_posts),
+                default=datetime.now(timezone.utc).isoformat(),
+            )
+
+            # Clarified membership probability label
+            desc = (
+                f"Semantik kümeleme ile gruplanan {len(cluster_posts)} paylaşım. "
+                f"Ortalama üyelik skoru (HDBSCAN): %{c.confidence_score*100:.0f}."
+            )
 
             topics.append(
                 Topic(
                     id=c.cluster_id,
                     title=c.label,
-                    description=f"Semantik kümeleme ile tespit edilen {len(cluster_posts)} adet paylaşım. Güven puanı: %{c.confidence_score*100:.0f}.",
+                    description=desc,
                     post_count=len(cluster_posts),
                     participant_count=participant_count,
                     tags=c.key_themes,
@@ -55,16 +78,16 @@ class ContextService:
         return topics
 
     def get_context_card(self, topic_id: str) -> Optional[ContextCard]:
-        """Generate a complete Context Card using semantic clustering and two-stage reranked context sources."""
+        """Generate a complete Context Card using semantic clustering and safety-gated reranked sources."""
         t_total_start = time.perf_counter()
         timings: Dict[str, float] = {}
 
-        # 1. Clustering / Cluster Discovery
+        # 1. Clustering / Topic Resolution
         t_clust_start = time.perf_counter()
         clusters = self._get_or_compute_clusters()
         timings["clustering_ms"] = round((time.perf_counter() - t_clust_start) * 1000.0, 2)
 
-        # Find target cluster matching topic_id or fallback to topic adapter
+        # Find target cluster matching topic_id or fallback to legacy topic adapter
         target_cluster = next((c for c in clusters if c.cluster_id == topic_id), None)
 
         if target_cluster:
@@ -72,9 +95,9 @@ class ContextService:
             topic_title = target_cluster.label
             key_themes = target_cluster.key_themes
             cluster_id = target_cluster.cluster_id
-            confidence = target_cluster.confidence_score
+            membership_score = target_cluster.confidence_score
         else:
-            # Fallback for legacy static topic_id or single topic
+            # Fallback for static topic_id or direct lookup
             posts = self.adapter.get_posts(topic_id=topic_id, limit=100)
             topic = self.adapter.get_topic_by_id(topic_id)
             if not posts and not topic:
@@ -82,24 +105,24 @@ class ContextService:
             topic_title = topic.title if topic else (posts[0].topic_title if posts else topic_id)
             key_themes = self._extract_key_themes(posts)
             cluster_id = f"topic-{topic_id}"
-            confidence = 0.85
+            membership_score = 0.85
 
         if not posts:
             return None
 
-        # 2. Extract Perspectives
+        # 2. Extract Perspectives with verified supporting post IDs
         perspectives = self._aggregate_perspectives(posts)
 
-        # 3. Build Timeline
+        # 3. Build Timeline strictly from real post timestamps
         timeline = self._build_timeline(posts)
 
-        # 4. Generate Summary (Extracted synthesis)
+        # 4. Generate Summary (Extractive synthesis)
         summary = self._generate_topic_summary(topic_title, perspectives, len(posts))
 
-        # 5. Two-Stage Context Retrieval & Reranking
+        # 5. Safety-Aware Two-Stage Context Retrieval & Reranking
         t_retrieval_start = time.perf_counter()
-        reranked_sources, dense_ms, rerank_ms = self._retrieve_and_rerank_sources(
-            topic_title=topic_title, summary=summary, posts=posts
+        reranked_sources, dense_ms, rerank_ms, gated_count = self._retrieve_and_rerank_sources(
+            topic_title=topic_title, summary=summary, cluster_posts=posts
         )
         timings["dense_retrieval_ms"] = dense_ms
         timings["reranking_ms"] = rerank_ms
@@ -122,18 +145,21 @@ class ContextService:
             perspectives=perspectives,
             timeline=timeline,
             sources=reranked_sources,
+            community_post_ids=[p.id for p in posts],
             total_posts=len(posts),
             total_participants=total_participants,
             generated_at=datetime.now(timezone.utc).isoformat(),
             method=mode_desc,
             semantic_cluster_id=cluster_id,
-            cluster_confidence=confidence,
+            cluster_confidence=membership_score,
+            cluster_membership_score=membership_score,
+            gated_spam_candidates_count=gated_count,
             pipeline_timing_ms=timings,
             model_used=f"{settings.MODEL_CLUSTERING_EMBED} + {settings.MODEL_CONTEXT_RERANKER}",
         )
 
     def _get_or_compute_clusters(self) -> List[SemanticCluster]:
-        """Cache clusters for 30 seconds to prevent recomputing on every hit."""
+        """Cache clusters for 30 seconds to avoid unnecessary GPU recomputation."""
         now = time.time()
         if self._cached_clusters is not None and (now - self._clusters_last_computed) < 30.0:
             return self._cached_clusters
@@ -151,23 +177,48 @@ class ContextService:
         return clusters
 
     def _retrieve_and_rerank_sources(
-        self, topic_title: str, summary: str, posts: List[Post]
+        self, topic_title: str, summary: str, cluster_posts: List[Post]
     ) -> tuple:
-        """Execute Two-Stage Retrieval (ModernBERT-TR-Embed -> ModernBERT-TR-Reranker)."""
+        """Execute Two-Stage Retrieval with Safety & Spam Gating."""
         t_dense_start = time.perf_counter()
 
-        # Build candidate sources from all authoritative posts and unique authors in corpus
         all_posts = self.adapter.get_posts(limit=100)
         candidate_pool: List[RerankCandidate] = []
         seen_texts = set()
+        gated_spam_count = 0
 
+        # Step A: Safety-Aware Candidate Gating
+        # Exclude candidates with high spam/bot risk or repetitive coordination patterns
         for p in all_posts:
             if p.text in seen_texts:
                 continue
             seen_texts.add(p.text)
 
+            # Check safety heuristics
+            safety_eval = self.safety_service.analyze_text(
+                SafetyAnalysisRequest(text=p.text, post_id=p.id, author_id=p.author.id),
+                existing_posts=all_posts,
+            )
+            risk = safety_eval.risk_vector
+
+            # Moderation Gating: Exclude posts with HIGH/CRITICAL review priority, high spam, or coordination
+            if (
+                risk.review_priority in ["HIGH", "CRITICAL"]
+                or risk.spam_score >= 0.40
+                or risk.repetition_score >= 0.40
+                or risk.coordination_score >= 0.40
+                or risk.overall_risk_score >= 0.40
+            ):
+                gated_spam_count += 1
+                logger.info(f"[Moderation Gating] Excluded candidate {p.id} from {p.author.name} (priority={risk.review_priority}, risk={risk.overall_risk_score:.2f})")
+                continue
+
             stype = p.source_type
-            sname = p.author.name if stype in ["news_outlet", "official_source", "academic", "expert"] else f"Kullanıcı ({p.author.name})"
+            sname = (
+                p.author.name
+                if stype in ["news_outlet", "official_source", "academic", "expert"]
+                else f"Kullanıcı ({p.author.name})"
+            )
             reliability = self._get_source_note(stype)
 
             candidate_pool.append(
@@ -182,9 +233,9 @@ class ContextService:
             )
 
         if not candidate_pool:
-            return [], 0.0, 0.0
+            return [], 0.0, 0.0, gated_spam_count
 
-        # Stage 1: Dense Candidate Retrieval via ModernBERT Embeddings
+        # Step B: Stage 1 - Dense Retrieval via ModernBERT-TR-Embed
         query_text = f"{topic_title}. {summary[:200]}"
         embedder = self.model_manager.clustering_embedder
 
@@ -193,7 +244,6 @@ class ContextService:
             cand_embs = embedder.encode_documents(cand_texts)
             query_emb = embedder.encode_queries([query_text])[0]
 
-            # Cosine similarities
             sims = np.dot(cand_embs, query_emb) / (
                 np.linalg.norm(cand_embs, axis=1) * np.linalg.norm(query_emb) + 1e-12
             )
@@ -201,14 +251,14 @@ class ContextService:
             for idx, cand in enumerate(candidate_pool):
                 cand.initial_dense_score = round(float((sims[idx] + 1.0) / 2.0), 4)
 
-            # Sort by dense score descending and pick Top-15
+            # Sort by initial dense score descending and pick Top-15
             candidate_pool = sorted(candidate_pool, key=lambda c: c.initial_dense_score, reverse=True)
 
         top_k = min(settings.RERANKER_TOP_K, len(candidate_pool))
         top_candidates = candidate_pool[:top_k]
         dense_ms = round((time.perf_counter() - t_dense_start) * 1000.0, 2)
 
-        # Stage 2: Cross-Encoder Reranking via ModernBERT-TR-Reranker
+        # Step C: Stage 2 - Cross-Encoder Reranking via ModernBERT-TR-Reranker
         t_rerank_start = time.perf_counter()
         reranker = self.model_manager.context_reranker
 
@@ -219,9 +269,9 @@ class ContextService:
 
         rerank_ms = round((time.perf_counter() - t_rerank_start) * 1000.0, 2)
 
-        # Convert top reranked items into SourceContext models (limit to top 6)
+        # Step D: Assemble Top 5 Context Sources
         source_contexts: List[SourceContext] = []
-        for cand in reranked[:6]:
+        for cand in reranked[:5]:
             source_contexts.append(
                 SourceContext(
                     source_name=cand.source_name,
@@ -234,7 +284,7 @@ class ContextService:
                 )
             )
 
-        return source_contexts, dense_ms, rerank_ms
+        return source_contexts, dense_ms, rerank_ms, gated_spam_count
 
     def _extract_key_themes(self, posts: List[Post]) -> List[str]:
         all_tags = []
@@ -260,7 +310,7 @@ class ContextService:
                 PerspectiveDetail(
                     perspective_type="supportive",
                     label="Destekleyen ve Olumlu Görüşler",
-                    summary="Uygulamanın verimlilik, hız ve teknolojik ilerleme sağladığı, adaptasyonun teşvik edilmesi gerektiği vurgulanıyor.",
+                    summary="Teknolojik yenilik, verimlilik ve stratejik fırsatları vurgulayan görüşler.",
                     post_count=len(supportive_posts),
                     supporting_post_ids=[p.id for p in supportive_posts],
                     sample_quotes=[p.text[:140] + "..." for p in supportive_posts[:2]],
@@ -272,7 +322,7 @@ class ContextService:
                 PerspectiveDetail(
                     perspective_type="critical",
                     label="Eleştirel ve Çekinceli Görüşler",
-                    summary="Etik riskler, altyapı yetersizlikleri, şeffaflık eksikliği ve denetim mekanizmalarının belirsizliği konusunda endişeler dile getiriliyor.",
+                    summary="Mevzuat belirsizlikleri, altyapı eksiklikleri, etik ve telif risklerine dikkat çeken görüşler.",
                     post_count=len(critical_posts),
                     supporting_post_ids=[p.id for p in critical_posts],
                     sample_quotes=[p.text[:140] + "..." for p in critical_posts[:2]],
@@ -284,7 +334,7 @@ class ContextService:
                 PerspectiveDetail(
                     perspective_type="neutral_fact",
                     label="Resmi Bildirimler ve Bilgilendirici Raporlar",
-                    summary="Mevzuat duyuruları, kurum açıklamaları ve sektörel göstergeler içeren kurumsal veri akışı.",
+                    summary="Kamu düzenlemeleri, sektörel veriler ve teknik göstergeler içeren kurumsal paylaşımlar.",
                     post_count=len(neutral_posts),
                     supporting_post_ids=[p.id for p in neutral_posts],
                     sample_quotes=[p.text[:140] + "..." for p in neutral_posts[:2]],
@@ -298,14 +348,14 @@ class ContextService:
         timeline: List[TimelineItem] = []
 
         for p in sorted_posts:
-            if p.source_type in ["news_outlet", "official_source", "academic"] or (
-                p.metrics and p.metrics.likes > 400
+            if p.source_type in ["news_outlet", "official_source", "academic", "expert"] or (
+                p.metrics and p.metrics.likes > 800
             ):
                 summary = p.text[:120] + "..." if len(p.text) > 120 else p.text
                 timeline.append(
                     TimelineItem(
                         timestamp=p.created_at,
-                        title=f"{p.author.name} Açıklaması / Paylaşımı",
+                        title=f"{p.author.name} Paylaşımı",
                         summary=summary,
                         related_post_id=p.id,
                     )
@@ -328,7 +378,7 @@ class ContextService:
         self, topic_title: str, perspectives: List[PerspectiveDetail], post_count: int
     ) -> str:
         return (
-            f"'{topic_title}' başlığı altında toplam {post_count} adet paylaşım semantik kümeleme ile gruplandırıldı. "
-            f"Tartışmada {len(perspectives)} temel bakış açısı ayrıştırıldı. "
-            "Taraflar teknolojik fırsatlar ve kazanımları savunurken, denetim, etik ve altyapı eksiklikleri temel çekince noktalarını oluşturuyor."
+            f"'{topic_title}' başlığı altında {post_count} adet paylaşım semantik olarak gruplandırıldı. "
+            f"Tartışmada {len(perspectives)} temel bakış açısı ayrıştırıldı: "
+            "Taraflar teknolojik fırsat ve kazanımları savunurken, denetim, etik ve altyapı eksiklikleri temel çekince noktalarını oluşturuyor."
         )

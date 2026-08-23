@@ -17,7 +17,8 @@ def test_adapter_topic_indexing(json_adapter):
 
     topic_ids = [t.id for t in topics]
     assert "yapay-zeka-egitim" in topic_ids
-    assert "acik-kaynak-yazilim" in topic_ids
+    assert "acik-kaynak-kamu" in topic_ids
+    assert "sarj-istasyonlari" in topic_ids
 
     first_topic = topics[0]
     assert first_topic.post_count > 0
