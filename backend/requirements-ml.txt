@@ -5,7 +5,7 @@
 # - ModernBERT-TR-Reranker (Cross-Encoder Context Reranking)
 # - ModernBERT-TR-Guardrail (11-Class Content Safety & Moderation)
 #
-# Prerequisite: core requirements
+# Prerequisite: core requirements (includes numpy and scikit-learn)
 -r requirements.txt
 
 # PyTorch & HuggingFace Ecosystem
@@ -13,8 +13,7 @@ torch>=2.2.0
 transformers>=4.40.0
 sentence-transformers>=3.0.0
 
-# Scientific, Dimensionality Reduction & Clustering
-scikit-learn>=1.3.0
+# Scientific & Optional Tools
 scipy>=1.11.0
 hdbscan>=0.8.33
 

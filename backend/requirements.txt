@@ -1,5 +1,6 @@
-# NSosyal Pusula - Lightweight / Core Backend Runtime Dependencies
+# NSosyal Pusula - Lightweight / Core Backend Runtime & Test Dependencies
 # Used for standard API execution, Demo Mode (SEMANTIC_MODE=demo), and CI testing.
+# Includes scikit-learn for PCA/HDBSCAN clustering tests with lightweight demo embeddings.
 # Does NOT require PyTorch, CUDA, or downloading multi-GB transformer models.
 
 fastapi>=0.110.0,<1.0.0
@@ -8,6 +9,7 @@ pydantic>=2.6.0,<3.0.0
 pydantic-settings>=2.2.0,<3.0.0
 python-dateutil>=2.9.0
 numpy>=1.24.0,<3.0.0
+scikit-learn>=1.3.0
 
 # Testing & Dev
 pytest>=8.1.0,<10.0.0
