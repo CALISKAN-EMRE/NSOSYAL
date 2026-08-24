@@ -110,3 +110,26 @@ def test_model_manager_fallback():
     status = mm.get_status()
     assert status["status"] == "ready"
     assert status["semantic_mode"] == "demo"
+
+
+def test_demo_mode_status_without_torch(monkeypatch):
+    """Regression test ensuring demo mode and system status work cleanly when torch is not installed."""
+    import builtins
+    real_import = builtins.__import__
+
+    def mock_import(name, *args, **kwargs):
+        if name == "torch":
+            raise ModuleNotFoundError("No module named 'torch' (simulated lightweight environment)")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", mock_import)
+
+    mm = ModelManager()
+    mm.mode = "demo"
+    mm.initialize()
+    assert mm.cuda_vram_gb == 0.0
+    status = mm.get_status()
+    assert status["status"] == "ready"
+    assert status["semantic_mode"] == "demo"
+    assert status["cuda_vram_allocated_gb"] == 0.0
+

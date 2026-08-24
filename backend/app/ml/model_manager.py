@@ -43,9 +43,12 @@ class ModelManager:
 
     @property
     def cuda_vram_gb(self) -> float:
-        import torch
-        if torch.cuda.is_available():
-            return round(torch.cuda.memory_allocated() / (1024**3), 2)
+        try:
+            import torch
+            if torch.cuda.is_available():
+                return round(torch.cuda.memory_allocated() / (1024**3), 2)
+        except (ImportError, Exception):
+            pass
         return 0.0
 
     @classmethod
@@ -158,11 +161,13 @@ class ModelManager:
 
     def get_status(self) -> Dict[str, Any]:
         """Return runtime status for observability without leaking infrastructure secrets."""
-        import torch
-
         cuda_vram_gb = 0.0
-        if torch.cuda.is_available():
-            cuda_vram_gb = round(torch.cuda.memory_allocated() / (1024**3), 2)
+        try:
+            import torch
+            if torch.cuda.is_available():
+                cuda_vram_gb = round(torch.cuda.memory_allocated() / (1024**3), 2)
+        except (ImportError, Exception):
+            pass
 
         return {
             "status": "ready" if self.is_initialized else "initializing",

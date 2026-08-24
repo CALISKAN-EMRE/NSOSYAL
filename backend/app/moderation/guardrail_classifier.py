@@ -3,7 +3,6 @@
 import logging
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
-import torch
 try:
     from app.moderation.base import HazardScores, HazardCategory
 except ImportError:
@@ -36,7 +35,15 @@ class ModernBERTGuardrailClassifier(BaseGuardrailClassifier):
     MODEL_ID = "ytu-ce-cosmos/modernbert-tr-guardrail"
 
     def __init__(self, device: Optional[str] = None):
-        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
+        if device is None:
+            try:
+                import torch
+                self.device = "cuda" if torch.cuda.is_available() else "cpu"
+            except (ImportError, Exception):
+                self.device = "cpu"
+        else:
+            self.device = device
+
         self.model = None
         self.tokenizer = None
         self.config = None
@@ -60,18 +67,23 @@ class ModernBERTGuardrailClassifier(BaseGuardrailClassifier):
         if self.model is None or self.tokenizer is None:
             return DemoGuardrailClassifier().classify(text)
 
-        with torch.no_grad():
-            inputs = self.tokenizer(
-                text,
-                truncation=True,
-                max_length=512,
-                return_tensors="pt"
-            ).to(self.device)
+        try:
+            import torch
+            with torch.no_grad():
+                inputs = self.tokenizer(
+                    text,
+                    truncation=True,
+                    max_length=512,
+                    return_tensors="pt"
+                ).to(self.device)
 
-            logits = self.model(**inputs).logits
-            probs = torch.sigmoid(logits)[0].cpu().numpy()
+                logits = self.model(**inputs).logits
+                probs = torch.sigmoid(logits)[0].cpu().numpy()
 
-        return self._map_probs_to_hazard_scores(probs)
+            return self._map_probs_to_hazard_scores(probs)
+        except Exception as e:
+            logger.error(f"Guardrail inference error: {e}. Falling back to demo rules.")
+            return DemoGuardrailClassifier().classify(text)
 
     def batch_classify(self, texts: List[str]) -> List[HazardScores]:
         if not texts:
@@ -79,19 +91,24 @@ class ModernBERTGuardrailClassifier(BaseGuardrailClassifier):
         if self.model is None or self.tokenizer is None:
             return DemoGuardrailClassifier().batch_classify(texts)
 
-        with torch.no_grad():
-            inputs = self.tokenizer(
-                texts,
-                padding=True,
-                truncation=True,
-                max_length=512,
-                return_tensors="pt"
-            ).to(self.device)
+        try:
+            import torch
+            with torch.no_grad():
+                inputs = self.tokenizer(
+                    texts,
+                    padding=True,
+                    truncation=True,
+                    max_length=512,
+                    return_tensors="pt"
+                ).to(self.device)
 
-            logits = self.model(**inputs).logits
-            probs = torch.sigmoid(logits).cpu().numpy()
+                logits = self.model(**inputs).logits
+                probs = torch.sigmoid(logits).cpu().numpy()
 
-        return [self._map_probs_to_hazard_scores(p) for p in probs]
+            return [self._map_probs_to_hazard_scores(p) for p in probs]
+        except Exception as e:
+            logger.error(f"Guardrail batch inference error: {e}. Falling back to demo rules.")
+            return DemoGuardrailClassifier().batch_classify(texts)
 
     def _map_probs_to_hazard_scores(self, probs: Any) -> HazardScores:
         id2label = getattr(self.config, "id2label", {})
