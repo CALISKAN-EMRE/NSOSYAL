@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nsosyal-pusula-backend"
-version = "0.1.0"
+version = "0.2.0"
 description = "NSosyal Pusula - Yapay Zekâ Destekli Bağlam ve Şeffaf Öneri Sistemi Backend"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -17,12 +17,22 @@ dependencies = [
     "pydantic>=2.6.0,<3.0.0",
     "pydantic-settings>=2.2.0,<3.0.0",
     "python-dateutil>=2.9.0",
+    "numpy>=1.24.0,<3.0.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.1.0,<9.0.0",
+    "pytest>=8.1.0,<10.0.0",
     "httpx>=0.27.0,<1.0.0",
+]
+ml = [
+    "torch>=2.2.0",
+    "transformers>=4.40.0",
+    "sentence-transformers>=3.0.0",
+    "scikit-learn>=1.3.0",
+    "scipy>=1.11.0",
+    "hdbscan>=0.8.33",
+    "matplotlib>=3.7.0",
 ]
 
 [tool.pytest.ini_options]

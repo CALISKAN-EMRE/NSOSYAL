@@ -1,0 +1,22 @@
+# NSosyal Pusula - Production Semantic ML Runtime Dependencies
+# Used for Full ML Mode (SEMANTIC_MODE=ml) with local Turkish transformer models:
+# - ModernBERT-TR (Topic/Event Clustering & Retrieval)
+# - Multilingual-E5-Large-Instruct (Semantic Natural Language Search)
+# - ModernBERT-TR-Reranker (Cross-Encoder Context Reranking)
+# - ModernBERT-TR-Guardrail (11-Class Content Safety & Moderation)
+#
+# Prerequisite: core requirements
+-r requirements.txt
+
+# PyTorch & HuggingFace Ecosystem
+torch>=2.2.0
+transformers>=4.40.0
+sentence-transformers>=3.0.0
+
+# Scientific, Dimensionality Reduction & Clustering
+scikit-learn>=1.3.0
+scipy>=1.11.0
+hdbscan>=0.8.33
+
+# Reporting & Evidence Visualization (used by ml/reports scripts)
+matplotlib>=3.7.0

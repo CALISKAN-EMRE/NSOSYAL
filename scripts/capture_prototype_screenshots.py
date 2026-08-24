@@ -64,7 +64,6 @@ def capture_all():
             path_03 = os.path.join(OUTPUT_DIR, "screenshot_03_explainability.png")
             page.screenshot(path=path_03)
             print(f"Saved: {path_03}")
-            shutil.copy(path_03, os.path.join(OUTPUT_DIR, "screenshot_03_explainable_recommendation.png"))
 
         # =========================================================================
         # 4. Context Card Modal (Real Semantic Cluster)
@@ -79,10 +78,9 @@ def capture_all():
             time.sleep(1)
             context_btns[0].click()
             time.sleep(3.5)
-            path_04 = os.path.join(OUTPUT_DIR, "screenshot_04_contextual_dashboard.png")
+            path_04 = os.path.join(OUTPUT_DIR, "screenshot_04_context_card.png")
             page.screenshot(path=path_04)
             print(f"Saved: {path_04}")
-            shutil.copy(path_04, os.path.join(OUTPUT_DIR, "screenshot_04_context_card.png"))
 
         # =========================================================================
         # 5. Content Safety & Moderation Lab
@@ -102,10 +100,9 @@ def capture_all():
         if analyze_btn.is_visible():
             analyze_btn.click()
             time.sleep(3)
-        path_05 = os.path.join(OUTPUT_DIR, "screenshot_05_security_moderation.png")
+        path_05 = os.path.join(OUTPUT_DIR, "screenshot_05_safety_moderation_lab.png")
         page.screenshot(path=path_05)
         print(f"Saved: {path_05}")
-        shutil.copy(path_05, os.path.join(OUTPUT_DIR, "screenshot_05_safety_moderation_lab.png"))
 
         browser.close()
         print("\nAll 5 prototype screenshots captured successfully!")

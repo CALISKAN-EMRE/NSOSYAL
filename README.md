@@ -2,10 +2,14 @@
 ### Yapay Zekâ Destekli Bağlam ve Şeffaf Öneri Sistemi
 **TEKNOFEST 2026 NSosyal İnovasyon Yarışması — Çalışan Yarışma Prototipi**
 
+[![CI](https://github.com/CALISKAN-EMRE/NSOSYAL/actions/workflows/ci.yml/badge.svg)](https://github.com/CALISKAN-EMRE/NSOSYAL/actions/workflows/ci.yml)
 [![Prototip Durumu](https://img.shields.io/badge/Prototip-Çalışan_Üretim_Mimarisi-emerald.svg)](docs/report_assets/technical_evidence_summary.md)
 [![Lisans](https://img.shields.io/badge/Lisans-MIT-green.svg)](LICENSE)
-[![GPU Desteği](https://img.shields.io/badge/Hızlandırma-NVIDIA_CUDA_RTX_3060-blue.svg)](#donanım-ve-çalışma-ortamı)
-[![Veri Kaynağı](https://img.shields.io/badge/Veri_Kaynağı-Sentetik_Türkçe_Demo-orange.svg)](#veri-ve-entegrasyon-uyarısı)
+[![GPU Desteği](https://img.shields.io/badge/Hızlandırma-NVIDIA_CUDA_RTX_3060-blue.svg)](#-donanım-ve-çalışma-ortamı-donanım-referansı)
+[![Veri Kaynağı](https://img.shields.io/badge/Veri_Kaynağı-Sentetik_Türkçe_Demo-orange.svg)](#-veri-ve-entegrasyon-uyarısı-important-disclosures)
+
+> **📌 TEKNOFEST 2026 TTR Submission Snapshot:**  
+> `teknofest-2026-ttr-submission` etiketi (Git tag), jüriye sunulan Teknik Tasarım Raporu (TTR) ile ilişkili kaynak kod durumunu muhafaza eder. Bu etiket sonrasındaki commit'ler yalnızca mühendislik sağlamlaştırması, CI/CD iş akışları, bağımlılık ayrıştırması ve tekrarlanabilirlik iyileştirmelerini içermektedir.
 
 ---
 
@@ -13,7 +17,7 @@
 
 **NSosyal Pusula**, modern sosyal medya platformlarında bilgi kirliliği, kutuplaşma, şeffaf olmayan algoritmalar ve bağlamından koparılmış içerik akışlarına karşı geliştirilmiş **yapay zekâ destekli bir sosyal medya zekâ, şeffaflık ve moderasyon katmanıdır**.
 
-Platform, kullanıcılara salt kronolojik veya gizli öneri motorlarına dayalı bir akış sunmak yerine; paylaşımları anlamsal olarak kümeleyen, çoklu bakış açılarını sentezleyen **Bağlam Kartları (Context Cards)**, önerilerin gerekçelerini matematiksel ve metinsel olarak açıklayan **Şeffaf Öneri Sistemi (Transparent Recommendations)**, talimat güdümlü **Doğal Dil Arama (Natural Language Semantic Search)** ve 11 tehlike sınıfında kalibre edilmiş **İçerik Güvenlik & Moderasyon Katmanı (Calibrated Safety & Coordination Defense)** sağlar.
+Platform, kullanıcılara salt kronolojik veya kapalı kutu öneri motorlarına dayalı bir akış sunmak yerine; paylaşımları anlamsal olarak kümeleyen, çoklu bakış açılarını sentezleyen **Bağlam Kartları (Context Cards)**, önerilerin gerekçelerini matematiksel ve metinsel olarak açıklayan **Şeffaf Öneri Sistemi (Transparent Recommendations)**, talimat güdümlü **Doğal Dil Arama (Natural Language Semantic Search)** ve 11 tehlike sınıfında kalibre edilmiş **İçerik Güvenlik & Moderasyon Katmanı (Calibrated Safety & Coordination Defense)** sağlar.
 
 ---
 
@@ -47,86 +51,135 @@ $$\text{Toplam Skor} = (w_1 \cdot \text{Anlamsal İlgi}) + (w_2 \cdot \text{Konu
 
 ---
 
+## 💻 Donanım ve Çalışma Ortamı (Donanım Referansı)
+
+Raporlanan tüm bilimsel ölçümler, model gecikmeleri ve prototip ekran görüntüleri aşağıdaki donanım ortamında kaydedilmiştir:
+
+| Donanım / Yazılım Bileşeni | Referans Spesifikasyon |
+| :--- | :--- |
+| **GPU** | NVIDIA GeForce RTX 3060 (Masaüstü, 12.0 GB GDDR6 VRAM) |
+| **CPU** | 13th Gen Intel(R) Core(TM) i5-13600KF (14 Çekirdek, 20 İş Parçacığı) |
+| **RAM** | 32.0 GB (31.82 GB kullanılabilir) |
+| **CUDA & PyTorch** | CUDA 12.4 / PyTorch 2.6.0+cu124 |
+| **Python & Node.js** | Python 3.13.7 (3.11+ desteklenir) / Node.js 20+ |
+
+---
+
 ## 🏗️ Proje Dizin Yapısı (Project Structure)
 
 ```
 NSOSYAL/
-├── backend/                   # Python / FastAPI REST Servisi
+├── .github/workflows/         # GitHub Actions CI iş akışı (ci.yml)
+├── backend/                   # Python / FastAPI REST Servisi (v0.2.0)
 │   ├── app/
-│   │   ├── adapters/          # DataSourceAdapter (JsonDemoAdapter & Gelecek API adaptörleri)
-│   │   ├── api/               # REST API yönlendirmeleri (/health, /api/posts, /api/search, /api/system, vb.)
-│   │   ├── ml/                # Faz 2B Üretim ML Modülü (ModelManager, Embedding, Cluster, Reranker)
+│   │   ├── adapters/          # JsonDemoAdapter (70 sentetik gönderi)
+│   │   ├── api/               # REST API yönlendirmeleri (/health, /api/posts, /api/search, /api/system)
+│   │   ├── ml/                # Üretim ML Modülleri (ModernBERT, E5, Reranker, HDBSCAN)
+│   │   ├── moderation/        # Guardrail Sınıflandırıcısı, Spam, Tekrar & Koordinasyon Tespiti
 │   │   ├── models/            # Pydantic veri modelleri ve şemalar
 │   │   ├── services/          # ContextService, RecommendationService, SearchService, SafetyService
-│   │   └── config.py          # Konfigürasyon ve SEMANTIC_MODE ayarları
-│   └── requirements.txt
+│   │   └── config.py          # Sistem konfigürasyonu ve SEMANTIC_MODE ayarları
+│   ├── requirements.txt       # Çekirdek / Demo modu bağımlılıkları (Hafif, model indirmesiz)
+│   ├── requirements-ml.txt    # Tam ML üretim bağımlılıkları (PyTorch, Transformers, Scikit-learn)
+│   └── pyproject.toml         # Paket metadata ve dev/ml opsiyonel bağımlılıkları
 ├── frontend/                  # Next.js 14 / TypeScript / Tailwind CSS Kullanıcı Arayüzü
 │   ├── src/
-│   │   ├── app/               # Next.js App Router
+│   │   ├── app/               # Next.js App Router (page.tsx, globals.css)
 │   │   ├── components/        # Feed, SemanticSearchBar, ContextCardModal, ExplainModal, SafetyPanel
 │   │   └── lib/               # API istemcisi ve TypeScript tip tanımları
 │   └── package.json
-├── data/                      # Sentetik Türkçe Sosyal Medya Veri Seti
-│   └── demo_posts.json
-├── docs/                      # Detaylı Mimari ve Süreç Dokümantasyonu
-│   ├── architecture.md        # Sistem genel mimarisi
-│   └── semantic_pipeline.md   # Model seçim gerekçeleri, benchmark kanıtları ve boru hatları
-├── ml/                        # Faz 2A Araştırma ve Karşılaştırma Laboratuvarı
-│   ├── evaluation/            # STS, Kümeleme, Erişim ve Reranker test scriptleri
-│   └── reports/               # embedding_model_selection.md, benchmark_integrity_audit.md
-└── tests/                     # Backend Pytest birim, entegrasyon ve canlı GPU smoke testleri
+├── data/                      # Sentetik Türkçe Sosyal Medya Veri Seti (demo_posts.json)
+├── docs/                      # Mimari ve Teknik Rapor Kanıt Varlıkları
+│   └── report_assets/         # Grafikler, diyagramlar, sayısal tablolar ve prototip ekran görüntüleri
+├── ml/                        # Araştırma, Karşılaştırma ve Raporlama Betikleri
+│   ├── evaluation/            # Model karşılaştırma ve kalibrasyon betikleri
+│   └── reports/               # Rapor kanıt paketi üreticisi (generate_report_evidence_pack.py)
+├── scripts/                   # Tek komutla çalıştırma betikleri (run_demo, run_ml)
+└── tests/                     # Pytest birim, entegrasyon ve canlı GPU smoke testleri
 ```
 
 ---
 
-## 🛠️ Yerel Geliştirme Kurulumu (Local Development Setup)
+## 🛠️ Kurulum ve Çalıştırma Seçenekleri (Setup Options)
 
-### Sistem Gereksinimleri
-* **Python:** 3.10+ (Test edilen: Python 3.13.7)
-* **Node.js:** 18+ (Test edilen: Node.js 20+)
-* **GPU (Opsiyonel ama Tavsiye Edilen):** NVIDIA GPU with CUDA (Test edilen: NVIDIA RTX 3060 12GB VRAM)
+İhtiyacınıza göre iki farklı çalışma modundan birini seçebilirsiniz:
 
-### 1. Depoyu Klonlayın ve Yapılandırın
+### Seçenek A: Demo / Hafif Mod (Hızlı Doğrulama ve Kod İncelemesi)
+> **Model İndirmesi Gerektirmez (~0 MB İndirme):** Deterministik anlamsal fallback ve kural tabanlı moderasyon kullanır. CI ve hızlı arayüz testi için idealdir.
+
 ```bash
-git clone <repository-url>
+# 1. Depoyu klonlayın
+git clone https://github.com/CALISKAN-EMRE/NSOSYAL.git
 cd NSOSYAL
-cp .env.example .env
-```
 
-### 2. Backend Kurulumu ve Çalıştırma (ML Modu)
-```bash
+# 2. Backend ortamını kurun
 cd backend
 python -m venv .venv
 
 # Windows Powershell:
 .\.venv\Scripts\Activate.ps1
-# Linux/macOS:
+# Linux / macOS:
 # source .venv/bin/activate
 
 pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+
+# 3. Demo modunda başlatın (Kök dizinden tek komutla: scripts/run_demo.bat veya .sh)
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+# (Veya SEMANTIC_MODE=demo ortam değişkeniyle)
 ```
-> **Not:** Sistem varsayılan olarak `SEMANTIC_MODE=ml` modunda açılır ve modelleri GPU üzerine yükler. Model indirmeden hızlı çalıştırmak için `.env` dosyasına `SEMANTIC_MODE=demo` yazabilirsiniz.
 
-* **API Dökümantasyonu (Swagger):** `http://localhost:8000/docs`
-* **Sistem & Model Durumu:** `http://localhost:8000/api/system/status`
+---
 
-### 3. Frontend Kurulumu ve Çalıştırma
+### Seçenek B: Tam ML Modu (Üretim Yapay Zekâ Mimarisi)
+> **Gerçek Türkçe Transformer Modellerini Yükler:** ModernBERT-TR (Kümeleme + Reranker + Guardrail) ve Multilingual-E5 (Arama) modelleri yerel GPU/CPU üzerinde çalışır.
+
+```bash
+# 1. Backend ML bağımlılıklarını yükleyin
+cd backend
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1   # (Linux/macOS: source .venv/bin/activate)
+
+# NVIDIA GPU / CUDA hızlandırması için (Örnek: CUDA 12.4):
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+pip install -r requirements-ml.txt
+
+# (CPU üzerinde çalıştırmak için doğrudan):
+# pip install -r requirements-ml.txt
+
+# 2. ML modunda başlatın (Kök dizinden tek komutla: scripts/run_ml.bat veya .sh)
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+---
+
+### 3. Frontend Arayüzünü Başlatma (Her İki Mod İçin Ortak)
 Yeni bir terminalde:
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-* **Web Arayüzü:** `http://localhost:3000`
 
-### 4. Testleri Çalıştırma
+* **Web Kullanıcı Arayüzü:** [http://localhost:3000](http://localhost:3000)
+* **REST API Dokümantasyonu (Swagger):** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+* **Sistem & ML Durum Uç Noktası:** [http://127.0.0.1:8000/api/system/status](http://127.0.0.1:8000/api/system/status)
+
+---
+
+## 🧪 Testleri Çalıştırma (Running Verification Tests)
+
 ```bash
-# Hızlı Birim Testleri (Demo Modu - 1.5 saniye):
+# 1. Hızlı Regresyon Test Paketi (Pytest - Demo Modu):
 python -m pytest tests -v
 
-# Canlı GPU ML Entegrasyon Testi:
+# 2. Canlı GPU ML Semantik Boru Hattı Doğrulama Testi:
 python -m tests.smoke_test_ml_live
+
+# 3. Canlı GPU Moderasyon & Kalibre Edilmiş Eşik Doğrulama Testi:
+python -m tests.smoke_test_moderation_live
+
+# 4. Frontend Üretim Derleme Testi:
+cd frontend && npm run build
 ```
 
 ---
@@ -134,5 +187,5 @@ python -m tests.smoke_test_ml_live
 ## ⚠️ Veri ve Entegrasyon Uyarısı (Important Disclosures)
 
 1. **API Erişimi:** Bu proje bir TEKNOFEST 2026 yarışma prototipidir. Mevcut aşamada sistem **herhangi bir canlı/resmi NSosyal API'sine bağlı değildir** ve yetkisiz veri kazıma (scraping) yapılmamaktadır.
-2. **Sentetik Veri:** Sistemde kullanılan paylaşımlar (`data/demo_posts.json`), prototipin yeteneklerini test etmek üzere kurgulanmış **sentetik Türkçe içeriklerdir**.
-3. **Model Hakları ve Atıf:** Kullanılan modeller (`ytu-ce-cosmos/modernbert-tr-embed`, `ytu-ce-cosmos/modernbert-tr-reranker`, `intfloat/multilingual-e5-large-instruct`) ilgili yazarların açık kaynak lisanslarına (Apache-2.0 / MIT) tabidir.
+2. **Sentetik Veri:** Sistemde kullanılan paylaşımlar (`data/demo_posts.json`), prototipin yeteneklerini test etmek üzere kurgulanmış **sentetik Türkçe içeriklerdir**. Gerçek kişi veya kamu kurumları temsil edilmemektedir.
+3. **Model Hakları ve Atıf:** Kullanılan modeller (`ytu-ce-cosmos/modernbert-tr-embed`, `ytu-ce-cosmos/modernbert-tr-reranker`, `ytu-ce-cosmos/modernbert-tr-guardrail`, `intfloat/multilingual-e5-large-instruct`) ilgili yazarların açık kaynak lisanslarına (Apache-2.0 / MIT) tabidir. Detaylar için [LICENSE](LICENSE) dosyasına bakınız.
